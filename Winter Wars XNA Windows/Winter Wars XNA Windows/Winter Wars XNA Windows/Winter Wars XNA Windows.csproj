@@ -114,7 +114,7 @@
     <Compile Include="Winter Wars Code\Game Objects\Player.cs" />
     <Compile Include="Winter Wars Code\Game Objects\Structures\Snowman.cs" />
     <Compile Include="Winter Wars Code\Game1.cs" />
-    <Compile Include="Winter Wars Code\MVC\Model.cs" />
+    <Compile Include="Winter Wars Code\MVC\Game_Model.cs" />
     <Compile Include="Winter Wars Code\MVC\View.cs" />
   </ItemGroup>
   <ItemGroup>

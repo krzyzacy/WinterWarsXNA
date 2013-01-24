@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Winter_Wars_XNA_Windows.Winter_Wars_Code.MVC
 {
-    class Model
+    class Game_Model
     {
     }
 }

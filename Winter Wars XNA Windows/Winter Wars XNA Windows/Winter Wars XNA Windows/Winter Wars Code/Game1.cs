@@ -9,6 +9,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+using Winter_Wars_XNA_Windows.Winter_Wars_Code.Game_Objects;
+
+
 namespace Winter_Wars_XNA_Windows
 {
     /// <summary>
@@ -36,6 +39,10 @@ namespace Winter_Wars_XNA_Windows
             // TODO: Add your initialization logic here
 
             base.Initialize();
+
+            
+
+
         }
 
         /// <summary>

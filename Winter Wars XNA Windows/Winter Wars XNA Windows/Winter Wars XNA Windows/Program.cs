@@ -7,10 +7,11 @@ namespace Winter_Wars_XNA_Windows
     {
         /// <summary>
         /// The main entry point for the application.
+        /// We need to add our menu state machine here
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
+            using (Play_State game = new Play_State())
             {
                 game.Run();
             }

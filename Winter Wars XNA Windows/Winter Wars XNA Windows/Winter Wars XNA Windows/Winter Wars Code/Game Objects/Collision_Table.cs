@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Winter_Wars_XNA_Windows.Winter_Wars_Code.Game_Objects.Structures
+namespace Winter_Wars_XNA_Windows.Winter_Wars_Code.Game_Objects
 {
-    class Snowman : Structure
+    class Collision_Table
     {
     }
 }

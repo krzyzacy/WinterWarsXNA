@@ -17,12 +17,12 @@ namespace Winter_Wars_XNA_Windows
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class Play_State : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public Game1()
+        public Play_State()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";

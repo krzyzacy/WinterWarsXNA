@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Winter_Wars_XNA_Windows.Winter_Wars_Code.Game_Objects.Structures
 {
-    class Snowman : Structure
+    class Structure : Collidable
     {
     }
 }

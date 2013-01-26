@@ -5,7 +5,18 @@ using System.Text;
 
 namespace Winter_Wars_XNA_Windows.Winter_Wars_Code.Game_Objects
 {
-    class Player
+  
+
+    class Player : Moveable
     {
     }
+
+    class H_Player : Player
+    {
+    }
+
+    class AI_PLayer : Player
+    {
+    }
+
 }

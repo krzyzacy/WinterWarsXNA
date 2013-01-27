@@ -95,14 +95,14 @@ namespace Winter_Wars_XNA_Windows
             base.Update(gameTime);
         }
 
-
-        Controls[] controllers = new Controls[4];
+        //This doesn't work *****
+        //Controls[] controllers = new Controls[4];
         protected void UpdateInput()
         {
-            foreach(Controls con in controllers)
-            {
-                con.UpdateInput();
-            }
+            //foreach(Controls con in controllers)
+            //{
+            //    con.UpdateInput();
+            //}
 
            
 

@@ -8,14 +8,16 @@ using Winter_Wars_XNA_Windows.Winter_Wars_Code.Game_Objects;
 
 namespace Winter_Wars_XNA_Windows.Winter_Wars_Code.Environment
 {
-<<<<<<< HEAD:Winter Wars XNA Windows/Winter Wars XNA Windows/Winter Wars XNA Windows/Winter Wars Code/Environment/World.cs
-    class World
-=======
-
-    //This maybe should be an interface instead? or just a base class
-    //Anyway the plan is that it will have tile types inherit from it
-    class Tile : Seen_Object
->>>>>>> Basic Architecture Complete:Winter Wars XNA Windows/Winter Wars XNA Windows/Winter Wars XNA Windows/Winter Wars Code/Environment/Tile.cs
+    //Will have all the functions for every type of world 
+    interface World
     {
+
     }
+
+    class Norml_World : World
+    {
+        //The standard rectangular world
+    }
+   
+ 
 }

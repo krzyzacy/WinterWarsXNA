@@ -8,10 +8,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Jared\Documents\GitHub\WinterWarsXNA\Winter Wars XNA Windows\Winter Wars XNA Windows\Winter Wars XNA Windows\bin\x86\Release\Content\Models\p1_wedge.xnb</Output>
-      <Time>2013-01-19T03:50:02.1241545-05:00</Time>
+      <Time>2013-01-25T20:10:24.1052671-05:00</Time>
       <Dependency>
         <Key>obj\x86\Release\Models\p1_wedge_0.xml</Key>
-        <Value>2013-01-24T11:36:31.9784616-05:00</Value>
+        <Value>2013-01-27T08:07:12.4266979-05:00</Value>
       </Dependency>
       <Request>C:\Users\Jared\Documents\GitHub\WinterWarsXNA\Winter Wars XNA Windows\Winter Wars XNA Windows\Winter Wars XNA Windows\bin\x86\Release\Content\textures\wedge_p1_diff_v1_0.xnb</Request>
     </Item>
@@ -22,14 +22,14 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Jared\Documents\GitHub\WinterWarsXNA\Winter Wars XNA Windows\Winter Wars XNA Windows\Winter Wars XNA Windows\bin\x86\Release\Content\Textures\wedge_p1_diff_v1.xnb</Output>
-      <Time>2013-01-19T03:50:02.1821578-05:00</Time>
+      <Time>2013-01-25T20:10:24.1122675-05:00</Time>
     </Item>
     <Item>
       <Source>Models\p1_wedge.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Release\Models\p1_wedge_0.xml</Output>
-      <Time>2013-01-19T03:50:02.1241545-05:00</Time>
+      <Time>2013-01-25T20:10:24.1052671-05:00</Time>
     </Item>
     <Item>
       <Source>textures\wedge_p1_diff_v1.tga</Source>
@@ -45,7 +45,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Jared\Documents\GitHub\WinterWarsXNA\Winter Wars XNA Windows\Winter Wars XNA Windows\Winter Wars XNA Windows\bin\x86\Release\Content\textures\wedge_p1_diff_v1_0.xnb</Output>
-      <Time>2013-01-19T03:50:02.1821578-05:00</Time>
+      <Time>2013-01-25T20:10:24.1122675-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

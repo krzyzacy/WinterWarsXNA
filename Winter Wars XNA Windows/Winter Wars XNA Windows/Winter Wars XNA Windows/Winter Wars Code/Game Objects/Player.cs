@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace Winter_Wars_XNA_Windows.Winter_Wars_Code.Game_Objects
 {
-  
+    
 
     class Player : Moveable
     {
@@ -21,6 +21,7 @@ namespace Winter_Wars_XNA_Windows.Winter_Wars_Code.Game_Objects
         private bool mini_open;
 
         private BoundingSphere body;
+        
         //Collision body is a big issue
             
     }

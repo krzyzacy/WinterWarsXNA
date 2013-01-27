@@ -61,7 +61,7 @@ namespace Winter_Wars_XNA_Windows
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            myModel = Content.Load<Model>("Models\\p1_wedge");
+            myModel = Content.Load<Model>("Models\\testsphere1");
             aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
         }
 
@@ -120,7 +120,7 @@ namespace Winter_Wars_XNA_Windows
         float modelRotation = 0.0f;
 
         // Set the position of the camera in world space, for our view matrix.
-        Vector3 cameraPosition = new Vector3(0.0f, 50.0f, 5000.0f);
+        Vector3 cameraPosition = new Vector3(0.0f, 50.0f, 250.0f);
 
 
         protected override void Draw(GameTime gameTime)

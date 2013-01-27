@@ -41,7 +41,6 @@
       <Private>False</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Compile Include="Models\p1_wedge.fbx">
       <Name>p1_wedge</Name>
@@ -52,6 +51,20 @@
   <ItemGroup>
     <Compile Include="Textures\wedge_p1_diff_v1.tga">
       <Name>wedge_p1_diff_v1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\testsphere1.FBX">
+      <Name>testsphere1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\testsphere1.tga">
+      <Name>testsphere1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

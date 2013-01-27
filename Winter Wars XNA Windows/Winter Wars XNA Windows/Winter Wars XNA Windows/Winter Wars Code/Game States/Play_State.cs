@@ -9,8 +9,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-using Winter_Wars_XNA_Windows.Winter_Wars_Code.Game_Objects;
-
+using Winter_Wars_XNA_Windows.Winter_Wars_Code.Environment;
+using Winter_Wars_XNA_Windows.Winter_Wars_Code.MVC;
 
 namespace Winter_Wars_XNA_Windows
 {
@@ -81,6 +81,9 @@ namespace Winter_Wars_XNA_Windows
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            UpdateInput();
+
+
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
@@ -90,6 +93,20 @@ namespace Winter_Wars_XNA_Windows
                 MathHelper.ToRadians(0.1f);
             
             base.Update(gameTime);
+        }
+
+
+        Controls[] controllers = new Controls[4];
+        protected void UpdateInput()
+        {
+            foreach(Controls con in controllers)
+            {
+                con.UpdateInput();
+            }
+
+           
+
+
         }
 
         /// <summary>

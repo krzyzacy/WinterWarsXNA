@@ -9,6 +9,10 @@ namespace Winter_Wars_XNA_Windows.Winter_Wars_Code.Game_Objects
 
     class Player : Moveable
     {
+
+
+
+
     }
 
     class H_Player : Player

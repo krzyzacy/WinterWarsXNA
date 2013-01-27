@@ -95,7 +95,7 @@ namespace Winter_Wars_XNA_Windows
             base.Update(gameTime);
         }
 
-        //This doesn't work *****
+        //This doesn't work, cuz they aren't initialized *****
         //Controls[] controllers = new Controls[4];
         protected void UpdateInput()
         {

@@ -1,9 +1,0 @@
-C:\Users\Jared\Documents\GitHub\WinterWarsXNA\Winter Wars XNA Windows\Winter Wars XNA Windows\Winter Wars XNA Windows\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Jared\Documents\GitHub\WinterWarsXNA\Winter Wars XNA Windows\Winter Wars XNA Windows\Winter Wars XNA Windows\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\Jared\Documents\GitHub\WinterWarsXNA\Winter Wars XNA Windows\Winter Wars XNA Windows\Winter Wars XNA Windows\bin\x86\Debug\Content\Models\p1_wedge.xnb
-C:\Users\Jared\Documents\GitHub\WinterWarsXNA\Winter Wars XNA Windows\Winter Wars XNA Windows\Winter Wars XNA Windows\bin\x86\Debug\Content\Textures\wedge_p1_diff_v1.xnb
-C:\Users\Jared\Documents\GitHub\WinterWarsXNA\Winter Wars XNA Windows\Winter Wars XNA Windows\Winter Wars XNA Windows\bin\x86\Debug\Content\textures\wedge_p1_diff_v1_0.xnb
-C:\Users\Jared\Documents\GitHub\WinterWarsXNA\Winter Wars XNA Windows\Winter Wars XNA Windows\Winter Wars XNA Windows\bin\x86\Debug\Winter Wars XNA Windows.exe
-C:\Users\Jared\Documents\GitHub\WinterWarsXNA\Winter Wars XNA Windows\Winter Wars XNA Windows\Winter Wars XNA Windows\bin\x86\Debug\Winter Wars XNA Windows.pdb
-C:\Users\Jared\Documents\GitHub\WinterWarsXNA\Winter Wars XNA Windows\Winter Wars XNA Windows\Winter Wars XNA Windows\obj\x86\Debug\Winter Wars XNA Windows.exe
-C:\Users\Jared\Documents\GitHub\WinterWarsXNA\Winter Wars XNA Windows\Winter Wars XNA Windows\Winter Wars XNA Windows\obj\x86\Debug\Winter Wars XNA Windows.pdb

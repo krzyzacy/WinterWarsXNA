@@ -53,8 +53,7 @@ namespace GameStateManagement
             graphics.PreferredBackBufferHeight = 480;
 
             // Create the screen manager component.
-            screenManager = new ScreenManager(this, graphics, Content);
-            
+            screenManager = new ScreenManager(this);
 
             Components.Add(screenManager);
 

@@ -14,10 +14,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
-using WWxna;
 #endregion
-
 
 namespace GameStateManagement
 {
@@ -28,29 +25,40 @@ namespace GameStateManagement
     /// </summary>
     class GameplayScreen : GameScreen
     {
-        Play_State my_game;
-        
-
-
         #region Fields
-        
+
+        ContentManager content;
+        SpriteFont gameFont;
+
+        Vector2 playerPosition = new Vector2(100, 100);
+        Vector2 enemyPosition = new Vector2(100, 100);
+
+        Random random = new Random();
+
         float pauseAlpha;
+
+        Model myModel;
+        float aspectRatio;
+
+        // Set the position of the model in world space, and set the rotation.
+        Vector3 modelPosition = Vector3.Zero;
+        float modelRotation = 0.0f;
+
+        // Set the position of the camera in world space, for our view matrix.
+        Vector3 cameraPosition = new Vector3(0.0f, 50.0f, 250.0f);
 
         #endregion
 
         #region Initialization
 
+
         /// <summary>
         /// Constructor.
         /// </summary>
-        public GameplayScreen(GraphicsDeviceManager graphics_, ContentManager content_)
+        public GameplayScreen()
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
-
-            my_game = new Play_State(graphics_, content_);
-            
-            
         }
 
         /// <summary>
@@ -58,23 +66,18 @@ namespace GameStateManagement
         /// </summary>
         public override void LoadContent()
         {
+            if (content == null)
+                content = new ContentManager(ScreenManager.Game.Services, "Content");
 
+            gameFont = content.Load<SpriteFont>("gamefont");
+            myModel = content.Load<Model>("Models\\testsphere1");
 
-
-            my_game.Pub_Initialize();
-            my_game.Pub_LoadContent();
-
-
-            //if (content == null)
-            //    content = new ContentManager(ScreenManager.Game.Services, "Content");
-
-            
-         
+            aspectRatio = ScreenManager.GraphicsDevice.Viewport.AspectRatio;
 
             // A real game would probably have more content than this sample, so
             // it would take longer to load. We simulate that by delaying for a
             // while, giving you a chance to admire the beautiful loading screen.
-            Thread.Sleep(200);
+            Thread.Sleep(1000);
 
             // once the load has finished, we use ResetElapsedTime to tell the game's
             // timing mechanism that we have just finished a very long frame, and that
@@ -88,7 +91,7 @@ namespace GameStateManagement
         /// </summary>
         public override void UnloadContent()
         {
-            my_game.Pub_UnloadContent();
+            content.Unload();
         }
 
 
@@ -113,9 +116,8 @@ namespace GameStateManagement
             else
                 pauseAlpha = Math.Max(pauseAlpha - 1f / 32, 0);
 
-            my_game.Pub_Update(gameTime);
-
-           
+            modelRotation += (float)gameTime.ElapsedGameTime.TotalMilliseconds *
+                MathHelper.ToRadians(0.1f);
         }
 
 
@@ -145,6 +147,22 @@ namespace GameStateManagement
             {
                 ScreenManager.AddScreen(new PauseMenuScreen(), ControllingPlayer);
             }
+            else
+            {
+                // Otherwise move the player
+
+                if (keyboardState.IsKeyDown(Keys.Left))
+                    cameraPosition.X += 5.0f;
+
+                if (keyboardState.IsKeyDown(Keys.Right))
+                    cameraPosition.X -= 5.0f;
+
+                if (keyboardState.IsKeyDown(Keys.Up))
+                    cameraPosition.Y += 5.0f;
+
+                if (keyboardState.IsKeyDown(Keys.Down))
+                    cameraPosition.Y -= 5.0f;
+            }
         }
 
 
@@ -154,21 +172,43 @@ namespace GameStateManagement
 
         public override void Draw(GameTime gameTime)
         {
-
             // This game has a blue background. Why? Because!
             ScreenManager.GraphicsDevice.Clear(ClearOptions.Target,
                                                Color.CornflowerBlue, 0, 0);
+            // Render 3D stuff
+            // Copy any parent transforms.
+            Matrix[] transforms = new Matrix[myModel.Bones.Count];
+            myModel.CopyAbsoluteBoneTransformsTo(transforms);
 
-            my_game.Pub_Draw(gameTime);
-          
+            // Draw the model. A model can have multiple meshes, so loop.
+            foreach (ModelMesh mesh in myModel.Meshes)
+            {
+                // This is where the mesh orientation is set, as well 
+                // as our camera and projection.
+                foreach (BasicEffect effect in mesh.Effects)
+                {
+                    effect.EnableDefaultLighting();
+                    effect.World = transforms[mesh.ParentBone.Index] *
+                        Matrix.CreateRotationY(modelRotation)
+                        * Matrix.CreateTranslation(modelPosition);
+                    effect.View = Matrix.CreateLookAt(cameraPosition,
+                        Vector3.Zero, Vector3.Up);
+                    effect.Projection = Matrix.CreatePerspectiveFieldOfView(
+                        MathHelper.ToRadians(45.0f), aspectRatio,
+                        1.0f, 10000.0f);
+                }
+                // Draw the mesh, using the effects set above.
+                mesh.Draw();
+            }
+
             // render player
-            //SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
+            SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
 
-            //spriteBatch.Begin();
+            spriteBatch.Begin();
 
-            //spriteBatch.DrawString(gameFont, "Move", playerPosition, Color.Green);
+            spriteBatch.DrawString(gameFont, "Move", playerPosition, Color.Green);
 
-            //spriteBatch.End();
+            spriteBatch.End();
 
             // If the game is transitioning on or off, fade it out to black.
             if (TransitionPosition > 0 || pauseAlpha > 0)
@@ -177,9 +217,6 @@ namespace GameStateManagement
 
                 ScreenManager.FadeBackBufferToBlack(alpha);
             }
-
-
-
         }
 
 

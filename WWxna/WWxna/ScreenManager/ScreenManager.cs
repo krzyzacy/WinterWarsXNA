@@ -44,8 +44,6 @@ namespace GameStateManagement
 
         #endregion
 
-        public GraphicsDeviceManager graphics;
-        public ContentManager content;
         #region Properties
 
 
@@ -89,14 +87,12 @@ namespace GameStateManagement
         /// <summary>
         /// Constructs a new screen manager component.
         /// </summary>
-        public ScreenManager(Game game, GraphicsDeviceManager graphics_, ContentManager content_)
+        public ScreenManager(Game game)
             : base(game)
         {
             // we must set EnabledGestures before we can query for them, but
             // we don't assume the game wants to read them.
             TouchPanel.EnabledGestures = GestureType.None;
-            graphics = graphics_;
-            content = content_;
         }
 
 

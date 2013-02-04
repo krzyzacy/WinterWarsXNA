@@ -82,7 +82,7 @@ namespace WWxna.Code.MVC
         public void start_up(GraphicsDeviceManager graphics_, ContentManager content)
         {
 
-            ship = new Seen_Object(new Vector3(-500.0f, 0.0f, -5000.0f));
+            ship = new Seen_Object(new Vector3(-500.0f, 0.0f, -5000.0f), new Vector3(3,3,3));
             ship1 = new Seen_Object(new Vector3(500.0f, 0.0f, -5000.0f));
             ship2 = new Seen_Object(new Vector3(0.0f, 500.0f, -5000.0f));
 

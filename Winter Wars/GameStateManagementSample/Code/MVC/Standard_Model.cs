@@ -87,9 +87,9 @@ namespace WWxna.Code.MVC
         public void start_up(GraphicsDeviceManager graphics_, ContentManager content)
         {
 
-            ship = new Seen_Object(new Vector3(-500.0f, 0.0f, -5000.0f), new Vector3(2,2,2));
-            ship1 = new Seen_Object(new Vector3(500.0f, 0.0f, -5000.0f), new Vector3(1.5f , 1.5f, 1.5f));
-            ship2 = new Seen_Object(new Vector3(0.0f, 500.0f, -5000.0f));
+            ship = new Seen_Object(new Vector3(-500.0f, 0.0f, -5000.0f), new Vector3(100,100,100));
+            ship1 = new Seen_Object(new Vector3(500.0f, 0.0f, -5000.0f), new Vector3(100, 100, 100));
+            ship2 = new Seen_Object(new Vector3(0.0f, 500.0f, -5000.0f), new Vector3(100, 100, 100));
 
             //if his continues to cause problems could just put it in play state and have referene
             view = new View(graphics_, content);

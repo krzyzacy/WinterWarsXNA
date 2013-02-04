@@ -58,9 +58,9 @@ namespace WWxna.Code.Game_Objects
                     effect.EnableDefaultLighting();
 
                     effect.World = transforms[mesh.ParentBone.Index] *
-                        Matrix.CreateRotationY(modelRotation)
+                        Matrix.CreateScale(size) 
                         * Matrix.CreateTranslation(center)
-                        * Matrix.CreateScale(size);
+                        ;
 
                     effect.View = Matrix.CreateLookAt(camera.pos,
                         camera.facing, camera.up);

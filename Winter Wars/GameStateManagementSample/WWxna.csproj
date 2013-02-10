@@ -65,6 +65,7 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Code\Game Objects\Mediator_Player_Controls.cs" />
     <Compile Include="Code\Globals.cs" />
     <Compile Include="Code\MVC\Camera.cs" />
     <Compile Include="Code\MVC\Game_Model.cs" />

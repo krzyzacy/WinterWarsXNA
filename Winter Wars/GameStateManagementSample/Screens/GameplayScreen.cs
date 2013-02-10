@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-//using CookComputing.XmlRpcV2;
+using CookComputing.XmlRpc;
 
 using WWxna;
 #endregion
@@ -36,6 +36,8 @@ namespace GameStateManagement
         #region Fields
         
         float pauseAlpha;
+        ContentManager content;
+        GraphicsDeviceManager graphics;
 
         #endregion
 
@@ -48,8 +50,10 @@ namespace GameStateManagement
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
+            content = content_;
+            graphics = graphics_;
 
-            my_game = new Play_State(graphics_, content_);
+            my_game = new Play_State(graphics, content);
             
             
         }
@@ -164,12 +168,15 @@ namespace GameStateManagement
           
             // render player
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
+            SpriteFont gameFont = content.Load<SpriteFont>("gamefont");
+            Vector2 playerPosition = new Vector2(200, 200);
 
-            //spriteBatch.Begin();
 
-            //spriteBatch.DrawString(gameFont, "Move", playerPosition, Color.Green);
+            spriteBatch.Begin();
 
-            //spriteBatch.End();
+            spriteBatch.DrawString(gameFont, "Move", playerPosition, Color.Green);
+
+            spriteBatch.End();
 
             // If the game is transitioning on or off, fade it out to black.
             if (TransitionPosition > 0 || pauseAlpha > 0)

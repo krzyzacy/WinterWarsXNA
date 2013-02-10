@@ -12,7 +12,7 @@ using WWxna.Code.Environment;
 namespace WWxna.Code.MVC
 {
     //This is the usual model that we have designed previously
-    class Standard_Model : iGame_Model
+    class Standard_Model : Game_Model
     {
         Collision_Table table;
         List<Player> players;
@@ -27,8 +27,8 @@ namespace WWxna.Code.MVC
         Seen_Object ship1;
         Seen_Object ship2;
 
-        private double time_step;
-        public double Time_Step
+        private float time_step;
+        public float Time_Step
         {
             get
             {

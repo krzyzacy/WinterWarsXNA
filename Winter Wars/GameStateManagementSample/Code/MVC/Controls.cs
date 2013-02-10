@@ -78,13 +78,40 @@ namespace WWxna.Code.MVC
                 input.Move = current.ThumbSticks.Left;
                 
                 //I couldn't resist;
-                if (input.R_roll && input.L_roll)
-                    input.jet_pack_mode = true;
-
-
+                input.jet_pack_mode = (input.R_roll && input.L_roll);
             }
         }
 
+
+        public void Update_Input_From_Keyboard(KeyboardState keyState)
+        {
+            input.jump = keyState.IsKeyDown(Keys.LeftShift);
+            input.pack = keyState.IsKeyDown(Keys.E);
+            input.Build = keyState.IsKeyDown(Keys.B);
+            input.tip = keyState.IsKeyDown(Keys.T);
+
+            input.Tile_up = keyState.IsKeyDown(Keys.Up);
+            input.Tile_down = keyState.IsKeyDown(Keys.Down);
+            input.R_roll = keyState.IsKeyDown(Keys.N);
+            input.L_roll = keyState.IsKeyDown(Keys.V);
+
+            input.mini_map = keyState.IsKeyDown(Keys.M);
+            input.shoot = keyState.IsKeyDown(Keys.Space);
+
+            input.Move.X = Convert.ToInt32(keyState.IsKeyDown(Keys.D)) - Convert.ToInt32(keyState.IsKeyDown(Keys.A));
+            input.Move.Y = Convert.ToInt32(keyState.IsKeyDown(Keys.W)) - Convert.ToInt32(keyState.IsKeyDown(Keys.S));
+
+            // MouseState MS = Mouse.GetState();
+            //So I'm not sure how to figure out the center of the screen
+            //But bring this up during view and player view so it wil be figured out.
+            // *****%%%
+            input.Cam.X = Mouse.GetState().X - 300;
+            input.Cam.Y = Mouse.GetState().Y - 300;
+            Mouse.SetPosition(300, 300);
+
+            input.jet_pack_mode = (input.R_roll && input.L_roll);
+
+        }
         public void update_player_actions(Player Tron) { }
 
     }

@@ -16,8 +16,7 @@ namespace WWxna.Code.Game_Objects
     class Player : Moveable
     {
         //Going to mostly implement it here and then maybe redo it in AI or H
-
-        //Camera?? not totally understood yet
+        //Need to also bring in constructurs to make this as versatile as possible
         
 
         protected Team myTeam;

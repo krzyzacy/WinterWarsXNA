@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WWxna.Code.Game_Objects.Moveable" Collapsed="true">
+    <Position X="3.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAgAAAAAAAgAAAAIAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Code\Game Objects\Moveable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WWxna.Code.Game_Objects.Player" Collapsed="true">
+    <Position X="2.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAEAAAAAAAAAAAAAQACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\Game Objects\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WWxna.Code.Game_Objects.H_Player" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\Game Objects\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WWxna.Code.Game_Objects.AI_PLayer" Collapsed="true">
+    <Position X="1.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\Game Objects\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WWxna.Code.Game_Objects.Collidable" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\Game Objects\Collidable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WWxna.Code.Game_Objects.Seen_Object" Collapsed="true">
+    <Position X="1.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAEAAQEAAAAAAAICAAAAAAAAAAAEAIAAAAAAQAAA=</HashCode>
+      <FileName>Code\Game Objects\Seen_Object.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WWxna.Code.Game_Objects.Snowball" Collapsed="true">
+    <Position X="6.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\Game Objects\Snowball.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WWxna.Code.Game_Objects.Projectile" Collapsed="true">
+    <Position X="6.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\Game Objects\Projectile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

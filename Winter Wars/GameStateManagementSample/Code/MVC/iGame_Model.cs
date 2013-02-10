@@ -12,6 +12,11 @@ using WWxna.Code.Game_Objects.Structures;
 
 namespace WWxna.Code.MVC
 {
+
+    //Modlel Accessor Singleton, then abstract base class, then other classes and stuff
+
+
+
     //This interface represents the different types of possible games that will exist.. maybe
     interface iGame_Model
     {

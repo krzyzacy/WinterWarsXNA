@@ -65,8 +65,11 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Code\Globals.cs" />
     <Compile Include="Code\MVC\Camera.cs" />
+    <Compile Include="Code\MVC\Game_Model.cs" />
     <Compile Include="Code\MVC\iGame_Model.cs" />
+    <Compile Include="Code\MVC\GM_Proxy.cs" />
     <Compile Include="Game.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -165,6 +168,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Code\Animators\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Game_Model Diagram.cd" />
+    <None Include="Game_Object Class Diagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

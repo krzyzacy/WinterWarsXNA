@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using WWxna.Code.MVC;
+using WWxna.Code;
 
 
 namespace WWxna.Code.Game_Objects
@@ -20,15 +21,16 @@ namespace WWxna.Code.Game_Objects
 
         private bool marked_for_deletion;
 
-        public Seen_Object() : this(Vector3.Zero, new Vector3(1, 1, 1), new Quaternion(0, 0, 1, 0)) { }
-        public Seen_Object(Vector3 center_) : this(center_, new Vector3(1, 1, 1), new Quaternion(0, 0, 1, 0)) { }
-        public Seen_Object(Vector3 center_, Vector3 size_) : this(center_, size_, new Quaternion(0, 0, 1, 0)) { }
+        public Seen_Object() : this(Globals.Game_Obj_Origin , Globals.Game_Obj_Size, Globals.Game_Obj_Quat) { }
+        public Seen_Object(Vector3 center_) : this(center_, Globals.Game_Obj_Size, Globals.Game_Obj_Quat) { }
+        public Seen_Object(Vector3 center_, Vector3 size_) : this(center_, size_, Globals.Game_Obj_Quat) { }
         public Seen_Object(Vector3 center_, Vector3 size_, Quaternion theta_)
         {
             center = center_;
             size = size_;
             rotation = theta_;
             marked_for_deletion = false;
+
         }
 
         virtual public void render(Model model, GraphicsDeviceManager graphics, Camera camera)

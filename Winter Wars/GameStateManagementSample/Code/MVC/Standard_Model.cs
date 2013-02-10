@@ -95,7 +95,7 @@ namespace WWxna.Code.MVC
             view = new View(graphics_, content);
             world = new World(view, 10, 10, 100);
 
-            view.add_player_view(new Player_View(johnny));
+            view.add_player_view(new Player_View(johnny, view.get_graphics(), view.get_content()));
             view.add_renderable(ship);
             view.add_renderable(ship1);
             view.add_renderable(ship2);

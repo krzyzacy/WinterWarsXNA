@@ -51,6 +51,7 @@ namespace GameStateManagement
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = 853;
             graphics.PreferredBackBufferHeight = 480;
+            Window.AllowUserResizing = true;
 
             // Create the screen manager component.
             screenManager = new ScreenManager(this, graphics, Content);

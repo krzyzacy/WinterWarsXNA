@@ -32,6 +32,15 @@ namespace WWxna.Code.MVC
 
         }
 
+        public GraphicsDeviceManager get_graphics()
+        {
+            return graphics;
+        }
+
+        public ContentManager get_content()
+        {
+            return Content;
+        }
 
         public void load_models()
         {
@@ -83,6 +92,7 @@ namespace WWxna.Code.MVC
 
 
             render_world();
+            render_player_hud(player, topLeft, bottomRight);
         }
 
         private void render_player_hud(int player, Vector2 topLeft, Vector2 bottomRight)

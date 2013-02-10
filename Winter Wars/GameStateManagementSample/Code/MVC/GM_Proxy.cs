@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using WWxna.Code.Environment;
+using WWxna.Code.Game_Objects;
+
 namespace WWxna.Code.MVC
 {
     public sealed class GM_Proxy : iGame_Model
@@ -24,5 +27,7 @@ namespace WWxna.Code.MVC
                 return instance;
             }
         }
+
+       
     }
 }

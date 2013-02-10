@@ -22,7 +22,7 @@ namespace WWxna.Code.MVC
         View view;
         World world;
 
-        H_Player johnny = new H_Player();
+        H_Player johnny;
         Seen_Object ship;
         Seen_Object ship1;
         Seen_Object ship2;
@@ -84,12 +84,14 @@ namespace WWxna.Code.MVC
             view.load_models();
         }
 
-        public void start_up(GraphicsDeviceManager graphics_, ContentManager content)
+        public void start_up(GraphicsDeviceManager graphics_, ContentManager content, Controls [] controllers_)
         {
 
             ship = new Seen_Object(new Vector3(-500.0f, 0.0f, -5000.0f), new Vector3(100,100,100));
             ship1 = new Seen_Object(new Vector3(500.0f, 0.0f, -5000.0f), new Vector3(100, 100, 100));
             ship2 = new Seen_Object(new Vector3(0.0f, 500.0f, -5000.0f), new Vector3(100, 100, 100));
+
+            johnny = new H_Player(controllers_[1]);
 
             //if his continues to cause problems could just put it in play state and have referene
             view = new View(graphics_, content);
@@ -99,9 +101,10 @@ namespace WWxna.Code.MVC
             view.add_renderable(ship2);
 
             
+
             for (int i = 0; i < 4; i++)
             {
-                Player p = new H_Player();
+                Player p = new H_Player(controllers_[i+1]);
                 players.Add(p);
             }
         }

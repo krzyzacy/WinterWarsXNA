@@ -21,6 +21,8 @@ namespace WWxna.Code
         private static Vector3 GO_origin = Vector3.Zero;
         private static Quaternion GO_quat = new Quaternion(0,0,1,0);
 
+        
+
         //All of these return new instances with values in the variables above
         #region Global_Gets
         //The intention is to use them in constructors. 

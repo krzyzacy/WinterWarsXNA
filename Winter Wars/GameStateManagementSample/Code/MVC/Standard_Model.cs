@@ -20,7 +20,7 @@ namespace WWxna.Code.MVC
         HashSet<Collidable> colliders;
 
         View view;
-        World world;
+        iWorld world;
 
         H_Player johnny;
         Seen_Object ship;
@@ -95,7 +95,9 @@ namespace WWxna.Code.MVC
 
             //if his continues to cause problems could just put it in play state and have referene
             view = new View(graphics_, content);
-            view.add_player_view(new Player_View(johnny));
+            world = new World(view, 10, 10, 100);
+
+            view.add_player_view(new Player_View(johnny, view.get_graphics(), view.get_content()));
             view.add_renderable(ship);
             view.add_renderable(ship1);
             view.add_renderable(ship2);

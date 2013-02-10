@@ -32,10 +32,20 @@ namespace WWxna.Code.MVC
 
         }
 
+        public GraphicsDeviceManager get_graphics()
+        {
+            return graphics;
+        }
+
+        public ContentManager get_content()
+        {
+            return Content;
+        }
 
         public void load_models()
         {
             // Init model map
+            model_map.Add("IceTile", Content.Load<Model>("Models\\ice_tile"));
             model_map.Add("Ship", Content.Load<Model>("Models\\blue_player"));
 
         }
@@ -57,8 +67,11 @@ namespace WWxna.Code.MVC
 
         public void render()
         {
-            int width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-            int height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            //int width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            //int height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
+            int width = graphics.GraphicsDevice.PresentationParameters.BackBufferWidth;
+            int height = graphics.GraphicsDevice.PresentationParameters.BackBufferHeight;
 
             Vector2 topLeft = new Vector2(0, 0),
                 middle = new Vector2(width / 2, height / 2),
@@ -82,6 +95,7 @@ namespace WWxna.Code.MVC
 
 
             render_world();
+            render_player_hud(player, topLeft, bottomRight);
         }
 
         private void render_player_hud(int player, Vector2 topLeft, Vector2 bottomRight)

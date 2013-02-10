@@ -14,6 +14,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+//using CookComputing.XmlRpcV2;
 
 using WWxna;
 #endregion
@@ -162,7 +163,7 @@ namespace GameStateManagement
             my_game.Pub_Draw(gameTime);
           
             // render player
-            //SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
+            SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
 
             //spriteBatch.Begin();
 

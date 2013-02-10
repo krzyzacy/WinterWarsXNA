@@ -65,6 +65,9 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Code\Environment\IceTile.cs" />
+    <Compile Include="Code\Environment\iTile.cs" />
+    <Compile Include="Code\Environment\iWorld.cs" />
     <Compile Include="Code\Game Objects\Mediator_Player_Controls.cs" />
     <Compile Include="Code\Globals.cs" />
     <Compile Include="Code\MVC\Camera.cs" />
@@ -90,7 +93,6 @@
     <Compile Include="Screens\PlayerIndexEventArgs.cs" />
     <Compile Include="Code\Environment\Effect.cs" />
     <Compile Include="Code\Environment\Team.cs" />
-    <Compile Include="Code\Environment\Tile.cs" />
     <Compile Include="Code\Environment\World.cs" />
     <Compile Include="Code\Game Objects\Collidable.cs" />
     <Compile Include="Code\Game Objects\Collision_Table.cs" />
@@ -139,6 +141,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="CookComputing.XmlRpcV2">
+      <HintPath>..\..\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.GamerServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />

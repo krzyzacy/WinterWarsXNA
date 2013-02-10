@@ -65,6 +65,9 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Code\Environment\IceTile.cs" />
+    <Compile Include="Code\Environment\iTile.cs" />
+    <Compile Include="Code\Environment\iWorld.cs" />
     <Compile Include="Code\Game Objects\Mediator_Player_Controls.cs" />
     <Compile Include="Code\Globals.cs" />
     <Compile Include="Code\MVC\Camera.cs" />
@@ -90,7 +93,6 @@
     <Compile Include="Screens\PlayerIndexEventArgs.cs" />
     <Compile Include="Code\Environment\Effect.cs" />
     <Compile Include="Code\Environment\Team.cs" />
-    <Compile Include="Code\Environment\Tile.cs" />
     <Compile Include="Code\Environment\World.cs" />
     <Compile Include="Code\Game Objects\Collidable.cs" />
     <Compile Include="Code\Game Objects\Collision_Table.cs" />

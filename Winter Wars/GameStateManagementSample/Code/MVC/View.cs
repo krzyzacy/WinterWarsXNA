@@ -36,6 +36,7 @@ namespace WWxna.Code.MVC
         public void load_models()
         {
             // Init model map
+            model_map.Add("IceTile", Content.Load<Model>("Models\\ice_tile"));
             model_map.Add("Ship", Content.Load<Model>("Models\\blue_player"));
 
         }

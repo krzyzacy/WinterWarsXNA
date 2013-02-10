@@ -59,7 +59,7 @@ namespace WWxna
             //graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            controllers = new Controls[4];
+            controllers = new Controls[5];
             teams = new List<Team>();
 
             controllers[1] = new Controls(PlayerIndex.One);

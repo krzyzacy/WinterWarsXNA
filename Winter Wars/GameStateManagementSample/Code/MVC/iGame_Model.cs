@@ -20,6 +20,7 @@ namespace WWxna.Code.MVC
     //This interface represents the different types of possible games that will exist.. maybe
     interface iGame_Model
     {
+        /*
         void Update();
         void draw();
         void start_up(GraphicsDeviceManager graphics_, ContentManager content);
@@ -28,7 +29,7 @@ namespace WWxna.Code.MVC
         bool win();
         float time_till_win();
 
-        float Time_Step;
+        //float Time_Step;
         
         Player get_player(PlayerIndex i);
         Team get_team(int i);
@@ -40,6 +41,6 @@ namespace WWxna.Code.MVC
 	    void add_effect(Effect e);
 
         void Clean_dead();
-
+        */
     }
 }

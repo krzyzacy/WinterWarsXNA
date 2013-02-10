@@ -27,6 +27,8 @@ namespace WWxna.Code.MVC
         void finish();
         bool win();
         float time_till_win();
+
+        float Time_Step;
         
         Player get_player(PlayerIndex i);
         Team get_team(int i);

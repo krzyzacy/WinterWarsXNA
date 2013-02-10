@@ -67,8 +67,11 @@ namespace WWxna.Code.MVC
 
         public void render()
         {
-            int width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-            int height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            //int width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            //int height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
+            int width = graphics.GraphicsDevice.PresentationParameters.BackBufferWidth;
+            int height = graphics.GraphicsDevice.PresentationParameters.BackBufferHeight;
 
             Vector2 topLeft = new Vector2(0, 0),
                 middle = new Vector2(width / 2, height / 2),

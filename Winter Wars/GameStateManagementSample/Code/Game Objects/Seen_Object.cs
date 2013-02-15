@@ -64,8 +64,8 @@ namespace WWxna.Code.Game_Objects
                         * Matrix.CreateTranslation(center)
                         ;
 
-                    effect.View = Matrix.CreateLookAt(camera.pos,
-                        camera.facing, camera.up);
+                    effect.View = Matrix.CreateLookAt(camera.Position,
+                        camera.Facing, camera.Up);
 
                     effect.Projection = Matrix.CreatePerspectiveFieldOfView(
                         MathHelper.ToRadians(45.0f), graphics.GraphicsDevice.Viewport.AspectRatio,

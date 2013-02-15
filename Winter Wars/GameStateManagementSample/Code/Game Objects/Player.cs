@@ -42,7 +42,7 @@ namespace WWxna.Code.Game_Objects
 
     class H_Player : Player
     {
-        public Camera camera;
+        private Camera camera;
         protected Mediator_Player_Controls PC_mediator;
 
         private H_Player() { } //No default constructor
@@ -53,7 +53,11 @@ namespace WWxna.Code.Game_Objects
         public H_Player(Controls control_, Vector3 center_, Vector3 size_, Quaternion theta_)
             : base(center_, size_, theta_)
         {
-            camera = new Camera(Vector3.Zero);
+            //So since everything is a reference if we set the camera's position to
+            //the same reference as Seen Object's Center should update in sync
+            //If not, we need to update the camera during update
+            camera = new Camera(center, Vector3.Forward, Vector3.Up);
+            PC_mediator = new Mediator_Player_Controls(control_, this);
 
         }
 
@@ -63,16 +67,17 @@ namespace WWxna.Code.Game_Objects
             // This could adjust where the camera should be using base class variables
             //      so we don't have to override base class functions
 
+            //Sooo what exactly does the camera position mean
             get
             {
                 return camera;
             }
-            
             set {}
         }
 
         public override void Update()
         {
+            //Update the Camera before this
             PC_mediator.Control_the_player();
 
             base.Update();

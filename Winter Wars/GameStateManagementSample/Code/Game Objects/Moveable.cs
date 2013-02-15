@@ -15,7 +15,20 @@ namespace WWxna.Code.Game_Objects
     {
         public Vector3 grav_accel = new Vector3(0,0,10);
 
-        protected Vector3 velocity;
+        private Vector3 velocity;
+        public Vector3 Velocity
+        {
+            get
+            {
+                return Velocity;
+            }
+            set
+            {
+                velocity.X = value.X;
+                velocity.Y = value.Y;
+                velocity.Z = value.Z;
+            }
+        }
 
         public Moveable() : this(Globals.Game_Obj_Origin , Globals.Game_Obj_Size, Globals.Game_Obj_Quat) { }
         public Moveable(Vector3 center_) : this(center_, Globals.Game_Obj_Size, Globals.Game_Obj_Quat) { }
@@ -44,11 +57,6 @@ namespace WWxna.Code.Game_Objects
                 velocity += grav_accel * Standard_Model.Instance.Time_Step;
            // else
            //     on_ground()
-        }
-
-        public void set_velocity(Vector3 vel)
-        {
-            velocity = vel;
         }
 
         public void accelerate(Vector3 accel)

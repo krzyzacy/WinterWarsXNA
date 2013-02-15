@@ -49,6 +49,15 @@ namespace WWxna.Code.MVC
             }
         }
 
+        public Inputs State
+        {
+            get
+            {
+                return input;
+            }
+            set { }
+        }
+
         //Shooting State, Mouse Camera
         public Controls(PlayerIndex PI)
         {

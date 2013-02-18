@@ -35,7 +35,7 @@ namespace WWxna.Code.MVC
     public class Controls
     {
         private Inputs input;
-        private PlayerIndex which_id;
+        public PlayerIndex which_id;
         private bool invert = false;
         public bool inverted
         {

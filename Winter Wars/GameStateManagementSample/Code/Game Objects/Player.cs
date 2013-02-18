@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
 using WWxna.Code.Environment;
@@ -33,8 +34,9 @@ namespace WWxna.Code.Game_Objects
         }
 
 
-        public virtual void Update()
+        public override void Update()
         {
+            Debug.Print("CenterZ: " + center.Z);
             base.Update();
         }
             
@@ -61,7 +63,7 @@ namespace WWxna.Code.Game_Objects
 
         }
 
-        public Camera Camera
+        public Camera P_Camera
         {
             // Set the position of the camera in world space, for our view matrix.
             // This could adjust where the camera should be using base class variables
@@ -79,6 +81,9 @@ namespace WWxna.Code.Game_Objects
         {
             //Update the Camera before this
             PC_mediator.Control_the_player();
+            P_Camera.Position = center;
+
+            Debug.Print("Camera Pos:" + P_Camera.Position.Z);
 
             base.Update();
         }

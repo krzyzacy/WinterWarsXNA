@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 using WWxna.Code.MVC;
 
@@ -51,9 +52,10 @@ namespace WWxna.Code.Game_Objects
              * set the players velocity
             */
 
+            /*
             //Up Cross Forward will give right
-            Vector3 Forward = p_avatar.Camera.Facing;
-            Vector3 Left = Vector3.Cross(p_avatar.Camera.Up, Forward);
+            Vector3 Forward = p_avatar.P_Camera.Facing;
+            Vector3 Left = Vector3.Cross(p_avatar.P_Camera.Up, Forward);
 
             Forward.Normalize();
             Left.Normalize();
@@ -81,8 +83,17 @@ namespace WWxna.Code.Game_Objects
 
             Temp_Vel.Z = temp_Zvel;
             p_avatar.Velocity = Temp_Vel;
-            
+            */
 
+            //Simple Movement for framework testing purposes
+
+            if (Math.Abs(c_input.State.Move.X) > 0.5)
+                p_avatar.Velocity = new Vector3(0, 0, 1);
+
+            if (Math.Abs(c_input.State.Move.Y) > 0.5)
+                p_avatar.Velocity = new Vector3(0, 0, -1);
+
+            Debug.Print("P:" + c_input.which_id + " Vel Z:" + p_avatar.Velocity.Z);
         }
 
 

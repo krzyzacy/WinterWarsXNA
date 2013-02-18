@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 
 using Microsoft.Xna.Framework;
+
+using System.Diagnostics;
+
 using WWxna.Code.MVC;
 
 namespace WWxna.Code.Game_Objects
@@ -13,7 +16,7 @@ namespace WWxna.Code.Game_Objects
 
     public class Moveable : Collidable
     {
-        public Vector3 grav_accel = new Vector3(0,0,10);
+        public Vector3 grav_accel = new Vector3(0,0,-10);
 
         private Vector3 velocity;
         public Vector3 Velocity
@@ -40,13 +43,14 @@ namespace WWxna.Code.Game_Objects
         }
 
 
-        public void Update()
+        public override void Update()
         {
             base.Update();
 
-            gravity();
+            //gravity();
             center += velocity * GM_Proxy.Instance.Time_Step;
 
+            
             //** Need to add stuff to check if off map and such
             
         }

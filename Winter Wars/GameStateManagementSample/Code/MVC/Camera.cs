@@ -21,7 +21,7 @@ namespace WWxna.Code.MVC
         private Vector3 up; 
         private Vector3 facing;
 
-        #region Getters
+        #region Get and Set
 
         public Vector3 Position
         {
@@ -29,7 +29,12 @@ namespace WWxna.Code.MVC
             {
                 return new Vector3(pos.X, pos.Y, pos.Z);
             }
-            set { }
+            set 
+            {
+                pos.X = value.X;
+                pos.Y = value.Y;
+                pos.Z = value.Z;
+            }
         }
 
         public Vector3 Up

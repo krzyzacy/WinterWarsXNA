@@ -79,6 +79,7 @@ namespace WWxna.Code.MVC
 
             for (int i = 0; i < 4; i++)
             {
+                //Player p = new H_Player(controllers_[i], new Vector3(100, 100, 100 + 50*i), new Vector3(50, 50, 50));
                 Player p = new H_Player(controllers_[i]);
                 players.Add(p);
                 view.add_renderable(p);

@@ -31,7 +31,7 @@ namespace WWxna.Code.Game_Objects
             //Temporary for now
         }
 
-        public void Update()
+        public virtual void Update()
         {
             
         }

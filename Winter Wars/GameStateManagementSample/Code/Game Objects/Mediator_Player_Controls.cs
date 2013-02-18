@@ -13,7 +13,7 @@ namespace WWxna.Code.Game_Objects
 
 
 
-    class Mediator_Player_Controls
+    public class Mediator_Player_Controls
     {
         private H_Player p_avatar;
         private Controls c_input;
@@ -27,6 +27,7 @@ namespace WWxna.Code.Game_Objects
 
         public void Control_the_player()
         {
+            calculate_movement();
             //calculate movement, 
             //handle shooting state
             //handle jumping state
@@ -76,7 +77,7 @@ namespace WWxna.Code.Game_Objects
             Net_Accel *= 200;
 
             Temp_Vel *= (1 - friction / 10);
-            Temp_Vel += Net_Accel * Standard_Model.Instance.Time_Step;
+            Temp_Vel += Net_Accel * GM_Proxy.Instance.Time_Step;
 
             Temp_Vel.Z = temp_Zvel;
             p_avatar.Velocity = Temp_Vel;

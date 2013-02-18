@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WWxna.Code.Environment
 {
-    class Team
+    public class Team
     {
     }
 }

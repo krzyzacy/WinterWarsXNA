@@ -13,11 +13,11 @@ namespace WWxna.Code.Game_Objects
 {
     
 
-    class Player : Moveable
+    public class Player : Moveable
     {
         //Going to mostly implement it here and then maybe redo it in AI or H
         //Need to also bring in constructurs to make this as versatile as possible
-        protected Team myTeam;
+        private Team myTeam;
         protected bool mini_open;
         protected BoundingSphere body;
 
@@ -40,7 +40,7 @@ namespace WWxna.Code.Game_Objects
             
     }
 
-    class H_Player : Player
+    public class H_Player : Player
     {
         private Camera camera;
         protected Mediator_Player_Controls PC_mediator;

@@ -11,7 +11,7 @@ namespace WWxna.Code.Game_Objects
     
 
 
-    class Moveable : Collidable
+    public class Moveable : Collidable
     {
         public Vector3 grav_accel = new Vector3(0,0,10);
 
@@ -20,7 +20,7 @@ namespace WWxna.Code.Game_Objects
         {
             get
             {
-                return Velocity;
+                return velocity;
             }
             set
             {
@@ -45,7 +45,7 @@ namespace WWxna.Code.Game_Objects
             base.Update();
 
             gravity();
-            center += velocity * Standard_Model.Instance.Time_Step;
+            center += velocity * GM_Proxy.Instance.Time_Step;
 
             //** Need to add stuff to check if off map and such
             
@@ -54,14 +54,14 @@ namespace WWxna.Code.Game_Objects
         public void gravity()
         {
             if(!is_on_ground())
-                velocity += grav_accel * Standard_Model.Instance.Time_Step;
+                velocity += grav_accel * GM_Proxy.Instance.Time_Step;
            // else
            //     on_ground()
         }
 
         public void accelerate(Vector3 accel)
         {
-            velocity += accel * Standard_Model.Instance.Time_Step;
+            velocity += accel * GM_Proxy.Instance.Time_Step;
         }
     }
 }

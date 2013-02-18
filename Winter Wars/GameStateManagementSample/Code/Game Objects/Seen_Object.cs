@@ -13,7 +13,7 @@ using WWxna.Code;
 namespace WWxna.Code.Game_Objects
 {
     // MAKE ABSTRACT!
-    class Seen_Object
+    public class Seen_Object
     {
         protected Vector3 center;
         protected Vector3 size; // TopRightcorner-to-LowerLeftcorner

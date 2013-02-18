@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.Diagnostics;
 
 using WWxna;
 
@@ -25,7 +26,7 @@ namespace WWxna
         GraphicsDeviceManager graphics;
         ContentManager content;
         SpriteBatch spriteBatch;
-        private double TimeStep;
+        
         
         //1-4 represents which screen you want to control
         //0 represents god mode/global controls  -- SINE WAVE
@@ -59,17 +60,18 @@ namespace WWxna
             //graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            controllers = new Controls[5];
+            controllers = new Controls[4];
             teams = new List<Team>();
 
-            controllers[1] = new Controls(PlayerIndex.One);
-            controllers[2] = new Controls(PlayerIndex.Two);
-            controllers[3] = new Controls(PlayerIndex.Three);
-            controllers[4] = new Controls(PlayerIndex.Four);
+            controllers[0] = new Controls(PlayerIndex.One);
+            controllers[1] = new Controls(PlayerIndex.Two);
+            controllers[2] = new Controls(PlayerIndex.Three);
+            controllers[3] = new Controls(PlayerIndex.Four);
+            
 
             ActiveKeyboardPlayer = 0;
 
-            Standard_Model.Instance.start_up(graphics, content, controllers);
+            GM_Proxy.Instance.Start_Model(graphics, content, controllers, "standard");
             base.Initialize();
             
         }
@@ -92,7 +94,7 @@ namespace WWxna
 
             spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
             aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
-            Standard_Model.Instance.Load_Content();
+            GM_Proxy.Instance.Load_Content();
 
 
         }
@@ -125,13 +127,14 @@ namespace WWxna
 
             try
             {
-                TimeStep = gameTime.ElapsedGameTime.Milliseconds;
-                Standard_Model.Instance.Time_Step = (float)TimeStep;
+                GM_Proxy.Instance.Time_Step = gameTime.ElapsedGameTime.Milliseconds;
                 UpdateInput();
 
-                Standard_Model.Instance.Update();
+                //Debug.Print("Act Key: " + ActiveKeyboardPlayer);
 
+                GM_Proxy.Instance.Update();
 
+                
 
                 // Allows the game to exit
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
@@ -191,7 +194,7 @@ namespace WWxna
                 //SINE WAVE
             }
             else
-                controllers[ActiveKeyboardPlayer].Update_Input_From_Keyboard(keyState);
+                controllers[ActiveKeyboardPlayer-1].Update_Input_From_Keyboard(keyState);
             
         }
 
@@ -207,7 +210,7 @@ namespace WWxna
         protected override void Draw(GameTime gameTime)
         {
 
-            Standard_Model.Instance.draw();
+            GM_Proxy.Instance.draw();
 
             base.Draw(gameTime);
         }

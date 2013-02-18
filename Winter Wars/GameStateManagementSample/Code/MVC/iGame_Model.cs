@@ -21,14 +21,15 @@ namespace WWxna.Code.MVC
     interface iGame_Model
     {
 
-        //void Update();
-        //void draw();
-        //void start_up(GraphicsDeviceManager graphics_, ContentManager content);
+        void Update();
+        void draw();
+        void start_up(GraphicsDeviceManager graphics_, ContentManager content, Controls[] controllers_);
         //void restart();
         //void finish();
         //bool win();
         //float time_till_win();
-        
+
+        void Load_Content();
         //Player get_player(PlayerIndex i);
         //Team get_team(int i);
         //World get_World();
@@ -38,7 +39,7 @@ namespace WWxna.Code.MVC
         //void add_structure(Structure s);
         //void add_effect(Effect e);
 
-        //void Clean_dead();
+        void Clean_dead();
 
     }
 }

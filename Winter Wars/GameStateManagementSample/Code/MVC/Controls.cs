@@ -10,7 +10,7 @@ using WWxna.Code.Game_Objects;
 
 namespace WWxna.Code.MVC
 {
-    struct Inputs
+    public struct Inputs
     {
         public bool jump;
         public bool pack;
@@ -32,7 +32,7 @@ namespace WWxna.Code.MVC
 
     }
 
-    class Controls
+    public class Controls
     {
         private Inputs input;
         private PlayerIndex which_id;

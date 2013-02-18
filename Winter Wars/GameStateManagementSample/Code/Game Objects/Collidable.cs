@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace WWxna.Code.Game_Objects
 {
-    class Collidable : Seen_Object
+    public class Collidable : Seen_Object
     {
         protected BoundingSphere body;
 
@@ -33,7 +33,7 @@ namespace WWxna.Code.Game_Objects
 
         public void Update()
         {
-            throw new NotImplementedException();
+            
         }
 
         //We can't do friends so that needs to change

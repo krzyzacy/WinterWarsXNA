@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace WWxna.Code.MVC
 {
-    class Camera
+    public class Camera
     {
         public Camera(Vector3 pos_) : this(pos_, Vector3.Forward, Vector3.Up) { }
         public Camera(Vector3 pos_, Vector3 facing_, Vector3 up_)

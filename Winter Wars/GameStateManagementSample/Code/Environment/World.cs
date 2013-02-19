@@ -49,10 +49,10 @@ namespace WWxna.Code.Environment
 			        center.X = w * tR * 2 + tR;
 			        if(h % 2 == 1) center.X += tR;
 			
-			        center.Y = h * (tH + tS) + tS;
-			        center.Z = 0.0f;
+			        center.Z = h * (tH + tS) + tS;
+			        center.Y = 0.0f;
 			        if(h == 0 || h == map_height - 1 || w == 0 || w == map_width - 1)
-				        center.Z = (float)(tile_size * 1.7);
+				        center.Y = (float)(tile_size * 1.7);
 
                     /*
 			        if((Math.Abs(6 - h) + Math.Abs(7 - w)) < 4){
@@ -66,7 +66,7 @@ namespace WWxna.Code.Environment
                     
                     //center.X = 500.0f;
                     //center.Y = 0.0f;
-                    center.Z = -5000.0f;
+                    //center.Z = -50.0f;
 			        
 			        float scale_size = (float)2.0 * tile_size;
 

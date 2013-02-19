@@ -53,7 +53,7 @@ namespace WWxna.Code.MVC
             throw new NotImplementedException("Dr  GM");
         }
 
-        public virtual void start_up(GraphicsDeviceManager graphics_, ContentManager content, Controls[] controllers_)
+        public virtual void start_up(Game game_, GraphicsDeviceManager graphics_, ContentManager content, Controls[] controllers_)
         {
             throw new NotImplementedException("Str  GM");
         }

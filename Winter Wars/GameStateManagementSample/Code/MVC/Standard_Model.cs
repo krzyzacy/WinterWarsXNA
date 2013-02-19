@@ -63,7 +63,7 @@ namespace WWxna.Code.MVC
             view.load_models();
         }
 
-        public override void start_up(GraphicsDeviceManager graphics_, ContentManager content, Controls[] controllers_)
+        public override void start_up(Game game_, GraphicsDeviceManager graphics_, ContentManager content, Controls[] controllers_)
         {
 
             //ship = new Seen_Object(new Vector3(-500.0f, 0.0f, -5000.0f), new Vector3(100,100,100));
@@ -80,7 +80,7 @@ namespace WWxna.Code.MVC
             for (int i = 0; i < 4; i++)
             {
                 //Player p = new H_Player(controllers_[i], new Vector3(100, 100, 100 + 50*i), new Vector3(50, 50, 50));
-                Player p = new H_Player(controllers_[i]);
+                Player p = new H_Player(game_, controllers_[i]);
                 players.Add(p);
                 view.add_renderable(p);
             }

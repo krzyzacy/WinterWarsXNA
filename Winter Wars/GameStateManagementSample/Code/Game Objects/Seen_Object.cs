@@ -33,7 +33,7 @@ namespace WWxna.Code.Game_Objects
 
         }
 
-        virtual public void render(Model model, GraphicsDeviceManager graphics, Camera camera)
+        virtual public void render(Model model, GraphicsDeviceManager graphics, CameraComponent camera)
         {
             if (model == null)
                 throw new Exception("Trying to render NULL Model!");
@@ -57,19 +57,37 @@ namespace WWxna.Code.Game_Objects
                 // as our camera and projection.
                 foreach (BasicEffect effect in mesh.Effects)
                 {
+
+                    //effect.PreferPerPixelLighting = true;
+                    //effect.EnableDefaultLighting();
+                    //effect.View = camera.ViewMatrix;
+                    //effect.Projection = camera.ProjectionMatrix;
+                    //effect.World = modelTransforms[mesh.ParentBone.Index] * world;
+
                     effect.EnableDefaultLighting();
-
                     effect.World = transforms[mesh.ParentBone.Index] *
-                        Matrix.CreateScale(size) 
-                        * Matrix.CreateTranslation(center)
-                        ;
+                        Matrix.CreateScale(size) * Matrix.CreateTranslation(center);
 
-                    effect.View = Matrix.CreateLookAt(camera.Position,
-                        camera.Facing, camera.Up);
+                    effect.View = camera.ViewMatrix;
+                    effect.Projection = camera.ProjectionMatrix;
 
-                    effect.Projection = Matrix.CreatePerspectiveFieldOfView(
-                        MathHelper.ToRadians(45.0f), graphics.GraphicsDevice.Viewport.AspectRatio,
-                        1.0f, 10000.0f);
+                    //OLD
+                    //effect.EnableDefaultLighting();
+
+                    //effect.World = transforms[mesh.ParentBone.Index] *
+                    //    Matrix.CreateScale(size) 
+                    //    * Matrix.CreateTranslation(center)
+                    //    ;
+
+                    //effect.View = Matrix.CreateLookAt(camera.Position,
+                    //    camera.ViewDirection, camera.);
+
+                    //effect.Projection = Matrix.CreatePerspectiveFieldOfView(
+                    //    MathHelper.ToRadians(45.0f), graphics.GraphicsDevice.Viewport.AspectRatio,
+                    //    1.0f, 10000.0f);
+
+
+
                 }
                 // Draw the mesh, using the effects set above.
                 mesh.Draw();

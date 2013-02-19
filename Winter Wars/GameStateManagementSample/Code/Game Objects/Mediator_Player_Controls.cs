@@ -44,7 +44,7 @@ namespace WWxna.Code.Game_Objects
             Handle_Shooting_State();
 
             //Move Camera??
-
+            Move_Camera();
         }
 
 
@@ -60,6 +60,8 @@ namespace WWxna.Code.Game_Objects
         private void Move_Camera()
         {
             //adjust the camera in the player
+            p_avatar.Camera_p.Rotate(c_input.State.Cam.X, c_input.State.Cam.Y, 0);
+            //Need to add a voncersion factor
         }
 
         private void calculate_movement()

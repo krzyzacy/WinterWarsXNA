@@ -23,7 +23,7 @@ namespace WWxna.Code.MVC
 
         void Update();
         void draw();
-        void start_up(GraphicsDeviceManager graphics_, ContentManager content, Controls[] controllers_);
+        void start_up(Game game_, GraphicsDeviceManager graphics_, ContentManager content, Controls[] controllers_);
         //void restart();
         //void finish();
         //bool win();

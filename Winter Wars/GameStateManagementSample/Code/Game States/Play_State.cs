@@ -71,7 +71,7 @@ namespace WWxna
 
             ActiveKeyboardPlayer = 0;
 
-            GM_Proxy.Instance.Start_Model(graphics, content, controllers, "standard");
+            GM_Proxy.Instance.Start_Model(this, graphics, content, controllers, "standard");
             base.Initialize();
             
         }
@@ -139,6 +139,8 @@ namespace WWxna
                 // Allows the game to exit
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                     this.Exit();
+
+                
 
                 // TODO: Add your update logic here
                 //  modelRotation += (float)gameTime.ElapsedGameTime.TotalMilliseconds *

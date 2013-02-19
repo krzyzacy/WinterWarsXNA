@@ -10,9 +10,15 @@ using WWxna.Code.MVC;
 
 namespace WWxna.Code.Game_Objects
 {
-    enum Shoot_State { CHILL, CHARGING, FIRE };
+    enum Shoot_State 
+    { 
+        CHILL, CHARGING, FIRE 
+    };
 
-
+    enum Jump_State
+    {
+        ON_GROUND, BOOST, FALLING_WITH_STYLE, JET_PACK
+    };
 
     public class Mediator_Player_Controls
     {
@@ -28,12 +34,32 @@ namespace WWxna.Code.Game_Objects
 
         public void Control_the_player()
         {
+            //calc movement, friction handled here
             calculate_movement();
-            //calculate movement, 
-            //handle shooting state
-            //handle jumping state
-            //May need to make data in controls public
 
+            //handle jumping state
+            Handle_Jump_State();
+
+            //handle shooting state
+            Handle_Shooting_State();
+
+            //Move Camera??
+
+        }
+
+
+        private void Handle_Jump_State()
+        {
+
+        }
+
+        private void Handle_Shooting_State()
+        {
+        }
+
+        private void Move_Camera()
+        {
+            //adjust the camera in the player
         }
 
         private void calculate_movement()

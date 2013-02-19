@@ -36,6 +36,7 @@ namespace WWxna.Code.MVC
 
         //void add_player(Player p);
         //void add_moveable(Moveable m);
+		//void add_collidable(collidable c);
         //void add_structure(Structure s);
         //void add_effect(Effect e);
 

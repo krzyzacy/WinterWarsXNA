@@ -40,30 +40,36 @@ namespace WWxna.Code.MVC
             
             
         }
-    
 
 
-        public override void Update()
-        {
-            
 
-            //Obviously this isnt perfect yet, so for now just updates players
-            foreach(Player p in players)   {
-                p.Update();
-            }
-        }
+		public override void Update()
+		{
 
-        public override void draw()
-        {
-            view.render();
-        }
 
-        public override void Load_Content()
-        {
-            view.load_models();
-        }
+			//Obviously this isnt perfect yet, so for now just updates players
+			foreach (Player p in players)
+			{
+				p.Update();
+			}
 
-        public override void start_up(Game game_, GraphicsDeviceManager graphics_, ContentManager content, Controls[] controllers_)
+			// check collisions
+			foreach (Moveable m in movers)
+				foreach (Collidable c in colliders)
+					table.handle_collision(m, c);
+		}
+
+		public override void draw()
+		{
+			view.render();
+		}
+
+		public override void Load_Content()
+		{
+			view.load_models();
+		}
+
+		public override void start_up(Game game_, GraphicsDeviceManager graphics_, ContentManager content, Controls[] controllers_)
         {
 
             //ship = new Seen_Object(new Vector3(-500.0f, 0.0f, -5000.0f), new Vector3(100,100,100));
@@ -80,9 +86,8 @@ namespace WWxna.Code.MVC
             for (int i = 0; i < 4; i++)
             {
                 //Player p = new H_Player(controllers_[i], new Vector3(100, 100, 100 + 50*i), new Vector3(50, 50, 50));
-                Player p = new H_Player(game_, controllers_[i]);
-                players.Add(p);
-                view.add_renderable(p);
+				Player p = new H_Player(game_, controllers_[i]);
+				add_player(p);
             }
 
             view.add_player_view(new Player_View((H_Player)players.ElementAt(1), view.get_graphics(), view.get_content()));
@@ -116,10 +121,23 @@ namespace WWxna.Code.MVC
             throw new NotImplementedException();
         }
 
-        public Player get_player(Microsoft.Xna.Framework.PlayerIndex i)
-        {
-            throw new NotImplementedException();
-        }
+		public void add_player(Player p)
+		{
+			players.Add(p);
+			add_moveable(p);
+		}
+
+		public void add_moveable(Moveable m)
+		{
+			movers.Add(m);
+			add_collidable(m);
+		}
+
+		public void add_collidable(Collidable c)
+		{
+			colliders.Add(c);
+			view.add_renderable(c);
+		}
 
         public Environment.Team get_team(int i)
         {
@@ -127,16 +145,6 @@ namespace WWxna.Code.MVC
         }
 
         public Environment.World get_World()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void add_player(Player p)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void add_moveable(Moveable m)
         {
             throw new NotImplementedException();
         }

@@ -30,6 +30,7 @@ namespace WWxna.Code.MVC
         protected List<Player> players;
         protected List<Team> teams;
         protected HashSet<Collidable> colliders;
+		protected HashSet<Moveable> movers;
 
         protected View view;
         protected iWorld world;
@@ -40,6 +41,7 @@ namespace WWxna.Code.MVC
             players = new List<Player>();
             teams = new List<Team>();
             colliders = new HashSet<Collidable>();
+			movers = new HashSet<Moveable>();
         }
 
 

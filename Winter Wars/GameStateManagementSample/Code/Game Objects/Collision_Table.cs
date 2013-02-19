@@ -26,18 +26,47 @@ namespace WWxna.Code.Game_Objects
 		}
 	}
 	*/
+
     class Collision_Table
     {
 	    private bool get_collided() { return collided;}
  
 	    private delegate void func(Collidable x, Collidable y);
-	    private List<List<func>> table;
+	    private func[,] table;
 
 	    private bool collided;
 
         public Collision_Table()
         {
-			table = new List<List<func>>();
+			table = new func[4,4];
+
+			table[Snowball.ID(), Collidable.ID()] = null;
+
+			table[(Snowball.ID()),(Snowball.ID())] = collideSnowballSnowball;
+
+			table[(Snowball.ID()),(Player.ID())] = collideSnowballPlayer;
+
+			table[(Snowball.ID()),(Structure.ID()) ] = collideSnowballStructure;
+
+			
+	
+			table[(Player.ID()),(Collidable.ID())] = null;
+
+			table[(Player.ID()),(Snowball.ID())] = collidePlayerSnowball;
+
+			table[(Player.ID()),(Player.ID())] = collidePlayerPlayer;
+
+			table[(Player.ID()),(Structure.ID())] = collidePlayerStructure;
+
+
+				
+			table[(Structure.ID()),(Collidable.ID())] = null;
+
+			table[(Structure.ID()),(Player.ID())] = collideStructureSnowball;
+
+			table[(Structure.ID()),(Snowball.ID())] = collideStructurePlayer;
+
+			table[(Structure.ID()),(Structure.ID())] = collideStructureStructure;		
 
 	        collided = false;
 
@@ -45,26 +74,21 @@ namespace WWxna.Code.Game_Objects
 
 	    public void handle_collision(Collidable A, Collidable B)
 	    {
-			SortedDictionary<Type, func> tmp; 
-			func fxn;
-
-	//		A.get_id()
-	//		fxn = table.
-	//		fxn(A, B);
+			table[A.get_ID(), B.get_ID()](A, B);
 	    }
 
 		
 
 	    // these functions should check to see if the objects are colliding
 	    // and then handle the collision if they are
-		private void collideSnowballSnowball(Snowball  b1, Snowball  b2)
+		private void collideSnowballSnowball(Collidable b1, Collidable b2)
 		{
 
 
 
 		}
 
-		private void collidePlayerSnowball(Player  p1, Snowball  b1)
+		private void collidePlayerSnowball(Collidable c1, Collidable c2)
 		{	
 	  /* 		//if no collision, return
 			if (!p1->body.intersects(b1->body) || b1->owner == p1)
@@ -120,12 +144,12 @@ namespace WWxna.Code.Game_Objects
 	   * */
 		}
 
-		private void collideSnowballPlayer(Snowball  b1, Player  p1)
+		private void collideSnowballPlayer(Collidable c1, Collidable c2)
 		{
-			collidePlayerSnowball(p1,b1);
+			collidePlayerSnowball(c1,c2);
 		}
 
-		private void collidePlayerPlayer(Player  p1, Player  p2)
+		private void collidePlayerPlayer(Collidable c1, Collidable c2)
 		{
 	/*		//if no collision, return
 			if (!p1->body.intersects(p2->body) || p1 == p2)
@@ -135,12 +159,12 @@ namespace WWxna.Code.Game_Objects
 			p2->push_away_from(p1->center, 200);
 	*/	}
 
-		private void collideStructureSnowball(Structure  w1, Snowball  ob2)
+		private void collideStructureSnowball(Collidable c1, Collidable c2)
 		{	
-			collideSnowballStructure(ob2, w1);
+			collideSnowballStructure(c1, c2);
 		}
 
-		private void collidePlayerStructure(Player  ob2, Structure  w1)
+		private void collidePlayerStructure(Collidable c1, Collidable c2)
 		{	
 	/*		//Structure player collision resolution
 
@@ -151,12 +175,12 @@ namespace WWxna.Code.Game_Objects
 			w1->handle_player_collision(ob2);
 	*/	}
 
-		private void collideStructurePlayer(Structure  w1, Player  ob2)
+		private void collideStructurePlayer(Collidable c1, Collidable c2)
 		{
-			collidePlayerStructure(ob2, w1);
+			collidePlayerStructure(c1, c2);
 		}
 
-		private void collideSnowballStructure(Snowball  b2, Structure  w1)
+		private void collideSnowballStructure(Collidable c1, Collidable c2)
 		{
 
 	/*		if(Game_Model::get().get_World()->get_tile(w1->get_bottom_center()) == Game_Model::get().get_World()->get_center_Tile())
@@ -188,7 +212,7 @@ namespace WWxna.Code.Game_Objects
 				b2->owner->stats.destroyed++;
 	*/	}
 
-		private void collideStructureStructure(Structure a , Structure a3 )
+		private void collideStructureStructure(Collidable c1, Collidable c2)
 		{
 			//WAT. This cannot happen
 			// Explode Everything!

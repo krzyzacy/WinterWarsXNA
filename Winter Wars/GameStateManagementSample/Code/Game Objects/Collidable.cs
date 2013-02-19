@@ -36,7 +36,10 @@ namespace WWxna.Code.Game_Objects
             
         }
 
-        //We can't do friends so that needs to change
+		public virtual int get_ID()
+		{ return ID(); }
 
+		public static int ID()
+		{ return 0; }
     }
 }

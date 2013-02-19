@@ -46,26 +46,32 @@ namespace WWxna.Code.Game_Objects
 
     public class H_Player : Player
     {
-        private Camera camera;
+        private CameraComponent camera;
         protected Mediator_Player_Controls PC_mediator;
 
         private H_Player() { } //No default constructor
 
-        public H_Player(Controls control_) : this(control_, Globals.Game_Obj_Origin , Globals.Game_Obj_Size, Globals.Game_Obj_Quat) { }
-        public H_Player(Controls control_, Vector3 center_) : this(control_, center_, Globals.Game_Obj_Size, Globals.Game_Obj_Quat) { }
-        public H_Player(Controls control_, Vector3 center_, Vector3 size_) : this(control_, center_, size_, Globals.Game_Obj_Quat) { }
-        public H_Player(Controls control_, Vector3 center_, Vector3 size_, Quaternion theta_)
+        public H_Player(Game game_, Controls control_) : this(game_, control_, Globals.Game_Obj_Origin, Globals.Game_Obj_Size, Globals.Game_Obj_Quat) { }
+        public H_Player(Game game_, Controls control_, Vector3 center_) : this(game_, control_, center_, Globals.Game_Obj_Size, Globals.Game_Obj_Quat) { }
+        public H_Player(Game game_, Controls control_, Vector3 center_, Vector3 size_) : this(game_, control_, center_, size_, Globals.Game_Obj_Quat) { }
+        public H_Player(Game game_, Controls control_, Vector3 center_, Vector3 size_, Quaternion theta_)
             : base(center_, size_, theta_)
         {
             //So since everything is a reference if we set the camera's position to
             //the same reference as Seen Object's Center should update in sync
             //If not, we need to update the camera during update
-            camera = new Camera(center, Vector3.Forward, Vector3.Up);
+            
+            //OLD
+            //camera = new Camera(center, Vector3.Up, Vector3.Backward);
+
+            camera = new CameraComponent(game_);
             PC_mediator = new Mediator_Player_Controls(control_, this);
+
+            camera.Perspective(90, 4 / 3, 0.5f, 1000);
 
         }
 
-        public Camera P_Camera
+        public CameraComponent Camera_p
         {
             // Set the position of the camera in world space, for our view matrix.
             // This could adjust where the camera should be using base class variables
@@ -83,9 +89,12 @@ namespace WWxna.Code.Game_Objects
         {
             //Update the Camera before this
             PC_mediator.Control_the_player();
-            P_Camera.Position = center;
+            
+            //OLD
+            //P_Camera.Position = center;
+            Camera_p.Position = center;
 
-            Debug.Print("Camera Pos:" + P_Camera.Position.Z);
+            Debug.Print("Camera Pos:" + Camera_p.Position.Z);
 
             base.Update();
         }

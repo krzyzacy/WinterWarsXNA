@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using CookComputing.XmlRpc;
+//using CookComputing.XmlRpc;
 
 using WWxna;
 #endregion

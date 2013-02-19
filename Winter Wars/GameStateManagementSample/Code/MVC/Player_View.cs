@@ -27,10 +27,10 @@ namespace WWxna.Code.MVC
             spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
         }
 
-        public Camera get_camera(/*Vector2 topLeft, Vector2 bottomRight*/)
+        public CameraComponent get_camera(/*Vector2 topLeft, Vector2 bottomRight*/)
         {         
 	//        get_Video().set_3d_view(player.get_camera(), std::make_pair(topLeft, bottomRight));
-            return player.P_Camera;
+            return player.Camera_p;
         }
 
         public void render_hud(Vector2 topLeft, Vector2 bottomRight)

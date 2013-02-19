@@ -5,7 +5,7 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 
-namespace WWxna.Code.MVC
+namespace WWxna.Useless
 {
     public class Camera
     {

@@ -54,21 +54,21 @@ namespace WWxna.Code.MVC
             GM.draw();
         }
 
-        public void Start_Model(GraphicsDeviceManager graphics_, ContentManager content_, Controls [] controllers_, string model_type_)
+        public void Start_Model(Game game_, GraphicsDeviceManager graphics_, ContentManager content_, Controls[] controllers_, string model_type_)
         {
             if (model_type_ == "standard")
                 GM = new Standard_Model();
             else
                 GM = new Standard_Model();  //Since We have nothing else for now
 
-            GM.start_up(graphics_, content_, controllers_);
+            GM.start_up(game_, graphics_, content_, controllers_);
 
         }
 
 
-        public void start_up(GraphicsDeviceManager graphics_, ContentManager content_, Controls [] controllers_)
+        public void start_up(Game game_, GraphicsDeviceManager graphics_, ContentManager content_, Controls[] controllers_)
         {
-            Start_Model(graphics_, content_, controllers_, "standard");
+            Start_Model(game_, graphics_, content_, controllers_, "standard");
         }
 
         public void Clean_dead()

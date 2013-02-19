@@ -114,9 +114,16 @@ namespace WWxna.Code.MVC
             //So I'm not sure how to figure out the center of the screen
             //But bring this up during view and player view so it wil be figured out.
             // *****%%%
-            input.Cam.X = Mouse.GetState().X - 300;
-            input.Cam.Y = Mouse.GetState().Y - 300;
-            Mouse.SetPosition(300, 300);
+            //input.Cam.X = Mouse.GetState().X - 300;
+            //input.Cam.Y = Mouse.GetState().Y - 300;
+            //Mouse.SetPosition(300, 300);
+
+            input.Cam.X = Convert.ToInt32(keyState.IsKeyDown(Keys.Left)) - Convert.ToInt32(keyState.IsKeyDown(Keys.Right));
+            input.Cam.Y = Convert.ToInt32(keyState.IsKeyDown(Keys.Up)) - Convert.ToInt32(keyState.IsKeyDown(Keys.Down));
+
+
+        
+            
 
             input.jet_pack_mode = (input.R_roll && input.L_roll);
 

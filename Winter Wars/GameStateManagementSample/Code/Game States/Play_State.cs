@@ -73,6 +73,8 @@ namespace WWxna
 
             GM_Proxy.Instance.Start_Model(this, graphics, content, controllers, "standard");
             base.Initialize();
+
+            
             
         }
 

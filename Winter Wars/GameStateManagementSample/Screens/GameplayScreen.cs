@@ -174,7 +174,7 @@ namespace GameStateManagement
 
             spriteBatch.Begin();
 
-            spriteBatch.DrawString(gameFont, "Move", playerPosition, Color.Green);
+            //spriteBatch.DrawString(gameFont, "Move", playerPosition, Color.Green);
 
             spriteBatch.End();
 

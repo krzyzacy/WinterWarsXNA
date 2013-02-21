@@ -55,17 +55,22 @@ namespace WWxna.Code.Game_Objects
 
         private void Handle_Shooting_State()
         {
+
         }
 
         private void Move_Camera()
         {
             //adjust the camera in the player
-            p_avatar.Camera_p.Rotate(c_input.State.Cam.X, c_input.State.Cam.Y, 0);
+            
+
+            p_avatar.Camera_p.Rotate(Globals.cam_rotation_spd* -1* c_input.State.Cam.X, Globals.cam_rotation_spd* c_input.State.Cam.Y, 0);
             //Need to add a voncersion factor
         }
 
         private void calculate_movement()
         {//Old code sets velocity after calculating it so mimic it
+
+            #region Bad process, broken
             /*OLD PROCESS
              * get camera forward and left, normalize them
              * create temp variable with new velocity
@@ -81,47 +86,84 @@ namespace WWxna.Code.Game_Objects
             */
 
             /*
+            int x;
+            if (c_input.which_id == PlayerIndex.One)
+                x = 1;
+            
             //Up Cross Forward will give right
-            Vector3 Forward = p_avatar.P_Camera.Facing;
-            Vector3 Left = Vector3.Cross(p_avatar.P_Camera.Up, Forward);
+            Vector3 Forward = p_avatar.Camera_p.ViewDirection;
+            Vector3 Left = Vector3.Cross(new Vector3(p_avatar.Camera_p.ViewDirection.X, 0, p_avatar.Camera_p.ViewDirection.Z), Vector3.Up);
 
             Forward.Normalize();
             Left.Normalize();
 
             Vector3 Temp_Vel = new Vector3(p_avatar.Velocity.X, p_avatar.Velocity.Y, p_avatar.Velocity.Z);
-            float temp_Zvel = p_avatar.Velocity.Z;
+            float temp_Zvel = p_avatar.Velocity.Y;
 
             Vector3 Target_Vel = (Forward * c_input.State.Move.Y) + (Left * c_input.State.Move.X);
 
             //MAGIC NUMBER, Redo as Standard Speed later
-            Target_Vel *= 200;
+            Target_Vel *= 20;
             //MAGIC NUMBER, Friction not implemented yet
             float friction = 0.2f;
 
             //Some of the multiplication constants are wrong here
 
             //Now the vector difference, may need to normalize Temp Velocity?
-            Vector3 Net_Accel = Target_Vel - Temp_Vel;
+            
+            //Vector3 Net_Accel = Target_Vel - Temp_Vel;
+            Vector3 Net_Accel = Target_Vel + Temp_Vel;
             //Multiply this by speed? Normalization is gonna throw all this shit off
-            Net_Accel.Normalize();
-            Net_Accel *= 200;
+            if(Net_Accel.Length() > 0.1)
+                Net_Accel.Normalize();
+            Net_Accel *= 20;
 
             Temp_Vel *= (1 - friction / 10);
             Temp_Vel += Net_Accel * GM_Proxy.Instance.Time_Step;
 
-            Temp_Vel.Z = temp_Zvel;
+            if (Temp_Vel.Length() < 0.1)
+                Temp_Vel = Vector3.Zero;
+
+            Temp_Vel.Y = temp_Zvel;
             p_avatar.Velocity = Temp_Vel;
+
+            if (c_input.which_id == PlayerIndex.One)
+            {
+                GM_Proxy.Instance.add_hud_string(new Point(300, 50),
+                    "Vel X:" + Math.Round(p_avatar.Velocity.X) + 
+                    " Y:" + Math.Round(p_avatar.Velocity.Y) + 
+                    " Z:" + Math.Round(p_avatar.Velocity.Z));
+
+                Debug.Print("Vel X:" + Math.Round(p_avatar.Velocity.X) +
+                    " Y:" + Math.Round(p_avatar.Velocity.Y) +
+                    " Z:" + Math.Round(p_avatar.Velocity.Z));
+            }
+            
             */
+#endregion
 
-            //Simple Movement for framework testing purposes
 
-            if (Math.Abs(c_input.State.Move.X) > 0.5)
-                p_avatar.Velocity = new Vector3(0, 0, 1);
+            //Temporary Movement, No Friction but works effectively
+            const int speed_c = 2;
+            Vector3 Forward = p_avatar.Camera_p.ViewDirection;
+            Vector3 Left = Vector3.Cross(new Vector3(p_avatar.Camera_p.ViewDirection.X, 0, p_avatar.Camera_p.ViewDirection.Z), Vector3.Up);
+            Forward.Normalize();
+            Left.Normalize();
+            Vector3 New_Vel = (Forward * c_input.State.Move.Y) + (Left * c_input.State.Move.X);
 
-            if (Math.Abs(c_input.State.Move.Y) > 0.5)
-                p_avatar.Velocity = new Vector3(0, 0, -1);
+            New_Vel *= speed_c;
+            New_Vel.Y = p_avatar.Velocity.Y;
 
-            Debug.Print("P:" + c_input.which_id + " Vel Z:" + p_avatar.Velocity.Z);
+            p_avatar.Velocity = New_Vel;
+
+            if (c_input.which_id == PlayerIndex.One)
+            {
+                GM_Proxy.Instance.add_hud_string(new Point(300, 50),
+                    "Vel X:" + Math.Round(p_avatar.Velocity.X) +
+                    " Y:" + Math.Round(p_avatar.Velocity.Y) +
+                    " Z:" + Math.Round(p_avatar.Velocity.Z));
+            }
+
         }
 
 

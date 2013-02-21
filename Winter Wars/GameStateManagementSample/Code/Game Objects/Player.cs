@@ -36,7 +36,7 @@ namespace WWxna.Code.Game_Objects
 
         public override void Update()
         {
-            Debug.Print("CenterZ: " + center.Z);
+            //Debug.Print("CenterZ: " + center.Z);
             base.Update();
         }
 
@@ -71,7 +71,7 @@ namespace WWxna.Code.Game_Objects
             camera = new CameraComponent(game_);
             PC_mediator = new Mediator_Player_Controls(control_, this);
 
-            camera.Perspective(90, 4 / 3, 0.5f, 1000);
+            camera.Perspective(90, 4 / 3, 0.5f, 3000);
 
         }
 
@@ -96,11 +96,13 @@ namespace WWxna.Code.Game_Objects
             
             //OLD
             //P_Camera.Position = center;
-            Camera_p.Position = center;
-
-            Debug.Print("Camera Pos:" + Camera_p.Position.Z);
+            
+            //Debug.Print("Camera Pos:" + Camera_p.Position.Z);
 
             base.Update();
+
+            Camera_p.Position = center;
+
         }
 
 

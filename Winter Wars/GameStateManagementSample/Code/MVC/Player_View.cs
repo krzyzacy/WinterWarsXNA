@@ -35,16 +35,16 @@ namespace WWxna.Code.MVC
 
         public void render_hud(Vector2 topLeft, Vector2 bottomRight)
         {
-            float unit_px = (bottomRight.X - topLeft.X) / 480.0f;
+            //float unit_px = (bottomRight.X - topLeft.X) / 480.0f;
 
-            Vector2 textpos = new Vector2(300 * unit_px, 100 * unit_px);
-            SpriteFont gameFont = content.Load<SpriteFont>("gamefont");
-            String output = "Test String";
-            Vector2 FontOrigin = gameFont.MeasureString(output) / 2;
-            spriteBatch.Begin();
-            spriteBatch.DrawString(gameFont, output, textpos, Color.LightGreen,
-                                0, FontOrigin, unit_px, SpriteEffects.None, 0.5f);
-            spriteBatch.End();
+            //Vector2 textpos = new Vector2(300 * unit_px, 100 * unit_px);
+            //SpriteFont gameFont = content.Load<SpriteFont>("gamefont");
+            //String output = "Test String";
+            //Vector2 FontOrigin = gameFont.MeasureString(output) / 2;
+            //spriteBatch.Begin();
+            //spriteBatch.DrawString(gameFont, output, textpos, Color.LightGreen,
+            //                    0, FontOrigin, unit_px, SpriteEffects.None, 0.5f);
+            //spriteBatch.End();
         }
 
 //	    void render_minimap(Vector2 topLeft, Vector2 bottomRight, std::string avartar);

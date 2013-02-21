@@ -118,7 +118,7 @@ namespace WWxna.Code.MVC
             //input.Cam.Y = Mouse.GetState().Y - 300;
             //Mouse.SetPosition(300, 300);
 
-            input.Cam.X = Convert.ToInt32(keyState.IsKeyDown(Keys.Left)) - Convert.ToInt32(keyState.IsKeyDown(Keys.Right));
+            input.Cam.X = Convert.ToInt32(keyState.IsKeyDown(Keys.Right)) - Convert.ToInt32(keyState.IsKeyDown(Keys.Left));
             input.Cam.Y = Convert.ToInt32(keyState.IsKeyDown(Keys.Up)) - Convert.ToInt32(keyState.IsKeyDown(Keys.Down));
 
 

@@ -118,7 +118,7 @@ namespace GameStateManagement
             else
                 pauseAlpha = Math.Max(pauseAlpha - 1f / 32, 0);
 
-            my_game.Pub_Update(gameTime);
+            my_game.Pub_Update(gameTime, coveredByOtherScreen);
 
            
         }

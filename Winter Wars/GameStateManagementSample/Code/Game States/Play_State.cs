@@ -120,9 +120,12 @@ namespace WWxna
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         /// 
-        public void Pub_Update(GameTime gameTime)
+        public void Pub_Update(GameTime gameTime, bool isPaused)
         {
-            Update(gameTime);
+            if (!isPaused)
+            {
+                Update(gameTime);
+            }
         }
         protected override void Update(GameTime gameTime)
         {

@@ -108,6 +108,8 @@ namespace WWxna.Code.MVC
         private void render_world()
         {
             // pass each renderable into render_renderable
+            graphics.GraphicsDevice.BlendState = BlendState.Opaque;
+            graphics.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             foreach (Seen_Object obj in to_render)
             {
                 render_renderable(obj);

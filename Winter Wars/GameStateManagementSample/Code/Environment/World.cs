@@ -39,20 +39,28 @@ namespace WWxna.Code.Environment
 
 	        float tR = (float)Math.Sqrt(3.0f) * tile_size / 2;
 	        float tS = tile_size;
-	        float tH = tile_size / 2; 
+	        float tH = tile_size / 2;
 
-	        for(int h = 0; h < map_height; h++){
-                map.Add(new List<iTile>() );
-		        for(int w = 0; w < map_width; w++){
+            tR *= 2.5f;
+            tS *= 2.5f;
+            tH *= 2.5f;
 
-			        Vector3 center;
-			        center.X = w * tR * 2 + tR;
-			        if(h % 2 == 1) center.X += tR;
-			
-			        center.Z = h * (tH + tS) + tS;
-			        center.Y = 0.0f;
-			        if(h == 0 || h == map_height - 1 || w == 0 || w == map_width - 1)
-				        center.Y = (float)(tile_size * 1.7);
+            for (int h = 0; h < map_height; h++)
+            {
+                map.Add(new List<iTile>());
+                for (int w = 0; w < map_width; w++)
+                {
+
+                    Vector3 center;
+                    center.X = w * tR * 2 + tR;
+                    if (h % 2 == 1) center.X += tR;
+
+                    center.Z = h * (tH + tS) + tS;
+                    center.Y = 0.0f;
+                    if (h == 0 || h == map_height - 1 || w == 0 || w == map_width - 1)
+                        center.Y = (float)(tile_size * 1.7);
+
+                    center.Y -= tile_size * 10;
 
                     /*
 			        if((Math.Abs(6 - h) + Math.Abs(7 - w)) < 4){

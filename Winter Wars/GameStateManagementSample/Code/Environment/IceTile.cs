@@ -77,6 +77,11 @@ namespace WWxna.Code.Environment
 	        return !(Building == null);
         }
 
+        public float get_height()
+        {
+            return center.Y + tile_size;
+        }
+
         /*
         public bool set_height(float height__){
 	        float Max_Tile_Height = Outer_Max_TH;

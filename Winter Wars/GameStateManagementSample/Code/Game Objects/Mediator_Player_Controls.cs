@@ -24,6 +24,8 @@ namespace WWxna.Code.Game_Objects
     {
         private H_Player p_avatar;
         private Controls c_input;
+        private Shoot_State shooter;
+        private Jump_State jumper;
 
         public Mediator_Player_Controls(Controls c_, H_Player p_)
         {
@@ -55,7 +57,8 @@ namespace WWxna.Code.Game_Objects
 
         private void Handle_Shooting_State()
         {
-
+            //SO need  to have each state and act on it just like in the old player
+            
         }
 
         private void Move_Camera()

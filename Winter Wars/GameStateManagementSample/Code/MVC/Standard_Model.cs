@@ -90,7 +90,10 @@ namespace WWxna.Code.MVC
 				add_player(p);
             }
 
-            view.add_player_view(new Player_View((H_Player)players.ElementAt(0), view.get_graphics(), view.get_content()));
+			view.add_player_view(new Player_View((H_Player)players.ElementAt(0), view.get_graphics(), view.get_content()));
+			view.add_player_view(new Player_View((H_Player)players.ElementAt(1), view.get_graphics(), view.get_content()));
+			view.add_player_view(new Player_View((H_Player)players.ElementAt(2), view.get_graphics(), view.get_content()));
+			view.add_player_view(new Player_View((H_Player)players.ElementAt(3), view.get_graphics(), view.get_content()));
             
             //view.add_renderable(ship);
             //view.add_renderable(ship1);

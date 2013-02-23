@@ -58,7 +58,18 @@ namespace WWxna.Code.Game_Objects
         private void Handle_Shooting_State()
         {
             //SO need  to have each state and act on it just like in the old player
-            
+            //switch (shooter)
+            //{
+            //    case Shoot_State.CHILL:
+            //        //d
+            //        break;
+            //    case Shoot_State.CHARGING:
+
+
+
+
+            //}
+
         }
 
         private void Move_Camera()
@@ -165,7 +176,13 @@ namespace WWxna.Code.Game_Objects
                     "Vel X:" + Math.Round(p_avatar.Velocity.X) +
                     " Y:" + Math.Round(p_avatar.Velocity.Y) +
                     " Z:" + Math.Round(p_avatar.Velocity.Z));
+
+
+                GM_Proxy.Instance.add_hud_string(new Point(300, 200),
+                    "Current TimeStep Size:" + GM_Proxy.Instance.Time_Step);
             }
+
+
 
         }
 

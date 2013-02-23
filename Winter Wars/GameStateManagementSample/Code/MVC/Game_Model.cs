@@ -13,8 +13,8 @@ namespace WWxna.Code.MVC
 {
     abstract class Game_Model : iGame_Model
     {
-        protected float timestep;
-        public float TimeStep
+        protected TimeSpan timestep;
+        public TimeSpan TimeStep
         {
             get
             {

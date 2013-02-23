@@ -48,7 +48,7 @@ namespace WWxna.Code.Game_Objects
             base.Update();
 
             //gravity();
-            center += velocity * GM_Proxy.Instance.Time_Step;
+            center += velocity * GM_Proxy.Instance.Time_Step.Milliseconds;
 
             
             //** Need to add stuff to check if off map and such
@@ -58,14 +58,14 @@ namespace WWxna.Code.Game_Objects
         public void gravity()
         {
             if(!is_on_ground())
-                velocity += grav_accel * GM_Proxy.Instance.Time_Step;
+                velocity += grav_accel * GM_Proxy.Instance.Time_Step.Milliseconds;
            // else
            //     on_ground()
         }
 
         public void accelerate(Vector3 accel)
         {
-            velocity += accel * GM_Proxy.Instance.Time_Step;
+            velocity += accel * GM_Proxy.Instance.Time_Step.Milliseconds;
         }
     }
 }

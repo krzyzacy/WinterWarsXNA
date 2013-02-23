@@ -15,7 +15,7 @@ namespace WWxna.Code.MVC
 {
     public sealed class GM_Proxy : iGame_Model
     {
-        public float Time_Step 
+        public TimeSpan Time_Step 
         {
             get
             {

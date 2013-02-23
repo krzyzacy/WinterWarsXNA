@@ -132,7 +132,7 @@ namespace WWxna
 
             try
             {
-                GM_Proxy.Instance.Time_Step = gameTime.ElapsedGameTime.Milliseconds;
+                GM_Proxy.Instance.Time_Step = gameTime.ElapsedGameTime;
                 UpdateInput();
 
                 //Debug.Print("Act Key: " + ActiveKeyboardPlayer);

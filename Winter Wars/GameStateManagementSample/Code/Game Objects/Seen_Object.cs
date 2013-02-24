@@ -33,6 +33,20 @@ namespace WWxna.Code.Game_Objects
 
         }
 
+
+        public Vector3 Position
+        {
+            get
+            {
+                return center;
+            }
+            protected set
+            {
+                center = value;
+            }
+        }
+
+
         virtual public void render(Model model, GraphicsDeviceManager graphics, CameraComponent camera)
         {
             if (model == null)

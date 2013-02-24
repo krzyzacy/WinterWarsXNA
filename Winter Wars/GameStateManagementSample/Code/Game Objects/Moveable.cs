@@ -16,7 +16,7 @@ namespace WWxna.Code.Game_Objects
 
     public class Moveable : Collidable
     {
-        public Vector3 grav_accel = new Vector3(0,-10,0);
+        public Vector3 grav_accel = new Vector3(0,-0.09f,0);
 
         private Vector3 velocity;
         public Vector3 Velocity

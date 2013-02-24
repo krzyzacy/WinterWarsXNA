@@ -65,7 +65,7 @@ namespace WWxna.Code.MVC
                 Vector2 FontOrigin = gamefnt.MeasureString(str_test_dic[k]) / 2;
                 //unit_px????
                 sprtbtchref.DrawString(gamefnt, str_test_dic[k], new Vector2(k.X, k.Y),
-                                           Color.ForestGreen, 0, FontOrigin, 1.0f,
+                                           Color.Black, 0, FontOrigin, 1.0f,
                                            SpriteEffects.None, 0.5f);
 
             }

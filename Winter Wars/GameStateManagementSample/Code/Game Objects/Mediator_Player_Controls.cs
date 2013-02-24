@@ -29,7 +29,7 @@ namespace WWxna.Code.Game_Objects
 
 		private Stopwatch AirTime;
 
-		private static Vector3 jump_vec = new Vector3(0, 50, 0);
+		private static Vector3 jump_vec = new Vector3(0, 0.1f, 0);
 
         public Mediator_Player_Controls(Controls c_, H_Player p_)
         {
@@ -60,17 +60,23 @@ namespace WWxna.Code.Game_Objects
 
         private void Handle_Jump_State()
         {
+            if (c_input.State.jet_pack_mode)
+                jumper = Jump_State.JET_PACK;
+
 			switch (jumper)
 			{
 				case Jump_State.ON_GROUND:
-					AirTime.Start();
-					jumper = Jump_State.BOOST;
+                    if (c_input.State.jump)
+                    {
+                        AirTime.Start();
+                        jumper = Jump_State.BOOST;
+                    }
 					break;
 				case Jump_State.BOOST:
 					//Boost Upwards (+Y)
-                    if (AirTime.ElapsedMilliseconds <= 400)
+                    if (AirTime.ElapsedMilliseconds <= 400 && c_input.State.jump)
                     {
-                        //p_avatar.accelerate(jump_vec);
+                        p_avatar.accelerate(jump_vec);
                     }
                     else
                     {
@@ -84,7 +90,9 @@ namespace WWxna.Code.Game_Objects
 						jumper = Jump_State.ON_GROUND;
 					break;
 				case Jump_State.JET_PACK:
-					//p_avatar.accelerate(jump_vec);
+					p_avatar.accelerate(jump_vec);
+                    if (!c_input.State.jet_pack_mode)
+                        jumper = Jump_State.FALLING_WITH_STYLE;
 					break;
 				default:
 					if (p_avatar.is_on_ground())
@@ -93,6 +101,7 @@ namespace WWxna.Code.Game_Objects
 						jumper = Jump_State.FALLING_WITH_STYLE;
 					break;
 			}
+            Debug.Print(""+jumper);
         }
 
         private void Handle_Shooting_State()
@@ -228,9 +237,13 @@ namespace WWxna.Code.Game_Objects
                     " Y:" + Math.Round(p_avatar.Velocity.Y) +
                     " Z:" + Math.Round(p_avatar.Velocity.Z));
 
+                GM_Proxy.Instance.add_hud_string(new Point(300, 150),
+                    "Pos X:" + Math.Round(p_avatar.Position.X) +
+                    " Y:" + Math.Round(p_avatar.Position.Y) +
+                    " Z:" + Math.Round(p_avatar.Position.Z));
 
-                GM_Proxy.Instance.add_hud_string(new Point(300, 200),
-                    "Current TimeStep Size:" + GM_Proxy.Instance.Time_Step);
+                //GM_Proxy.Instance.add_hud_string(new Point(300, 200),
+                //    "Current TimeStep Size:" + GM_Proxy.Instance.Time_Step);
             }
 
 

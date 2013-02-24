@@ -57,10 +57,6 @@ namespace WWxna.Code.Environment
 
                     center.Z = h * (tH + tS) + tS;
                     center.Y = 0.0f;
-                    if (h == 0 || h == map_height - 1 || w == 0 || w == map_width - 1)
-                        center.Y = (float)(tile_size * 1.7);
-
-                    center.Y -= tile_size * 10;
 
                     /*
 			        if((Math.Abs(6 - h) + Math.Abs(7 - w)) < 4){
@@ -79,15 +75,11 @@ namespace WWxna.Code.Environment
 			        float scale_size = (float)2.0 * tile_size;
 
 
-			        IceTile tmp;
-                    tmp = new IceTile(tile_size, center, new Vector3(scale_size, scale_size, scale_size), w, h);
-                    /*
-			        if(h == 0 || h == map_height - 1 || w == 0 || w == map_width - 1)
-				        tmp = new IceTile(tile_size,center, new Vector3(scale_size,scale_size, (float)1.2 * scale_size),w,h);
-			        else
-				        tmp = new IceTile(tile_size,center, new Vector3(scale_size,scale_size,scale_size),w,h);
-                    */
-			        //tmp->set_team(NEUTRAL);
+			        iTile tmp;
+                    if (h == 0 || h == map_height - 1 || w == 0 || w == map_width - 1)
+                        tmp = new BoundaryTile(tile_size, center, new Vector3(scale_size, scale_size, scale_size), w, h);
+                    else
+                        tmp = new IceTile(tile_size, center, new Vector3(scale_size, scale_size, scale_size), w, h);
 			
 			        map[h].Add(tmp);
 

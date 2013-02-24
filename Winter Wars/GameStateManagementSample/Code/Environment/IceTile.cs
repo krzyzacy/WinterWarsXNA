@@ -31,7 +31,7 @@ namespace WWxna.Code.Environment
 	        this.size = scale__;
 	        this.col = col__;
 	        this.row = row__;
-            this.rotation = new Quaternion(0.5f, 2.5f, 1.75f, 3.2f);
+            this.rotation = new Quaternion(0, 0, 1, 0);
         }
 
         public IceTile( IceTile rhs)

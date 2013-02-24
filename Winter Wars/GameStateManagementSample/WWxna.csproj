@@ -65,6 +65,8 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Code\Environment\BoundaryTile.cs" />
+    <Compile Include="Code\Environment\HexWorld.cs" />
     <Compile Include="Code\Environment\IceTile.cs" />
     <Compile Include="Code\Environment\iTile.cs" />
     <Compile Include="Code\Environment\iWorld.cs" />

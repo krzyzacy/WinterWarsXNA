@@ -27,11 +27,17 @@ namespace WWxna.Code.Game_Objects
         private Shoot_State shooter;
         private Jump_State jumper;
 
+		private Stopwatch AirTime;
+
+		private static Vector3 jump_vec = new Vector3(0, 50, 0);
+
         public Mediator_Player_Controls(Controls c_, H_Player p_)
         {
             p_avatar = p_;
             c_input = c_;
-            //Initialize states here as well
+			shooter = Shoot_State.CHILL;
+			jumper = Jump_State.ON_GROUND;
+			AirTime = new Stopwatch();
         }
 
         public void Control_the_player()
@@ -52,13 +58,65 @@ namespace WWxna.Code.Game_Objects
 
         private void Handle_Jump_State()
         {
-
+			switch (jumper)
+			{
+				case Jump_State.ON_GROUND:
+					AirTime.Start();
+					jumper = Jump_State.BOOST;
+					break;
+				case Jump_State.BOOST:
+					//Boost Upwards (+Y)
+					if (AirTime.ElapsedMilliseconds <= 400)
+						p_avatar.accelerate(jump_vec);
+					else
+					{
+						jumper = Jump_State.FALLING_WITH_STYLE;
+						AirTime.Stop();
+						AirTime.Reset();
+					}
+					break;
+				case Jump_State.FALLING_WITH_STYLE:
+					if (p_avatar.is_on_ground())
+						jumper = Jump_State.ON_GROUND;
+					break;
+				case Jump_State.JET_PACK:
+					p_avatar.accelerate(jump_vec);
+					break;
+				default:
+					if (p_avatar.is_on_ground())
+						jumper = Jump_State.ON_GROUND;
+					else
+						jumper = Jump_State.FALLING_WITH_STYLE;
+					break;
+			}
         }
 
         private void Handle_Shooting_State()
         {
+			//Player functions to implement -- ChargeBall,ShootBall
+			
+			
             //SO need  to have each state and act on it just like in the old player
-            
+            switch (shooter)
+            {
+                case Shoot_State.CHILL:
+					if (c_input.State.shoot)
+						shooter = Shoot_State.CHARGING;
+                    break;
+                case Shoot_State.CHARGING:
+					//Tell the player to charge the ball
+					//???? eh what does that mean?
+					if (!c_input.State.shoot)
+						shooter = Shoot_State.FIRE;
+					break;
+				case Shoot_State.FIRE:
+					//Tell Player to throw the ball
+					shooter = Shoot_State.CHILL;
+					break;
+				default:
+					shooter = Shoot_State.CHILL;
+					break;
+			}
         }
 
         private void Move_Camera()
@@ -165,7 +223,13 @@ namespace WWxna.Code.Game_Objects
                     "Vel X:" + Math.Round(p_avatar.Velocity.X) +
                     " Y:" + Math.Round(p_avatar.Velocity.Y) +
                     " Z:" + Math.Round(p_avatar.Velocity.Z));
+
+
+                GM_Proxy.Instance.add_hud_string(new Point(300, 200),
+                    "Current TimeStep Size:" + GM_Proxy.Instance.Time_Step);
             }
+
+
 
         }
 

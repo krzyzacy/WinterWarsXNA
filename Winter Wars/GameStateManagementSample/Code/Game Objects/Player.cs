@@ -71,7 +71,7 @@ namespace WWxna.Code.Game_Objects
             camera = new CameraComponent(game_);
             PC_mediator = new Mediator_Player_Controls(control_, this);
 
-            camera.Perspective(90, 4 / 3, 0.5f, 3000);
+            camera.Perspective(90, 4 / 3, 2f, 3000);
 
         }
 

@@ -12,7 +12,7 @@ using WWxna.Code.Game_Objects;
 
 namespace WWxna.Code.MVC
 {
-    class Player_View
+    public class Player_View
     {
         public H_Player player;
         SpriteBatch spriteBatch;

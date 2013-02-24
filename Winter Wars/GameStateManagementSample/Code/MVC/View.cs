@@ -11,7 +11,7 @@ using WWxna.Code.Game_Objects;
 
 namespace WWxna.Code.MVC
 {
-    class View
+    public class View
     {
         private GraphicsDeviceManager graphics;
         private List<Player_View> player_views;
@@ -73,18 +73,61 @@ namespace WWxna.Code.MVC
             int width = graphics.GraphicsDevice.PresentationParameters.BackBufferWidth;
             int height = graphics.GraphicsDevice.PresentationParameters.BackBufferHeight;
 
-            Vector2 topLeft = new Vector2(0, 0),
-                middle = new Vector2(width / 2, height / 2),
-                bottomRight = new Vector2(width, height),
-                ySize = new Vector2(0, height / 2),
-                xSize = new Vector2(width / 2, 0);
+			Vector2 topLeft = new Vector2(0, 0),
+				middle = new Vector2(width / 2, height / 2),
+				bottomRight = new Vector2(width, height),
+                ySize_v = new Vector2(0, height / 2),
+                xSize_v = new Vector2(width / 2, 0);
+            int ySize = height / 2;
+            int xSize = width / 2;
 
+			Viewport topLeftViewport = new Viewport();
+			topLeftViewport.X = 0;
+			topLeftViewport.Y = 0;
+			topLeftViewport.Width = xSize;
+			topLeftViewport.Height = ySize;
+			topLeftViewport.MinDepth = 0;
+			topLeftViewport.MaxDepth = 1;
 
-            render_player(0, topLeft, middle);
-            //	        render_player(1, topLeft+xSize, middle+xSize);
-            //        render_player(2, topLeft+ySize, middle+ySize);
-            //      render_player(3, middle, bottomRight);
+			Viewport topRightViewport = new Viewport();
+			topRightViewport.X = xSize;
+			topRightViewport.Y = 0;
+			topRightViewport.Width = xSize;
+			topRightViewport.Height = ySize;
+			topRightViewport.MinDepth = 0;
+			topRightViewport.MaxDepth = 1;
 
+			Viewport bottomLeftViewport = new Viewport();
+			bottomLeftViewport.X = 0;
+			bottomLeftViewport.Y = ySize;
+			bottomLeftViewport.Width = xSize;
+			bottomLeftViewport.Height = ySize;
+			bottomLeftViewport.MinDepth = 0;
+			bottomLeftViewport.MaxDepth = 1;
+
+			Viewport bottomRightViewport = new Viewport();
+			bottomRightViewport.X = xSize;
+			bottomRightViewport.Y = ySize;
+			bottomRightViewport.Width = xSize;
+			bottomRightViewport.Height = ySize;
+			bottomRightViewport.MinDepth = 0;
+			bottomRightViewport.MaxDepth = 1;
+
+			Viewport original = graphics.GraphicsDevice.Viewport;
+
+			graphics.GraphicsDevice.Viewport = topLeftViewport;
+			render_player(0, topLeft, middle);
+
+			graphics.GraphicsDevice.Viewport = topRightViewport;
+			render_player(1, topLeft + xSize_v, middle + xSize_v);
+
+			graphics.GraphicsDevice.Viewport = bottomLeftViewport;
+			render_player(2, topLeft + ySize_v, middle + ySize_v);
+
+			graphics.GraphicsDevice.Viewport = bottomRightViewport;
+            render_player(3, middle, bottomRight);
+
+			graphics.GraphicsDevice.Viewport = original;
         }
 
 

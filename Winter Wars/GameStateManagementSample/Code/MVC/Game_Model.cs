@@ -13,8 +13,8 @@ namespace WWxna.Code.MVC
 {
     abstract class Game_Model : iGame_Model
     {
-        protected float timestep;
-        public float TimeStep
+        protected TimeSpan timestep;
+        public TimeSpan TimeStep
         {
             get
             {
@@ -70,5 +70,10 @@ namespace WWxna.Code.MVC
         {
             throw new NotImplementedException("ld con  GM");
         }
+
+		public virtual World get_World()
+		{
+			return (World)world;
+		}
     }
 }

@@ -66,25 +66,31 @@ namespace WWxna.Code.Environment
                     iTile tmp;
                     float dist = (float)Math.Sqrt((Math.Abs(center.X - center_x) * Math.Abs(center.X - center_x)) 
                                 + Math.Abs(center.Z - center_y) * Math.Abs(center.Z - center_y));
+
+                    bool tmp_flag = false;
                     if (dist > map_outer_r)
                     {
-                        // out of bound, do nothing
+                        tmp = new BoundaryTile(tile_size, center, new Vector3(scale_size, scale_size, scale_size), w, h);
+                        map[h].Add(tmp);
                     }
                     else if (dist > map_size)
                     {
                         tmp = new BoundaryTile(tile_size, center, new Vector3(scale_size, scale_size, scale_size), w, h);
+                        tmp_flag = true;
                         map[h].Add(tmp);
-                        view.add_renderable(map[h][w].get_renderable());
                     }
                     else
                     {
                         tmp = new IceTile(tile_size, center, new Vector3(scale_size, scale_size, scale_size), w, h);
+                        tmp_flag = true;
                         map[h].Add(tmp);
-                        view.add_renderable(map[h][w].get_renderable());
                     }
 
-                    
-
+                    if (tmp_flag)
+                    {
+                        
+                        view.add_renderable(map[h][w].get_renderable());
+                    }
                    
 
                 }

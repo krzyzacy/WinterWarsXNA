@@ -60,6 +60,7 @@ namespace WWxna.Code.MVC
             to_render.Add(obj);
         }
 
+		// Add in this order: 1,3,2,4
         public void add_player_view(Player_View pv)
         {
             player_views.Add(pv);
@@ -72,71 +73,86 @@ namespace WWxna.Code.MVC
 
             int width = graphics.GraphicsDevice.PresentationParameters.BackBufferWidth;
             int height = graphics.GraphicsDevice.PresentationParameters.BackBufferHeight;
+			int ySize, xSize;
+			int num_players = player_views.Count();
 
+
+			if (num_players > 1)
+				ySize = height / 2;
+			else
+				ySize = height;
+
+			if (num_players > 2)
+				xSize = width / 2;
+			else
+				xSize = width;
+			
+			
 			Vector2 topLeft = new Vector2(0, 0),
 				middle = new Vector2(width / 2, height / 2),
 				bottomRight = new Vector2(width, height),
-                ySize_v = new Vector2(0, height / 2),
-                xSize_v = new Vector2(width / 2, 0);
-            int ySize = height / 2;
-            int xSize = width / 2;
+                ySize_v = new Vector2(0, ySize),
+                xSize_v = new Vector2(xSize, 0);
 
-			Viewport topLeftViewport = new Viewport();
-			topLeftViewport.X = 0;
-			topLeftViewport.Y = 0;
-			topLeftViewport.Width = xSize;
-			topLeftViewport.Height = ySize;
-			topLeftViewport.MinDepth = 0;
-			topLeftViewport.MaxDepth = 1;
-
-			Viewport topRightViewport = new Viewport();
-			topRightViewport.X = xSize;
-			topRightViewport.Y = 0;
-			topRightViewport.Width = xSize;
-			topRightViewport.Height = ySize;
-			topRightViewport.MinDepth = 0;
-			topRightViewport.MaxDepth = 1;
-
-			Viewport bottomLeftViewport = new Viewport();
-			bottomLeftViewport.X = 0;
-			bottomLeftViewport.Y = ySize;
-			bottomLeftViewport.Width = xSize;
-			bottomLeftViewport.Height = ySize;
-			bottomLeftViewport.MinDepth = 0;
-			bottomLeftViewport.MaxDepth = 1;
-
-			Viewport bottomRightViewport = new Viewport();
-			bottomRightViewport.X = xSize;
-			bottomRightViewport.Y = ySize;
-			bottomRightViewport.Width = xSize;
-			bottomRightViewport.Height = ySize;
-			bottomRightViewport.MinDepth = 0;
-			bottomRightViewport.MaxDepth = 1;
+			Viewport p1Viewport = new Viewport();
+			p1Viewport.X = 0;
+			p1Viewport.Y = 0;
+			p1Viewport.Width = xSize;
+			p1Viewport.Height = ySize;
+			p1Viewport.MinDepth = 0;
+			p1Viewport.MaxDepth = 1;
 
 			Viewport original = graphics.GraphicsDevice.Viewport;
 
-			graphics.GraphicsDevice.Viewport = topLeftViewport;
-			render_player(0, topLeft, middle);
+			render_player(0, topLeft, middle, p1Viewport);
 
-			graphics.GraphicsDevice.Viewport = topRightViewport;
-			render_player(1, topLeft + xSize_v, middle + xSize_v);
+			if (num_players > 1)
+			{
+				Viewport p2Viewport = new Viewport();
+				p2Viewport.X = 0;
+				p2Viewport.Y = ySize;
+				p2Viewport.Width = xSize;
+				p2Viewport.Height = ySize;
+				p2Viewport.MinDepth = 0;
+				p2Viewport.MaxDepth = 1;
 
-			graphics.GraphicsDevice.Viewport = bottomLeftViewport;
-			render_player(2, topLeft + ySize_v, middle + ySize_v);
+				render_player(1, topLeft + xSize_v, middle + xSize_v, p2Viewport );
 
-			graphics.GraphicsDevice.Viewport = bottomRightViewport;
-            render_player(3, middle, bottomRight);
-
+				if (num_players > 2)
+				{
+					Viewport p3Viewport = new Viewport();
+					p3Viewport.X = xSize;
+					p3Viewport.Y = 0;
+					p3Viewport.Width = xSize;
+					p3Viewport.Height = ySize;
+					p3Viewport.MinDepth = 0;
+					p3Viewport.MaxDepth = 1;
+			
+					render_player(2, topLeft + ySize_v, middle + ySize_v, p3Viewport);
+				
+					if (num_players > 3)
+					{
+						Viewport p4Viewport = new Viewport();
+						p4Viewport.X = xSize;
+						p4Viewport.Y = ySize;
+						p4Viewport.Width = xSize;
+						p4Viewport.Height = ySize;
+						p4Viewport.MinDepth = 0;
+						p4Viewport.MaxDepth = 1;
+						render_player(3, middle, bottomRight, p4Viewport);
+					}
+				}
+			}
 			graphics.GraphicsDevice.Viewport = original;
         }
-
-
-        private void render_player(int player, Vector2 topLeft, Vector2 bottomRight)
+		
+        private void render_player(int player, Vector2 topLeft, Vector2 bottomRight, Viewport viewport)
         {
             cur_View = player_views[player];  // this is the cur player
             //      player_views[player].set_camera(topLeft, bottomRight);
 
 
+			graphics.GraphicsDevice.Viewport = viewport;
             render_world();
             render_player_hud(player, topLeft, bottomRight);
         }
@@ -166,8 +182,8 @@ namespace WWxna.Code.MVC
                 throw new Exception(("Model " + to_rend.get_model_name() + " does not exist."));
 
             // don't render the current player
-            //        if (cur_View.player == to_rend)
-            //           return;
+                 if (cur_View.player == to_rend)
+                       return;
 
             to_rend.render(model, graphics, cur_View.get_camera());
         }

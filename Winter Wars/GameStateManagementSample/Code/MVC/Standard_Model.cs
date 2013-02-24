@@ -86,7 +86,7 @@ namespace WWxna.Code.MVC
             for (int i = 0; i < 4; i++)
             {
                 //Player p = new H_Player(controllers_[i], new Vector3(100, 100, 100 + 50*i), new Vector3(50, 50, 50));
-				Player p = new H_Player(game_, controllers_[i]);
+				Player p = new H_Player(game_, controllers_[i], get_World().get_next_Base_Tile().get_top_center());
 				add_player(p);
             }
 
@@ -147,9 +147,9 @@ namespace WWxna.Code.MVC
             throw new NotImplementedException();
         }
 
-        public Environment.World get_World()
+        public Environment.iWorld get_World()
         {
-            throw new NotImplementedException();
+            return world;
         }
 
         public void add_structure(Game_Objects.Structures.Structure s)

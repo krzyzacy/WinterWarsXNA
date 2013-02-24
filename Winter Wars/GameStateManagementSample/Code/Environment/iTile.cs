@@ -22,6 +22,8 @@ namespace WWxna.Code.Environment
         Vector3 get_structure_base();
         bool has_building();
         float get_height();
+
+        Vector3 get_top_center();
         
         //void build_structure(Structure buildtype, Team new_color);
 	    //void destroy_structure();

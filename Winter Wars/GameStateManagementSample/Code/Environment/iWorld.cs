@@ -15,8 +15,8 @@ namespace WWxna.Code.Environment
     //This interface represents the different types of possible games that will exist.. maybe
     public interface iWorld
     {
-        //iTile get_Tile(int row, int col);
-        //iTile get_Tile(Vector3 position);
+        iTile get_Tile(int row, int col);
+        iTile get_Tile(Vector3 position);
 
 	    //iTile player_is_looking_at(Vector3 player_pos, Vector3 look_dir);
 
@@ -38,7 +38,7 @@ namespace WWxna.Code.Environment
 	    //List<iTile> Get_Family(iTile Central);
 
 	    //Called during set up, gives next Tile that represents the base
-	    //iTile get_next_Base_Tile();
+	    iTile get_next_Base_Tile();
         //iTile get_center_Tile();
 	
 	    /* returns height of ground at that location*/

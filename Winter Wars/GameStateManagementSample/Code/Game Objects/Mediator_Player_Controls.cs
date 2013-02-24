@@ -38,6 +38,8 @@ namespace WWxna.Code.Game_Objects
 			shooter = Shoot_State.CHILL;
 			jumper = Jump_State.ON_GROUND;
 			AirTime = new Stopwatch();
+            AirTime.Reset();
+            AirTime.Stop();
         }
 
         public void Control_the_player()
@@ -66,21 +68,23 @@ namespace WWxna.Code.Game_Objects
 					break;
 				case Jump_State.BOOST:
 					//Boost Upwards (+Y)
-					if (AirTime.ElapsedMilliseconds <= 400)
-						p_avatar.accelerate(jump_vec);
-					else
-					{
-						jumper = Jump_State.FALLING_WITH_STYLE;
-						AirTime.Stop();
-						AirTime.Reset();
-					}
+                    if (AirTime.ElapsedMilliseconds <= 400)
+                    {
+                        //p_avatar.accelerate(jump_vec);
+                    }
+                    else
+                    {
+                        jumper = Jump_State.FALLING_WITH_STYLE;
+                        AirTime.Stop();
+                        AirTime.Reset();
+                    }
 					break;
 				case Jump_State.FALLING_WITH_STYLE:
 					if (p_avatar.is_on_ground())
 						jumper = Jump_State.ON_GROUND;
 					break;
 				case Jump_State.JET_PACK:
-					p_avatar.accelerate(jump_vec);
+					//p_avatar.accelerate(jump_vec);
 					break;
 				default:
 					if (p_avatar.is_on_ground())

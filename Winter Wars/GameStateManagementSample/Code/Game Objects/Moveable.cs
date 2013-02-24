@@ -47,7 +47,7 @@ namespace WWxna.Code.Game_Objects
         {
             base.Update();
 
-            //gravity();
+            gravity();
             center += velocity * GM_Proxy.Instance.Time_Step.Milliseconds;
 
             
@@ -74,7 +74,8 @@ namespace WWxna.Code.Game_Objects
 				velocity.Y = 0;
 
 			// %%%% must add the world calculations to this later as well
-			center.Y = 0;
+            /* hard coded */
+			center.Y = 400.0f;
 		}
 
     }

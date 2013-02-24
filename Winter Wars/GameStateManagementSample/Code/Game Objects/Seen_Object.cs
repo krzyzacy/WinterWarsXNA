@@ -103,10 +103,12 @@ namespace WWxna.Code.Game_Objects
 
 			Vector3 bottom_center = center - new Vector3(0, size.Y / 2, 0);
 			//I'm not exactly sure how to make this work
-			//if(bottom_center.Y <= GM_Proxy.Instance.get_World().getTile(center).get_top))
-			//CHEATING %%% FOR NOW
-			if (bottom_center.Y <= 0)
-				return true;
+            //if(bottom_center.Y <= GM_Proxy.Instance.get_World().get_Tile(center).get_height())
+            //    return true;
+
+            if (bottom_center.Y < 400.0f)
+                return true;
+
             return false;
         }
 

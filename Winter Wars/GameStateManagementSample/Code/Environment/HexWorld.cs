@@ -77,7 +77,7 @@ namespace WWxna.Code.Environment
         }
 
 
-        public iTile get_tile(Vector3 position)
+        public iTile get_Tile(Vector3 position)
         {
             float xr = position.X;
             float yr = position.Y;
@@ -199,7 +199,7 @@ namespace WWxna.Code.Environment
             }
         }
 
-        public iTile get_tile(int row, int col)
+        public iTile get_Tile(int row, int col)
         {
             return map[row][col];
         }

@@ -82,6 +82,11 @@ namespace WWxna.Code.Environment
             return center.Y + tile_size;
         }
 
+        public Vector3 get_top_center()
+        {
+            return new Vector3(center.X, center.Y + tile_size, center.Z);
+        }
+
         /*
         public bool set_height(float height__){
 	        float Max_Tile_Height = Outer_Max_TH;

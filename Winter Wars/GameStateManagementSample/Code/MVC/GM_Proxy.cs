@@ -111,5 +111,11 @@ namespace WWxna.Code.MVC
         {
             GM.Load_Content();
         }
+
+		public World get_World()
+		{
+			return GM.get_World();
+		}
+
     }
 }

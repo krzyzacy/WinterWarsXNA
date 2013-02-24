@@ -13,7 +13,7 @@ using WWxna.Code.Game_Objects.Structures;
 namespace WWxna.Code.Environment
 {
     //interface for tiles
-    interface iTile
+    public interface iTile
     {
         Seen_Object get_renderable();
         int get_col();

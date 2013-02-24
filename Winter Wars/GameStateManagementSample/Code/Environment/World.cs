@@ -12,7 +12,7 @@ using WWxna.Code.Game_Objects.Structures;
 
 namespace WWxna.Code.Environment
 {
-    class World : iWorld
+    public class World : iWorld
     {
         List< List<iTile> > map;
         MVC.View view;

@@ -12,7 +12,7 @@ using WWxna.Code.Game_Objects.Structures;
 
 namespace WWxna.Code.Environment
 {
-    class IceTile : Seen_Object, iTile
+    public class IceTile : Seen_Object, iTile
     {
         Structure Building;
 	    //TEAM_INDEX team;

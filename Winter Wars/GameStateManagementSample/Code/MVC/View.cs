@@ -11,7 +11,7 @@ using WWxna.Code.Game_Objects;
 
 namespace WWxna.Code.MVC
 {
-    class View
+    public class View
     {
         private GraphicsDeviceManager graphics;
         private List<Player_View> player_views;

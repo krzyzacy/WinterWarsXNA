@@ -70,5 +70,10 @@ namespace WWxna.Code.MVC
         {
             throw new NotImplementedException("ld con  GM");
         }
+
+		public virtual World get_World()
+		{
+			return (World)world;
+		}
     }
 }

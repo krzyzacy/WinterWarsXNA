@@ -13,7 +13,7 @@ using WWxna.Code.Game_Objects.Structures;
 namespace WWxna.Code.Environment
 {
     //This interface represents the different types of possible games that will exist.. maybe
-    interface iWorld
+    public interface iWorld
     {
         //iTile get_Tile(int row, int col);
         //iTile get_Tile(Vector3 position);

@@ -39,8 +39,11 @@ namespace WWxna.Code.Environment
             float tH = (float)(tile_size * 1.25);
 
             float center_x = (radius_ - 1) * tR * 2 + tR;
+            if (radius_ % 2 == 0) center_x += tR;
+
             float center_y = (radius_ - 1) * (tH + tS) + tS;
-            float map_size = tS * (radius_ - 1);
+            float map_size = tR * (radius_ - 2) * 2;
+            float map_outer_r = tR * (radius_ - 1) * 2;
 
             for (int h = 0; h < radius; h++)
             {
@@ -62,15 +65,27 @@ namespace WWxna.Code.Environment
 
                     iTile tmp;
                     float dist = (float)Math.Sqrt((Math.Abs(center.X - center_x) * Math.Abs(center.X - center_x)) 
-                                + Math.Abs(center.Y - center_y) * Math.Abs(center.Y - center_y));  
-                    if (dist > map_size)
+                                + Math.Abs(center.Z - center_y) * Math.Abs(center.Z - center_y));
+                    if (dist > map_outer_r)
+                    {
+                        // out of bound, do nothing
+                    }
+                    else if (dist > map_size)
+                    {
                         tmp = new BoundaryTile(tile_size, center, new Vector3(scale_size, scale_size, scale_size), w, h);
+                        map[h].Add(tmp);
+                        view.add_renderable(map[h][w].get_renderable());
+                    }
                     else
+                    {
                         tmp = new IceTile(tile_size, center, new Vector3(scale_size, scale_size, scale_size), w, h);
+                        map[h].Add(tmp);
+                        view.add_renderable(map[h][w].get_renderable());
+                    }
 
-                    map[h].Add(tmp);
+                    
 
-                    view.add_renderable(map[h][w].get_renderable());
+                   
 
                 }
             }
@@ -240,7 +255,20 @@ namespace WWxna.Code.Environment
 
         public iTile get_next_Base_Tile()
         {
-            return null;
+            cur_team_count++;
+            switch (cur_team_count)
+            {
+                case 1:
+                    return map[1][1];
+                case 2:
+                    return map[radius - 2][radius - 2];
+                case 3:
+                    return map[radius - 2][1];
+                case 4:
+                    return map[1][radius - 2];
+                default:
+                    return null;
+            }
         }
 
         /*

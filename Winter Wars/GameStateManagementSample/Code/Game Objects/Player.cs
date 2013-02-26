@@ -72,7 +72,9 @@ namespace WWxna.Code.Game_Objects
             PC_mediator = new Mediator_Player_Controls(control_, this);
 
             camera.Perspective(90, 4 / 3, 2f, 3000);
-
+            //game_.GraphicsDevice.Viewport.AspectRatio
+            //DO THIS BRO
+            //aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
         }
 
         public CameraComponent Camera_p

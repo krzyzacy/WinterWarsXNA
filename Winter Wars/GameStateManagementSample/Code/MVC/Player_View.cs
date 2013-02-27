@@ -35,16 +35,38 @@ namespace WWxna.Code.MVC
 
         public void render_hud(Vector2 topLeft, Vector2 bottomRight)
         {
-            //float unit_px = (bottomRight.X - topLeft.X) / 480.0f;
+            float unit_width = (bottomRight.X - topLeft.X) / 1280.0f;
+            float unit_height = (bottomRight.Y - topLeft.Y) / 800.0f;
+
+            Texture2D avartar_Texture = content.Load<Texture2D>("Textures\\HUDTextures\\AvartarFrame");
+            Rectangle avartar_rec = new Rectangle(0, 0, (int)(300 * unit_width), (int)(300 * unit_height));
+
+            Texture2D building_Texture = content.Load<Texture2D>("Textures\\HUDTextures\\BuildingFrame");
+            Rectangle building_rec = new Rectangle((int)(980 * unit_width), 0, (int)(300 * unit_width), (int)(300 * unit_height));
+
+            Texture2D message_Texture = content.Load<Texture2D>("Textures\\HUDTextures\\MessageBar");
+            Rectangle message_rec = new Rectangle(0, (int)(500 * unit_height), (int)(1280 * unit_width), (int)(300 * unit_height));
+
+            Texture2D flake_Texture = content.Load<Texture2D>("Textures\\HUDTextures\\FLAKE");
+            Rectangle flake_rec = new Rectangle((int)(600 * unit_width), (int)(360 * unit_height), (int)(80 * unit_width), (int)(80 * unit_height));
+
+            graphics.GraphicsDevice.BlendState = BlendState.NonPremultiplied;
+            graphics.GraphicsDevice.DepthStencilState = DepthStencilState.None;
 
             //Vector2 textpos = new Vector2(300 * unit_px, 100 * unit_px);
             //SpriteFont gameFont = content.Load<SpriteFont>("gamefont");
             //String output = "Test String";
             //Vector2 FontOrigin = gameFont.MeasureString(output) / 2;
-            //spriteBatch.Begin();
+            spriteBatch.Begin();
             //spriteBatch.DrawString(gameFont, output, textpos, Color.LightGreen,
             //                    0, FontOrigin, unit_px, SpriteEffects.None, 0.5f);
-            //spriteBatch.End();
+
+            spriteBatch.Draw(avartar_Texture, avartar_rec, Color.White);
+            spriteBatch.Draw(building_Texture, building_rec, Color.White);
+            spriteBatch.Draw(message_Texture, message_rec, Color.White);
+            spriteBatch.Draw(flake_Texture, flake_rec, Color.White);
+
+            spriteBatch.End();
         }
 
 //	    void render_minimap(Vector2 topLeft, Vector2 bottomRight, std::string avartar);

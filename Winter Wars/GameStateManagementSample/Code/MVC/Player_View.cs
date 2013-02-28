@@ -66,11 +66,40 @@ namespace WWxna.Code.MVC
             spriteBatch.Draw(message_Texture, message_rec, Color.White);
             spriteBatch.Draw(flake_Texture, flake_rec, Color.White);
 
+            if (player.Mini_Map)
+            {
+                render_minimap(topLeft,bottomRight, spriteBatch);
+            }
+
             spriteBatch.End();
         }
 
-//	    void render_minimap(Vector2 topLeft, Vector2 bottomRight, std::string avartar);
+        void render_minimap(Vector2 topLeft, Vector2 bottomRight, SpriteBatch spriteBatch)
+        {
+            float unit_width = (bottomRight.X - topLeft.X) / 1280.0f;
+            float unit_height = (bottomRight.Y - topLeft.Y) / 800.0f;
 
+            float scale_size = 0.11f;
+
+            Texture2D tile_Texture;
+
+            for (int row = 0; row < GM_Proxy.Instance.get_World().get_height(); row++)
+            {
+                for (int col = 0; col < GM_Proxy.Instance.get_World().get_width(); col++)
+                {
+                    if (GM_Proxy.Instance.get_World().get_Tile(row, col).get_tile_name() == "Void") continue;
+                    
+                    if (GM_Proxy.Instance.get_World().get_Tile(row, col).get_tile_name() == "Boundary")
+                        tile_Texture = content.Load<Texture2D>("Textures\\minimap\\Cliff_hexagon");
+                    else
+                        tile_Texture = content.Load<Texture2D>("Textures\\minimap\\Neutral_hexagon");
+
+                    Vector3 tilePos = GM_Proxy.Instance.get_World().get_Tile(row, col).get_top_center();
+                    Rectangle tile_rec = new Rectangle((int)((3200 + tilePos.X) * unit_width * scale_size), (int)((1600 + tilePos.Z) * unit_height * scale_size), (int)(75 * unit_width), (int)(75 * unit_height));
+                    spriteBatch.Draw(tile_Texture, tile_rec, Color.White);
+                }
+            }
+        }
 //	    void render_build(Vector2 topLeft, Vector2 bottomRight);
 
 //	    void render_death(Vector2 topLeft, Vector2 bottomRight);

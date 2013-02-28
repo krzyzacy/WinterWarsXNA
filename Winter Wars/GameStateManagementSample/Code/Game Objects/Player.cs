@@ -57,8 +57,8 @@ namespace WWxna.Code.Game_Objects
         public Boolean Mini_Map
         {
             get
-            { 
-                return mini_map
+            {
+                return mini_map;
             }
             set
             {

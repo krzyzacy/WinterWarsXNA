@@ -89,6 +89,14 @@ namespace WWxna.Code.Environment
 	        }
         }
 
+        public int get_height(){
+            return map_height;
+        }
+
+        public int get_width(){
+            return map_width;
+        }
+
 
         public iTile get_Tile(Vector3 position){
 	        float xr = position.X;

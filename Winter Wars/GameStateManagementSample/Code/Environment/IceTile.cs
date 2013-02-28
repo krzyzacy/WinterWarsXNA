@@ -131,6 +131,10 @@ namespace WWxna.Code.Environment
 			return "IceTile";
 		}
 
+        public String get_tile_name()
+        {
+            return "Ice";
+        }
 
 		public Vector3 get_structure_base()	{
 			return new Vector3(center.X, center.Y, center.Z + tile_size);

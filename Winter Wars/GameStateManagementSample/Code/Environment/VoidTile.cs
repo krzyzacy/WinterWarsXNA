@@ -12,40 +12,11 @@ using WWxna.Code.Game_Objects.Structures;
 
 namespace WWxna.Code.Environment
 {
-    public class BoundaryTile : Seen_Object, iTile
+    public class VoidTile : Seen_Object, iTile
     {
-        Structure Building;
-        //TEAM_INDEX team;
-        int col;
-        int row;
-        float tile_size;
 
-        public BoundaryTile(float tile_size__,
-                Vector3 center__,
-                Vector3 scale__,
-                int col__,
-                int row__
-        )
+        public VoidTile()
         {
-            center__.Y = (float)1.7 * tile_size__;
-
-            this.tile_size = tile_size__;
-            this.center = center__;
-            this.size = scale__;
-            this.col = col__;
-            this.row = row__;
-            this.rotation = new Quaternion(0, 0, 1, 0);
-        }
-
-        public BoundaryTile(BoundaryTile rhs)
-        {
-            this.tile_size = rhs.tile_size;
-            this.Building = rhs.Building;
-            this.center = rhs.center;
-            this.size = rhs.size;
-            this.col = rhs.col;
-            this.row = rhs.row;
-            this.rotation = new Quaternion(0, 0, 1, 0);
         }
 
         /* cannot overload '=' ... lol ...
@@ -69,27 +40,27 @@ namespace WWxna.Code.Environment
 
         public int get_col()
         {
-            return col;
+            return 0;
         }
 
         public int get_row()
         {
-            return row;
+            return 0;
         }
 
         public bool has_building()
         {
-            return !(Building == null);
+            return false;
         }
 
         public float get_height()
         {
-            return center.Y + tile_size;
+            return 0.0f;
         }
 
         public Vector3 get_top_center()
         {
-            return new Vector3(center.X, center.Y + tile_size, center.Z);
+            return new Vector3(0, 0, 0);
         }
 
         /*
@@ -139,13 +110,12 @@ namespace WWxna.Code.Environment
 
         public String get_tile_name()
         {
-            return "Boundary";
+            return "Void";
         }
-
 
         public Vector3 get_structure_base()
         {
-            return new Vector3(center.X, center.Y, center.Z + tile_size);
+            return new Vector3(0, 0, 0);
         }
 
         /* leave Strucures alone xD

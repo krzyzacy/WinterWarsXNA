@@ -17,6 +17,9 @@ namespace WWxna.Code.Environment
     {
         iTile get_Tile(int row, int col);
         iTile get_Tile(Vector3 position);
+        
+        int get_width();
+        int get_height();
 
 	    //iTile player_is_looking_at(Vector3 player_pos, Vector3 look_dir);
 

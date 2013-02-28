@@ -52,6 +52,19 @@ namespace WWxna.Code.Game_Objects
     {
         private CameraComponent camera;
         protected Mediator_Player_Controls PC_mediator;
+        private bool mini_map;
+
+        public Boolean Mini_Map
+        {
+            get
+            { 
+                return mini_map
+            }
+            set
+            {
+                mini_map = value; 
+            }
+        }
 
         private H_Player() { } //No default constructor
 

@@ -21,6 +21,7 @@ Content\Basic Textures\Player\WOOL_0.xnb
 Content\Basic Textures\Player\FACE_0.xnb
 Content\Basic Textures\Tile\ICECLIFF_0.xnb
 Content\Basic Textures\Tile\ICE_0.xnb
+Content\Textures\HUDTextures\FLAKE.xnb
 Content\Textures\HUDTextures\AvartarFrame.xnb
 Content\Textures\HUDTextures\BuildingFrame.xnb
 Content\Textures\HUDTextures\Frame.xnb
@@ -34,4 +35,3 @@ Content\Textures\HUDTextures\Snowflake-6.xnb
 Content\Textures\HUDTextures\Snow_Hit_1.xnb
 Content\Textures\HUDTextures\Snow_Hit_2.xnb
 Content\Textures\HUDTextures\Snow_Hit_3.xnb
-Content\Textures\HUDTextures\FLAKE.xnb

@@ -44,6 +44,9 @@ namespace WWxna.Code.Game_Objects
 
 		public void Control_the_player()
 		{
+			p_avatar.Mini_Map = c_input.State.mini_map;
+
+
 			//calc movement, friction handled here
 			calculate_movement();
 

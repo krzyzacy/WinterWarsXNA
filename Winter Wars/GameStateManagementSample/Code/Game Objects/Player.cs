@@ -18,7 +18,14 @@ namespace WWxna.Code.Game_Objects
     {
         //Going to mostly implement it here and then maybe redo it in AI or H
         //Need to also bring in constructurs to make this as versatile as possible
-        private Team myTeam;
+		public Team team
+		{
+			get
+			{
+				return team;
+			}
+		}
+
         protected bool mini_open;
         protected BoundingSphere body;
 
@@ -33,6 +40,7 @@ namespace WWxna.Code.Game_Objects
 
         }
 
+		
 
         public override void Update()
         {

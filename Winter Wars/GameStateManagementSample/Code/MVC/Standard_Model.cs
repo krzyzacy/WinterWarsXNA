@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
 using WWxna.Code.Game_Objects;
+using WWxna.Code.Game_Objects.Structures;
 using WWxna.Code.Environment;
 
 namespace WWxna.Code.MVC
@@ -45,12 +46,9 @@ namespace WWxna.Code.MVC
 
 		public override void Update()
 		{
-
-
-			//Obviously this isnt perfect yet, so for now just updates players
-			foreach (Player p in players)
+			foreach (Collidable c in colliders)
 			{
-				p.Update();
+				c.Update();
 			}
 
 			// check collisions
@@ -71,16 +69,9 @@ namespace WWxna.Code.MVC
 
 		public override void start_up(Game game_, GraphicsDeviceManager graphics_, ContentManager content, Controls[] controllers_)
         {
-
-            //ship = new Seen_Object(new Vector3(-500.0f, 0.0f, -5000.0f), new Vector3(100,100,100));
-            //ship1 = new Seen_Object(new Vector3(500.0f, 0.0f, -5000.0f), new Vector3(100, 100, 100));
-            //ship2 = new Seen_Object(new Vector3(0.0f, 500.0f, -5000.0f), new Vector3(100, 100, 100));
-
-            //johnny = new H_Player(controllers_[1]);
-
             //if his continues to cause problems could just put it in play state and have referene
             view = new View(graphics_, content);
-            world = new HexWorld(view, 4, 100);
+            world = new World(view, 10, 10 ,100);
 
 
             for (int i = 0; i < 4; i++)
@@ -91,17 +82,12 @@ namespace WWxna.Code.MVC
             }
 
 			
+			add_collidable(new Fort(null, world.get_Tile(5,5)));
+
 			view.add_player_view(new Player_View((H_Player)players.ElementAt(0), view.get_graphics(), view.get_content()));
 			view.add_player_view(new Player_View((H_Player)players.ElementAt(2), view.get_graphics(), view.get_content()));
 			view.add_player_view(new Player_View((H_Player)players.ElementAt(1), view.get_graphics(), view.get_content()));
 			view.add_player_view(new Player_View((H_Player)players.ElementAt(3), view.get_graphics(), view.get_content()));
-            
-            //view.add_renderable(ship);
-            //view.add_renderable(ship1);
-            //view.add_renderable(ship2);
-
-            
-            
             
         }
 

@@ -56,8 +56,24 @@ namespace WWxna.Code
 
         #endregion
 
-        //This class is implemented as a way to give us some proogram wide variables to use
-        // such as a basic size of construct
 
-    }
+
+		#region Fun_Variables
+		// The following variables are variables that need to be tweaked to determine
+		// gameplay fun-ness. Put anything you can think of here. 
+		// We can make a menu that lets players decide what values these should have too.
+
+			#region structure_stuff
+				public static float fort_integrity = 250;
+				public static float healing_pool_integrity = 150;
+				public static float snowman_integrity = 100;
+				public static float snow_factory_integrity = 80;
+
+				public static float healing_rate = 30;
+		
+				public static Vector3 snowman_snowball_size = new Vector3(8,8,8);
+			#endregion
+
+		#endregion
+	}
 }

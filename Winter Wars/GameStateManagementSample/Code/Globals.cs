@@ -72,6 +72,9 @@ namespace WWxna.Code
 				public static float healing_rate = 30;
 		
 				public static Vector3 snowman_snowball_size = new Vector3(8,8,8);
+
+				public static int time_as_present = 1500; // millisecs
+				public static int time_isolated = 10000; // millisecs isolated from network
 			#endregion
 
 		#endregion

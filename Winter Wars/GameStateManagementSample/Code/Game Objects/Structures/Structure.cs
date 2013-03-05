@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 
 
 using Microsoft.Xna.Framework;
@@ -27,8 +28,8 @@ namespace WWxna.Code.Game_Objects.Structures
 		protected Team owner;
 		protected iTile tile_on;
 
-	//	Chronometer<Time> Isolation_Clock;
-	//	Chronometer<Time> Present_Clock;	
+		Stopwatch Isolation_Clock = new Stopwatch();
+		Stopwatch Present_Clock = new Stopwatch();	
 		protected bool opened;
 
 	//	Collision::Capsule body;
@@ -51,7 +52,7 @@ namespace WWxna.Code.Game_Objects.Structures
 			create_body();
 
 			save_height = tile_on.get_height();
-		//	Present_Clock.start();
+			Present_Clock.Start();
 		}
 
 		public override void Update()
@@ -67,18 +68,18 @@ namespace WWxna.Code.Game_Objects.Structures
 				owner.remove_tile(tile_on);
 			}
 	
-/*			if(Isolation_Clock.seconds() > 10)	
+			if(Isolation_Clock.ElapsedMilliseconds > Globals.time_isolated)	
 			{
 				Status = Structure_State_e.DESTROYED;
-	//			Game_Model::get().play_chainbreak();
+	//			Game_Model::get().play_chainbreak(); // Sound
 			}
-*/
-	/*		if (Present_Clock.seconds() > 1.5 && !opened)
+
+			if (Present_Clock.ElapsedMilliseconds > Globals.time_as_present && !opened)
 			{
 				opened = true; 
 				Status = Structure_State_e.UNWRAP_MODE;
 			}
-*/
+
 			if (Status == Structure_State_e.UNWRAP_MODE)
 			{
 	
@@ -161,14 +162,14 @@ namespace WWxna.Code.Game_Objects.Structures
 		public void begin_isolation()
 		{
 			Connected_to_Team = false;
-	//		Isolation_Clock.start();
+			Isolation_Clock.Start();
 		}
 
 		public void reintegrate()
 		{
 			Connected_to_Team = true;
-//			Isolation_Clock.stop();
-//			Isolation_Clock.reset();
+			Isolation_Clock.Stop();
+			Isolation_Clock.Reset();
 		}
 
 	//	virtual void handle_player_in_range(Team color, Collision::Capsule person)	{}

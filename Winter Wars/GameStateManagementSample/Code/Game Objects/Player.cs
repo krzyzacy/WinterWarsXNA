@@ -16,6 +16,13 @@ namespace WWxna.Code.Game_Objects
 
     public class Player : Moveable
     {
+        private static float Max_projectile_size = 50;
+        private static float snowball_making_rate = 25;
+        private static float snow_depletion_rate = 50;
+        private static float snow_scooping_rate = 25;
+        
+
+
         //Going to mostly implement it here and then maybe redo it in AI or H
         //Need to also bring in constructurs to make this as versatile as possible
 		public Team team
@@ -28,6 +35,21 @@ namespace WWxna.Code.Game_Objects
 
         protected bool mini_open;
         protected BoundingSphere body;
+        protected float snowball_radius;
+
+        private bool player_KO;
+        public Boolean Player_KO
+        {
+            get
+            {
+                return player_KO;
+            }
+            protected set
+            {
+                player_KO = value;
+            }
+        }
+   
 
 
         public Player() : this(Globals.Game_Obj_Origin , Globals.Game_Obj_Size, Globals.Game_Obj_Quat) { }
@@ -36,8 +58,7 @@ namespace WWxna.Code.Game_Objects
         public Player(Vector3 center_, Vector3 size_, Quaternion theta_)
             : base(center_, size_, theta_)
         {
-            
-
+            player_KO = false;
         }
 
         public override void Update()
@@ -57,7 +78,21 @@ namespace WWxna.Code.Game_Objects
 
 		public static new int ID()
 		{ return 1; }
-        
+
+
+
+
+
+        public void charge_ball()
+        {
+            if (Player_KO)
+                return;
+
+            
+
+        }
+
+
     }
 
     public class H_Player : Player

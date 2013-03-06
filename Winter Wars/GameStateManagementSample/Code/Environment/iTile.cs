@@ -26,8 +26,8 @@ namespace WWxna.Code.Environment
         Vector3 get_top_center();
         String get_tile_name();
         
-        //void build_structure(Structure buildtype, Team new_color);
-	    //void destroy_structure();
+        void build_structure(Structure buildtype, Team new_color);
+		void destroy_structure();
 
         //Structure get_building();
 

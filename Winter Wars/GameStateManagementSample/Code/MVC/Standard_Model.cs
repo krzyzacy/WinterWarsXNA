@@ -43,6 +43,29 @@ namespace WWxna.Code.MVC
         }
 
 
+		public override void start_up(Game game_, GraphicsDeviceManager graphics_, ContentManager content, Controls[] controllers_)
+        {
+            //if his continues to cause problems could just put it in play state and have referene
+            view = new View(graphics_, content);
+            world = new World(view, 10, 10 ,100);
+			//world = new HexWorld(view, 5, 100);
+
+            for (int i = 0; i < 4; i++)
+            {
+                //Player p = new H_Player(controllers_[i], new Vector3(100, 100, 100 + 50*i), new Vector3(50, 50, 50));
+				Player p = new H_Player(game_, controllers_[i], get_World().get_next_Base_Tile().get_top_center());
+				add_player(p);
+            }
+
+			
+			add_structure(new Fort(null, world.get_Tile(5,5)));
+
+			view.add_player_view(new Player_View((H_Player)players.ElementAt(0), view.get_graphics(), view.get_content()));
+			view.add_player_view(new Player_View((H_Player)players.ElementAt(2), view.get_graphics(), view.get_content()));
+			view.add_player_view(new Player_View((H_Player)players.ElementAt(1), view.get_graphics(), view.get_content()));
+			view.add_player_view(new Player_View((H_Player)players.ElementAt(3), view.get_graphics(), view.get_content()));
+            
+        }
 
 		public override void Update()
 		{
@@ -67,29 +90,7 @@ namespace WWxna.Code.MVC
 			view.load_models();
 		}
 
-		public override void start_up(Game game_, GraphicsDeviceManager graphics_, ContentManager content, Controls[] controllers_)
-        {
-            //if his continues to cause problems could just put it in play state and have referene
-            view = new View(graphics_, content);
-            world = new World(view, 10, 10 ,100);
 
-
-            for (int i = 0; i < 4; i++)
-            {
-                //Player p = new H_Player(controllers_[i], new Vector3(100, 100, 100 + 50*i), new Vector3(50, 50, 50));
-				Player p = new H_Player(game_, controllers_[i], get_World().get_next_Base_Tile().get_top_center());
-				add_player(p);
-            }
-
-			
-			add_collidable(new Fort(null, world.get_Tile(5,5)));
-
-			view.add_player_view(new Player_View((H_Player)players.ElementAt(0), view.get_graphics(), view.get_content()));
-			view.add_player_view(new Player_View((H_Player)players.ElementAt(2), view.get_graphics(), view.get_content()));
-			view.add_player_view(new Player_View((H_Player)players.ElementAt(1), view.get_graphics(), view.get_content()));
-			view.add_player_view(new Player_View((H_Player)players.ElementAt(3), view.get_graphics(), view.get_content()));
-            
-        }
 
         public void restart()
         {
@@ -111,43 +112,15 @@ namespace WWxna.Code.MVC
             throw new NotImplementedException();
         }
 
-		public void add_player(Player p)
-		{
-			players.Add(p);
-			add_moveable(p);
-		}
-
-		public void add_moveable(Moveable m)
-		{
-			movers.Add(m);
-			add_collidable(m);
-		}
-
-		public void add_collidable(Collidable c)
-		{
-			colliders.Add(c);
-			view.add_renderable(c);
-		}
-
-        public Environment.Team get_team(int i)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Environment.iWorld get_World()
-        {
-            return world;
-        }
-
-        public void add_structure(Game_Objects.Structures.Structure s)
-        {
-            throw new NotImplementedException();
-        }
-
         public void add_effect(Environment.Effect e)
         {
             throw new NotImplementedException();
         }
+
+		public override iWorld get_World()
+		{
+			return world;
+		}
 
         public void Clean_dead()
         {

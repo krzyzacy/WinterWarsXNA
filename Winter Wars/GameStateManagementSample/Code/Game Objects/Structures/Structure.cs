@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 
-
+using WWxna.Code.MVC;
 using Microsoft.Xna.Framework;
 
 using WWxna.Code.Environment;
@@ -16,8 +16,45 @@ namespace WWxna.Code.Game_Objects.Structures
 		PRESENT_MODE, UNWRAP_MODE, BUILT, DAMAGED, DESTROYED
 	};
 
-    abstract class Structure : Collidable
+	abstract public class Structure : Collidable
     {
+		public static Structure create(Structure_Type_e type, Team team_, iTile tile)
+		{
+			Structure st;
+		
+			switch(type)	
+			{
+				case Structure_Type_e.SNOWMAN:
+					st =  new Snowman(team_, tile);		
+					break;
+				case Structure_Type_e.FORT:
+					st =  new Fort(team_, tile);
+					break;
+				case Structure_Type_e.SNOW_FACTORY:
+					st =  new Snow_Factory(team_, tile);
+					break;
+				case Structure_Type_e.HEALING_POOL:
+					st =  new Healing_Pool(team_, tile);
+					break;
+	/*			case Structure_Type_e.TREE:
+					st = new Tree(team_, tile );
+					break;
+				case Structure_Type_e.BASE:
+					st = new Base(team_, tile);
+					break;
+*/
+				default:
+					throw new Exception("Invalid Structure Type");
+					
+			}
+
+			tile.build_structure(st, team_);
+			GM_Proxy.Instance.add_structure(st);
+			return st;
+		}
+
+
+
 		protected float health;
 		protected Structure_State_e Status;
 		protected bool Connected_to_Team;
@@ -34,10 +71,9 @@ namespace WWxna.Code.Game_Objects.Structures
 
 	//	Collision::Capsule body;
 		protected float save_height;
-
-
-		protected Structure(Team team, iTile tile_, float radius = 10.0f) :
-			base(tile_.get_top_center() + new Vector3(0, 400, 0), new Vector3(1,1,1) * radius)
+		
+		protected Structure(Team team, iTile tile_, float radius = 100.0f) :
+			base(tile_.get_structure_base() + new Vector3(0, 400, 0), new Vector3(1, 1, 1) * radius)
 		{
 			owner = team; 
 			health = get_integrity(); 

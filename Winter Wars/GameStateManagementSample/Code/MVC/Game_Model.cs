@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Content;
 
 using WWxna.Code.Environment;
 using WWxna.Code.Game_Objects;
+using WWxna.Code.Game_Objects.Structures;
 using WWxna.Code.MVC;
 
 namespace WWxna.Code.MVC
@@ -16,18 +17,20 @@ namespace WWxna.Code.MVC
         protected TimeSpan timestep;
         public TimeSpan TimeStep
         {
-            get
-            {
+            get 
+			{
                 return timestep;
             }
-            set
-            {
+			
+			set
+			{
                 timestep = value;
             }
         }
 
         protected Collision_Table table;
-        protected List<Player> players;
+		protected List<Player> players;
+		protected List<Structure> structures;
         protected List<Team> teams;
         protected HashSet<Collidable> colliders;
 		protected HashSet<Moveable> movers;
@@ -38,12 +41,42 @@ namespace WWxna.Code.MVC
         public Game_Model()
         {
             table = new Collision_Table();
-            players = new List<Player>();
+			players = new List<Player>();
+			structures = new List<Structure>();
             teams = new List<Team>();
             colliders = new HashSet<Collidable>();
 			movers = new HashSet<Moveable>();
         }
 
+
+		public void add_player(Player p)
+		{
+			players.Add(p);
+			add_moveable(p);
+		}
+
+		public void add_moveable(Moveable m)
+		{
+			movers.Add(m);
+			add_collidable(m);
+		}
+
+		public void add_collidable(Collidable c)
+		{
+			colliders.Add(c);
+			view.add_renderable(c);
+		}
+
+		public void add_structure(Structure s)
+		{
+			structures.Add(s);
+			add_collidable(s);
+		}
+
+		public Environment.Team get_team(int i)
+		{
+			return teams[i];
+		}
 
         public virtual void Update()
         {

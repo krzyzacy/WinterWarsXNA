@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 using WWxna.Code.Environment;
 using WWxna.Code.MVC;
-
+using WWxna.Code.Game_Objects.Structures;
 
 namespace WWxna.Code.Game_Objects
 {
@@ -40,13 +40,17 @@ namespace WWxna.Code.Game_Objects
 
         }
 
-		
-
         public override void Update()
         {
             //Debug.Print("CenterZ: " + center.Z);
             base.Update();
         }
+
+		public void build_structure(Structure_Type_e type)
+		{
+		//	Structure.create(type, null, GM_Proxy.Instance.get_World().get_Tile(center));
+		}
+
 
 		public override int get_ID()
 		{ return ID(); }

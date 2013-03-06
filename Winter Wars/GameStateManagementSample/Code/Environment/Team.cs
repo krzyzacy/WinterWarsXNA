@@ -10,8 +10,8 @@ using WWxna.Code.Game_Objects;
 namespace WWxna.Code.Environment
 {
 	public enum Team_Color_e {
-		NEUTRAL, GREEN, RED, BLUE, ORANGE
-	};
+		GREEN, RED, BLUE, ORANGE, YELLOW, PURPLE
+	}; // USE null INSTEAD OF NEUTRAL
 
     public class Team
     {

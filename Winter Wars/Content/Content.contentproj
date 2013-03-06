@@ -206,7 +206,13 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Models\fort.FBX">
+      <Name>fort</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\minimap\Blue_hexagon.png">
       <Name>Blue_hexagon</Name>
@@ -240,6 +246,13 @@
     </Compile>
     <Compile Include="Textures\minimap\Red_hexagon.png">
       <Name>Red_hexagon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\blue_fort.tga">
+      <Name>blue_fort</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

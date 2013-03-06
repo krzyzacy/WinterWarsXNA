@@ -13,6 +13,10 @@ namespace WWxna.Code
     /// for the whole project
     /// </summary>
 
+	public enum Structure_Type_e
+	{
+		SNOWMAN, FORT, SNOW_FACTORY, HEALING_POOL, TREE, BASE
+	};
 
     public static class Globals
     {

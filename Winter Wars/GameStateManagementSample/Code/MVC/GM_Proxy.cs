@@ -5,11 +5,11 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
 
 
 using WWxna.Code.Environment;
 using WWxna.Code.Game_Objects;
+using WWxna.Code.Game_Objects.Structures;
 
 namespace WWxna.Code.MVC
 {
@@ -115,6 +115,11 @@ namespace WWxna.Code.MVC
 		public iWorld get_World()
 		{
 			return GM.get_World();
+		}
+
+		public void add_structure(Structure s)
+		{
+			GM.add_structure(s);
 		}
 
     }

@@ -132,6 +132,8 @@ namespace WWxna.Code.Game_Objects
         protected Mediator_Player_Controls PC_mediator;
         private bool mini_map;
 
+		public Structure_Type_e structure_wheel_pos;
+
         public Boolean Mini_Map
         {
             get
@@ -161,6 +163,8 @@ namespace WWxna.Code.Game_Objects
 
             camera = new CameraComponent(game_);
             PC_mediator = new Mediator_Player_Controls(control_, this);
+
+			structure_wheel_pos = Structure_Type_e.HEALING_POOL;
 
             camera.Perspective(90, 4 / 3, 2f, 3000);
             //game_.GraphicsDevice.Viewport.AspectRatio
@@ -197,6 +201,8 @@ namespace WWxna.Code.Game_Objects
             Camera_p.Position = center;
 
         }
+
+		
 
         public override void throw_ball()
         {

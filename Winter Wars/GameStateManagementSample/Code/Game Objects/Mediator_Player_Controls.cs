@@ -29,6 +29,8 @@ namespace WWxna.Code.Game_Objects
 
 		private Stopwatch AirTime;
 
+		private List<Structure_Type_e> structure_wheel = new List<Structure_Type_e>();
+		private int cur_structure;  //the index we're at in the wheel
 		
 
 		public Mediator_Player_Controls(Controls c_, H_Player p_)
@@ -40,13 +42,18 @@ namespace WWxna.Code.Game_Objects
 			AirTime = new Stopwatch();
 			AirTime.Reset();
 			AirTime.Stop();
+
+			cur_structure = 0;
+			structure_wheel.Add(Structure_Type_e.HEALING_POOL);
+			structure_wheel.Add(Structure_Type_e.SNOW_FACTORY);
+			structure_wheel.Add(Structure_Type_e.FORT);
+			structure_wheel.Add(Structure_Type_e.SNOWMAN);
 		}
 
 		public void Control_the_player()
 		{
 			p_avatar.Mini_Map = c_input.State.mini_map;
-
-
+			
 			//calc movement, friction handled here
 			calculate_movement();
 
@@ -55,6 +62,9 @@ namespace WWxna.Code.Game_Objects
 
 			//handle shooting state
 			Handle_Shooting_State();
+
+			// The rest of these comments are useful...
+			Handle_Build_State();
 
 			//Move Camera??
 			Move_Camera();
@@ -132,6 +142,35 @@ namespace WWxna.Code.Game_Objects
 					shooter = Shoot_State.CHILL;
 					break;
 			}
+		}
+
+		bool moved_right = false; 
+		bool moved_left = false;
+		private void Handle_Build_State()
+		{
+			
+			if (c_input.State.Build)
+				p_avatar.build_structure(structure_wheel[cur_structure]);
+
+			if (c_input.State.R_roll && !moved_right)
+			{
+				// move wheel right
+				moved_right = true;
+				cur_structure = (cur_structure + 1) % structure_wheel.Count;
+				p_avatar.structure_wheel_pos = structure_wheel[cur_structure];
+			}
+			else if (!c_input.State.R_roll)
+				moved_right = false;
+
+			if (c_input.State.L_roll && !moved_left)
+			{
+				// move wheel left
+				moved_left = true;
+				cur_structure = (cur_structure + structure_wheel.Count - 1) % structure_wheel.Count;
+				p_avatar.structure_wheel_pos = structure_wheel[cur_structure];
+			}
+			else if (!c_input.State.L_roll)
+				moved_left = false;
 		}
 
 		private void Move_Camera()

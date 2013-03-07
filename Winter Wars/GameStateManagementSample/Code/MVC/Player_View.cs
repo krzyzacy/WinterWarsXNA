@@ -53,13 +53,17 @@ namespace WWxna.Code.MVC
             graphics.GraphicsDevice.BlendState = BlendState.NonPremultiplied;
             graphics.GraphicsDevice.DepthStencilState = DepthStencilState.None;
 
-            //Vector2 textpos = new Vector2(300 * unit_px, 100 * unit_px);
-            //SpriteFont gameFont = content.Load<SpriteFont>("gamefont");
+			Vector2 textpos = new Vector2(300 * unit_width, 100 * unit_height);
+            SpriteFont gameFont = content.Load<SpriteFont>("gamefont");
             //String output = "Test String";
-            //Vector2 FontOrigin = gameFont.MeasureString(output) / 2;
+          //  Vector2 FontOrigin = gameFont.m(output) / 2;
             spriteBatch.Begin();
-            //spriteBatch.DrawString(gameFont, output, textpos, Color.LightGreen,
-            //                    0, FontOrigin, unit_px, SpriteEffects.None, 0.5f);
+           // spriteBatch.DrawString(gameFont, output, textpos, Color.LightGreen,
+			//					0, FontOrigin, unit_px, SpriteEffects.None, 0.5f);
+			int price = Globals.structure_cost[player.structure_wheel_pos];
+
+			spriteBatch.DrawString(gameFont, price.ToString(), textpos, Color.LightGreen,
+								0, new Vector2(0,0), 1, SpriteEffects.None, 0.5f);
 
             spriteBatch.Draw(avartar_Texture, avartar_rec, Color.White);
             spriteBatch.Draw(building_Texture, building_rec, Color.White);

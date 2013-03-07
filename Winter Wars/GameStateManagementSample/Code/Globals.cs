@@ -102,6 +102,15 @@ namespace WWxna.Code
 				public static float snowman_integrity = 100;
 				public static float snow_factory_integrity = 80;
 
+				public static Dictionary<Structure_Type_e, int> structure_cost
+					= new Dictionary<Structure_Type_e, int> 
+					{
+						{Structure_Type_e.FORT, 2400},
+						{Structure_Type_e.HEALING_POOL, 800},
+						{Structure_Type_e.SNOW_FACTORY, 1600},
+						{Structure_Type_e.SNOWMAN, 3200},					
+					};
+
 				public static float healing_rate = 30;
 		
 				public static Vector3 snowman_snowball_size = new Vector3(8,8,8);

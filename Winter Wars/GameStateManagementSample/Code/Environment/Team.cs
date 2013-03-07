@@ -45,7 +45,7 @@ namespace WWxna.Code.Environment
 		public bool is_empty() { return members.Count() == 0; }
 
 		//Building related
-//		public bool tile_is_ready(iTile candidate, int type){}
+//		public bool tile_is_ready(iTile candidate, Structure_Type_e type){}
 
 		//Set Up and utility
 		public int get_Resources() { return Ice_Blocks; }

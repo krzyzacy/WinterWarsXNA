@@ -10,6 +10,7 @@ using WWxna.Code.Game_Objects;
 using WWxna.Code.Game_Objects.Structures;
 using WWxna.Code.MVC;
 
+
 namespace WWxna.Code.MVC
 {
     abstract class Game_Model : iGame_Model
@@ -29,11 +30,13 @@ namespace WWxna.Code.MVC
         }
 
         protected Collision_Table table;
+
 		protected List<Player> players;
 		protected List<Structure> structures;
-        protected List<Team> teams;
         protected HashSet<Collidable> colliders;
 		protected HashSet<Moveable> movers;
+
+        protected List<Team> teams;
 
         protected View view;
         protected iWorld world;
@@ -48,6 +51,23 @@ namespace WWxna.Code.MVC
 			movers = new HashSet<Moveable>();
         }
 
+		public virtual void Load_Content()
+		{
+			view.load_models();
+		}
+
+		public virtual void Update()
+		{
+			foreach (Collidable c in colliders)
+			{
+				c.Update();
+			}
+
+			// check collisions
+			foreach (Moveable m in movers)
+				foreach (Collidable c in colliders)
+					table.handle_collision(m, c);
+		}
 
 		public void add_player(Player p)
 		{
@@ -78,37 +98,23 @@ namespace WWxna.Code.MVC
 			return teams[i];
 		}
 
-        public virtual void Update()
-        {
-            throw new NotImplementedException("Up GM");
-        }
-
         public virtual void draw()
         {
-            throw new NotImplementedException("Dr  GM");
+			view.render();
         }
 
         public virtual void start_up(Game game_, GraphicsDeviceManager graphics_, ContentManager content, Controls[] controllers_)
         {
-            throw new NotImplementedException("Str  GM");
         }
 
         public virtual void Clean_dead()
         {
-            throw new NotImplementedException("ClDd  GM");
-        }
-
-
-        public virtual void Load_Content()
-        {
-            throw new NotImplementedException("ld con  GM");
         }
 
 		public virtual iWorld get_World()
 		{
 			return world;
 		}
-
 
     }
 }

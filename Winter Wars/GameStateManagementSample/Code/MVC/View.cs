@@ -16,10 +16,10 @@ namespace WWxna.Code.MVC
         private GraphicsDeviceManager graphics;
         private List<Player_View> player_views;
         private HashSet<Seen_Object> to_render;
-        private SortedDictionary<String, Model> model_map;
         private Player_View cur_View;
         private ContentManager Content;
 
+        static private SortedDictionary<String, Model> model_map = null;
 
         public View(GraphicsDeviceManager graphics_, ContentManager content)
         {
@@ -27,7 +27,6 @@ namespace WWxna.Code.MVC
             Content = content;
             player_views = new List<Player_View>();
 
-            model_map = new SortedDictionary<string, Model>();
             to_render = new HashSet<Seen_Object>();
 
         }
@@ -44,6 +43,11 @@ namespace WWxna.Code.MVC
 
         public void load_models()
         {
+			if (model_map != null)
+				return;
+
+			model_map = new SortedDictionary<string, Model>();
+
             // Init model map
             model_map.Add("IceTile", Content.Load<Model>("Models\\ice_tile"));
 			model_map.Add("Ship", Content.Load<Model>("Models\\blue_player"));

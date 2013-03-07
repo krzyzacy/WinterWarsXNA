@@ -58,6 +58,7 @@ namespace WWxna.Code.MVC
         public void draw()
         {
             GM.draw();
+
             sprtbtchref.Begin();
             foreach (Point k in str_test_dic.Keys)
             {
@@ -122,8 +123,7 @@ namespace WWxna.Code.MVC
 		{
 			GM.add_structure(s);
 		}
-
-
+		
         public void add_moveable(Moveable m)
         {
             GM.add_moveable(m);

@@ -65,7 +65,26 @@ namespace WWxna.Code.Game_Objects
 
 		public void build_structure(Structure_Type_e type)
 		{
-			Structure.create(type, my_team, GM_Proxy.Instance.get_World().get_Tile(center));
+			//My state if we add it...
+
+
+		 	try
+			{
+				iTile build_on = GM_Proxy.Instance.get_World().get_Tile(center);
+				// team.tile_is_ready
+				
+				Structure.create(type, my_team, build_on);
+				
+				// increment stats
+			
+			}
+			catch (Exception)
+			{ 
+				// add message that you cant build and why
+				
+			}
+
+
 		}
 
 

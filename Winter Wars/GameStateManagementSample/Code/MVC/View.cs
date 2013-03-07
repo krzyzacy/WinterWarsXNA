@@ -50,6 +50,7 @@ namespace WWxna.Code.MVC
 			model_map.Add("Fort", Content.Load<Model>("Models\\fort"));
 			model_map.Add("Healing_Pool", Content.Load<Model>("Models\\fort"));
 			model_map.Add("Snowman", Content.Load<Model>("Models\\fort"));
+			model_map.Add("Snowball", Content.Load<Model>("Models\\snowball"));
 			model_map.Add("Snow_Factory", Content.Load<Model>("Models\\fort"));
 
         }

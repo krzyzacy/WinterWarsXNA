@@ -65,7 +65,7 @@ namespace WWxna.Code.Game_Objects
 
 		public void build_structure(Structure_Type_e type)
 		{
-		//	Structure.create(type, null, GM_Proxy.Instance.get_World().get_Tile(center));
+			Structure.create(type, my_team, GM_Proxy.Instance.get_World().get_Tile(center));
 		}
 
 

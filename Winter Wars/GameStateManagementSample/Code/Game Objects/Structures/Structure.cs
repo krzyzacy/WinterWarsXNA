@@ -54,6 +54,7 @@ namespace WWxna.Code.Game_Objects.Structures
 		}
 
 
+		#region Fields
 
 		protected float health;
 		protected Structure_State_e Status;
@@ -71,7 +72,9 @@ namespace WWxna.Code.Game_Objects.Structures
 
 	//	Collision::Capsule body;
 		protected float save_height;
-		
+
+		#endregion Fields
+
 		protected Structure(Team team, iTile tile_, float radius = 100.0f) :
 			base(tile_.get_structure_base() + new Vector3(0, 400, 0), new Vector3(1, 1, 1) * radius)
 		{
@@ -99,7 +102,7 @@ namespace WWxna.Code.Game_Objects.Structures
 
 			if(Status == Structure_State_e.DESTROYED)	
 			{
-//				perform_destruction_effects();
+				perform_destruction_effects();
 //				tile_on.destroy_structure();
 				owner.remove_tile(tile_on);
 			}
@@ -182,7 +185,7 @@ namespace WWxna.Code.Game_Objects.Structures
 		{
 /*			
 			if(Isolation_Clock.seconds() < 10)
-				Game_Model::get().play_breaking();
+				Game_Model::get().play_breaking(); //sound
 
 			int quantity = rand()%8;
 			for(int i = 0; i < quantity; i++)	{

@@ -10,16 +10,47 @@ using WWxna.Code.Game_Objects;
 namespace WWxna.Code.Environment
 {
 	public enum Team_Color_e {
-		GREEN, RED, BLUE, ORANGE, YELLOW, PURPLE
-	}; // USE null INSTEAD OF NEUTRAL
+		NEUTRAL, GREEN, RED, BLUE, ORANGE, YELLOW, PURPLE
+	}; 
 
     public class Team
-    {
-		public Team(iTile BaseTile = null){} //Enter Players, And Color?
+	{
+		#region Fields
 
-		public void add_player(Player player){}
+		//list of players
+		private List<Player> members;
+		private bool network_unstable;
 
-		//Victory Stuf
+		//Resource value
+		private int resources; // 
+		private int intake_rate;
+
+		//	Stopwatch ResourceTime;
+		//	Stopwatch WinTimer;
+
+		public Team_Color_e Team_Color { get; set; }
+
+		//Holds tile information pertininet to team
+		private HashSet<iTile> Network;
+		private HashSet<iTile> Adjacent_Tiles;
+		private HashSet<iTile> Disconnected_Tiles;
+
+		private iTile Base;
+
+		#endregion Fields
+		
+		public Team(Team_Color_e color_, iTile BaseTile = null)
+		{
+			Team_Color = color_;
+			Base = BaseTile;
+		}
+
+		public void add_player(Player player)
+		{
+			members.Add(player);
+		}
+
+		//Victory Stuff
 //		public bool Is_Tree_Claimed(){}
 		public void Start_Victory_Countdown(){}
 		public void Stop_Victory_Countdown(){}
@@ -48,7 +79,7 @@ namespace WWxna.Code.Environment
 //		public bool tile_is_ready(iTile candidate, Structure_Type_e type){}
 
 		//Set Up and utility
-		public int get_Resources() { return Ice_Blocks; }
+		public int get_Resources() { return resources; }
 //		public Vector3 get_spawn_point() { }
 
 		// returns null if index == number of players
@@ -87,34 +118,6 @@ namespace WWxna.Code.Environment
 
 		} stats;
 */
-		//list of players
-		private List<Player>	members;
-		private bool network_unstable;
-
-		//Resource value
-		private int Ice_Blocks;
-		private int intake_rate;
-
-	//	Zeni::Chronometer<Zeni::Time> ResourceTime;
-	//	Zeni::Chronometer<Zeni::Time> WinTimer;
-
-		public Team_Color_e Team_Color
-		{
-			get
-			{
-				return Team_Color;
-			}
-			set
-			{
-				Team_Color = value;
-			}
-		}
-
-		//Holds tile information pertininet to team
-		private HashSet<iTile> Network;
-		private HashSet<iTile> Adjacent_Tiles;
-		private HashSet<iTile> Disconnected_Tiles;
-
-		private iTile Base;
+		
     }
 }

@@ -37,6 +37,10 @@ namespace WWxna.Code.Game_Objects
 			{
 				return my_team;
 			}
+			set
+			{
+				my_team = value;
+			}
 		}
 
         //protected BoundingSphere body;
@@ -74,7 +78,7 @@ namespace WWxna.Code.Game_Objects
 				// team.tile_is_ready
 				
 				Structure.create(type, my_team, build_on);
-				
+				// decrease resourses
 				// increment stats
 			
 			}
@@ -151,7 +155,7 @@ namespace WWxna.Code.Game_Objects
         protected Mediator_Player_Controls PC_mediator;
         private bool mini_map;
 
-		public Structure_Type_e structure_wheel_pos;
+		public Structure_Type_e structure_wheel_pos {get; set;}
 
         public Boolean Mini_Map
         {

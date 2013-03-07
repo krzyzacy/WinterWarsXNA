@@ -30,16 +30,19 @@ namespace WWxna.Code.MVC
            // world = new World(view, 10, 10 ,100);
 			world = new HexWorld(view, 5, 100);
 
+			teams.Add(new Team(Team_Color_e.GREEN, null));
+			teams.Add(new Team(Team_Color_e.RED, null));
+			
+
             for (int i = 0; i < 4; i++)
             {
                 //Player p = new H_Player(controllers_[i], new Vector3(100, 100, 100 + 50*i), new Vector3(50, 50, 50));
 				Player p = new H_Player(game_, controllers_[i], get_World().get_next_Base_Tile().get_top_center());
 				add_player(p);
+				p.Team = teams[i % 2];
             }
 
 			
-			add_structure(new Fort(null, world.get_Tile(5,5)));
-
 			view.add_player_view(new Player_View((H_Player)players.ElementAt(0), view.get_graphics(), view.get_content()));
 			view.add_player_view(new Player_View((H_Player)players.ElementAt(2), view.get_graphics(), view.get_content()));
 			view.add_player_view(new Player_View((H_Player)players.ElementAt(1), view.get_graphics(), view.get_content()));

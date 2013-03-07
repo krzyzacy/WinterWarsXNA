@@ -73,6 +73,7 @@
     <Compile Include="Code\Environment\iTile.cs" />
     <Compile Include="Code\Environment\iWorld.cs" />
     <Compile Include="Code\Game Objects\Mediator_Player_Controls.cs" />
+    <Compile Include="Code\Game Objects\Structures\Base.cs" />
     <Compile Include="Code\Game Objects\Structures\Catapult.cs" />
     <Compile Include="Code\Game Objects\Structures\Fort.cs" />
     <Compile Include="Code\Game Objects\Structures\Healing_Pool.cs" />

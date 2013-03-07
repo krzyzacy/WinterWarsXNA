@@ -16,7 +16,6 @@ namespace WWxna.Code.Game_Objects
 
     public class Moveable : Collidable
     {
-        public Vector3 grav_accel = new Vector3(0,-0.005f,0);
 
         private Vector3 velocity;
         public Vector3 Velocity
@@ -58,7 +57,7 @@ namespace WWxna.Code.Game_Objects
         public void gravity()
         {
 			if (!is_on_ground())
-				velocity += grav_accel * GM_Proxy.Instance.Time_Step.Milliseconds;
+				velocity += Globals.grav_accel * GM_Proxy.Instance.Time_Step.Milliseconds;
 			else
 				on_ground();
         }

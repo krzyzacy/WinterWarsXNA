@@ -27,7 +27,7 @@ namespace WWxna.Code.Game_Objects.Structures
 			}
 
 			// if it is not yours you cant go inside it
-			if (player.team != owner)
+			if (player.Team != owner)
 				base.handle_player_collision(player);
 		}
 

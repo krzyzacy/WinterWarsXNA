@@ -51,7 +51,7 @@ namespace WWxna.Code.Game_Objects.Structures
 				return;
 
 			// heal this player
-			if (player.team == owner)	
+			if (player.Team == owner)	
 			{
 				//	switch_state(POOL_HEAL);
 //				player.healing_waters(Globals.healing_rate * Game_Model::get().get_time_step());

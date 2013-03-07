@@ -13,29 +13,35 @@ using WWxna.Code.Game_Objects.Structures;
 namespace WWxna.Code.Game_Objects
 {
     
-
     public class Player : Moveable
     {
-        private static float Max_projectile_size = 50;
-        private static float snowball_making_rate = 25;
-        private static float snow_depletion_rate = 50;
-        private static float snow_scooping_rate = 25;
-        
+        public Player() : this(Globals.Game_Obj_Origin, Globals.Game_Obj_Size, Globals.Game_Obj_Quat) { }
+        public Player(Vector3 center_) : this(center_, Globals.Game_Obj_Size, Globals.Game_Obj_Quat) { }
+        public Player(Vector3 center_, Vector3 size_) : this(center_, size_, Globals.Game_Obj_Quat) { }
+        public Player(Vector3 center_, Vector3 size_, Quaternion theta_)
+            : base(center_, size_, theta_)
+        {
+            player_KO = false;
+            my_team = null;
+            snow_in_pack = Globals.Max_Snow_in_pack;
+            //we need to set the team somewhere
+        }
 
 
         //Going to mostly implement it here and then maybe redo it in AI or H
         //Need to also bring in constructurs to make this as versatile as possible
-		public Team team
+        private Team my_team;
+		public Team Team
 		{
 			get
 			{
-				return team;
+				return my_team;
 			}
 		}
 
-        protected bool mini_open;
-        protected BoundingSphere body;
+        //protected BoundingSphere body;
         protected float snowball_radius;
+        protected float snow_in_pack;
 
         private bool player_KO;
         public Boolean Player_KO
@@ -50,16 +56,6 @@ namespace WWxna.Code.Game_Objects
             }
         }
    
-
-
-        public Player() : this(Globals.Game_Obj_Origin , Globals.Game_Obj_Size, Globals.Game_Obj_Quat) { }
-        public Player(Vector3 center_) : this(center_, Globals.Game_Obj_Size, Globals.Game_Obj_Quat) { }
-        public Player(Vector3 center_, Vector3 size_) : this(center_, size_, Globals.Game_Obj_Quat) { }
-        public Player(Vector3 center_, Vector3 size_, Quaternion theta_)
-            : base(center_, size_, theta_)
-        {
-            player_KO = false;
-        }
 
         public override void Update()
         {
@@ -79,17 +75,52 @@ namespace WWxna.Code.Game_Objects
 		public static new int ID()
 		{ return 1; }
 
-
-
-
-
+        /// <summary>
+        /// Increase the radius of the current snowball by a constant rate 
+        /// that is determined in by a fun variable
+        /// </summary>
         public void charge_ball()
         {
             if (Player_KO)
                 return;
 
-            
+            if (snow_in_pack <= 0)
+            {
+                //add messsage %%%%%
+                snow_in_pack = 0;
+            }
+            else if (snowball_radius >= Globals.Max_projectile_size)
+            {
+                snowball_radius = Globals.Max_projectile_size;
+            }
+            else
+            {
+                //Current packing methods of casiting floats and doubles, or just use ints?
+                snowball_radius += Globals.snowball_making_rate * (float)GM_Proxy.Instance.Time_Step.TotalSeconds;
+                //stats
+                snow_in_pack -= Globals.snow_depletion_rate * (float)GM_Proxy.Instance.Time_Step.TotalSeconds;
+            }
 
+            
+        }
+
+        /// <summary>
+        /// Release the current ball and give it an initial velocity as well as
+        /// adding it to the model.
+        /// </summary>
+        public virtual void throw_ball()
+        {
+            if (Player_KO)
+                return;
+
+            if (snowball_radius <= 0)
+                return;
+
+            Snowball sb = new Snowball(this, center, new Vector3(snowball_radius, snowball_radius, snowball_radius));
+            snowball_radius = 0;
+            //This presents a problem, where AI and human diverge
+            sb.Launch_Projectile(new Vector3(0, 1, 0));
+            GM_Proxy.Instance.add_moveable(sb); 
         }
 
 
@@ -167,6 +198,21 @@ namespace WWxna.Code.Game_Objects
 
         }
 
+        public override void throw_ball()
+        {
+            if (Player_KO)
+                return;
+
+            if (snowball_radius <= 0)
+                return;
+
+            Snowball sb = new Snowball(this, center, new Vector3(snowball_radius, snowball_radius, snowball_radius));
+            snowball_radius = 0;
+            //This presents a problem, where AI and human diverge
+            sb.Launch_Projectile(Camera_p.ViewDirection);
+            GM_Proxy.Instance.add_moveable(sb);
+            
+        }
 
     }
 

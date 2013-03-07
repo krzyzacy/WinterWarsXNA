@@ -117,10 +117,17 @@ namespace WWxna.Code.MVC
 			return GM.get_World();
 		}
 
+
 		public void add_structure(Structure s)
 		{
 			GM.add_structure(s);
 		}
+
+
+        public void add_moveable(Moveable m)
+        {
+            GM.add_moveable(m);
+        }
 
     }
 }

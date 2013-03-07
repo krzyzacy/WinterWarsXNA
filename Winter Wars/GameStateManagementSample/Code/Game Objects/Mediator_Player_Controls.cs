@@ -29,7 +29,7 @@ namespace WWxna.Code.Game_Objects
 
 		private Stopwatch AirTime;
 
-		private static Vector3 jump_vec = new Vector3(0, 0.01f, 0);
+		
 
 		public Mediator_Player_Controls(Controls c_, H_Player p_)
 		{
@@ -79,7 +79,7 @@ namespace WWxna.Code.Game_Objects
 					//Boost Upwards (+Y)
 					if (AirTime.ElapsedMilliseconds <= 400 && c_input.State.jump)
 					{
-						p_avatar.accelerate(jump_vec);
+						p_avatar.accelerate(Globals.jump_vec);
 					}
 					else
 					{
@@ -93,7 +93,7 @@ namespace WWxna.Code.Game_Objects
 						jumper = Jump_State.ON_GROUND;
 					break;
 				case Jump_State.JET_PACK:
-					p_avatar.accelerate(jump_vec);
+					p_avatar.accelerate(Globals.jump_vec);
 					if (!c_input.State.jet_pack_mode)
 						jumper = Jump_State.FALLING_WITH_STYLE;
 					break;
@@ -120,13 +120,12 @@ namespace WWxna.Code.Game_Objects
 						shooter = Shoot_State.CHARGING;
 					break;
 				case Shoot_State.CHARGING:
-					//Tell the player to charge the ball
-					//???? eh what does that mean?
+                    p_avatar.charge_ball();
 					if (!c_input.State.shoot)
 						shooter = Shoot_State.FIRE;
 					break;
 				case Shoot_State.FIRE:
-					//Tell Player to throw the ball
+                    p_avatar.throw_ball();
 					shooter = Shoot_State.CHILL;
 					break;
 				default:

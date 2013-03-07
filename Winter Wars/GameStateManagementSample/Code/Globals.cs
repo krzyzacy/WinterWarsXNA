@@ -18,6 +18,7 @@ namespace WWxna.Code
 		SNOWMAN, FORT, SNOW_FACTORY, HEALING_POOL, TREE, BASE
 	};
 
+
     public static class Globals
     {
         //Represents standard game object size
@@ -25,7 +26,7 @@ namespace WWxna.Code
         private static Vector3 GO_origin = Vector3.Zero;
         private static Quaternion GO_quat = new Quaternion(0,0,1,0);
 
-        public static float cam_rotation_spd = 2;
+        public const float cam_rotation_spd = 2;
 
         //All of these return new instances with values in the variables above
         #region Global_Gets
@@ -57,17 +58,45 @@ namespace WWxna.Code
             }
         }
 
-
         #endregion
 
 
-
-		#region Fun_Variables
+		#region Fun Variables
 		// The following variables are variables that need to be tweaked to determine
 		// gameplay fun-ness. Put anything you can think of here. 
-		// We can make a menu that lets players decide what values these should have too.
+        // We can make a menu that lets players decide what values these should have too.
 
-			#region structure_stuff
+        public static Vector3 grav_accel = new Vector3(0, -0.005f, 0);
+
+
+            #region Snowball Stuff
+                
+            public const float Max_projectile_size = 50;
+            public const float snowball_making_rate = 25;
+            public const float snow_scooping_rate = 25;
+            public const float Launch_Speed = 700;
+            public const float min_snowball_damage = 15;
+            public const float max_snowball_damage = 45;
+
+            
+                       
+            #endregion
+
+
+            #region Player Stuff
+
+            public const float Max_Snow_in_pack = 1000;
+            public const float snow_depletion_rate = 50;
+            public const float Max_Player_health = 100;
+            public static TimeSpan Build_Recharge_Time = new TimeSpan(0, 0, 1);
+            public static TimeSpan Respawn_Time = new TimeSpan(0, 0, 6);
+
+            public static Vector3 jump_vec = new Vector3(0, 0.01f, 0);
+            
+            #endregion
+
+
+            #region Structure Stuff
 				public static float fort_integrity = 250;
 				public static float healing_pool_integrity = 150;
 				public static float snowman_integrity = 100;
@@ -82,5 +111,6 @@ namespace WWxna.Code
 			#endregion
 
 		#endregion
+
 	}
 }

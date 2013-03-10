@@ -27,8 +27,8 @@ namespace WWxna.Code.MVC
 			// put it in play state and have referene
             view = new View(graphics_, content);
 
-           // world = new World(view, 10, 10 ,100);
-			world = new HexWorld(view, 5, 100);
+            world = new World(view, 10, 10 ,100);
+			//world = new HexWorld(view, 5, 100);
 
 			teams.Add(new Team(Team_Color_e.GREEN, null));
 			teams.Add(new Team(Team_Color_e.RED, null));

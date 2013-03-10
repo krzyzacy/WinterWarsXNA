@@ -130,7 +130,7 @@ namespace WWxna.Code.Environment
 		public abstract String get_tile_name();
 
 		public Vector3 get_structure_base()	{
-			return new Vector3(center.X, center.Y, center.Z + tile_size);
+            return new Vector3(center.X, center.Y + tile_size, center.Z);
 		}
 
 		public void build_structure(Structure S, Team new_team)	{

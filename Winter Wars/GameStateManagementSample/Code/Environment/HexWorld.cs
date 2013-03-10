@@ -108,16 +108,16 @@ namespace WWxna.Code.Environment
         public iTile get_Tile(Vector3 position)
         {
             float xr = position.X;
-            float yr = position.Y;
+            float yr = position.Z;
 
             if (xr < 0 || yr < 0)
             {
                 return null;
             }
 
-            float tR = (float)(Math.Sqrt(3.0f) * tile_size / 2);
-            float tS = tile_size;
-            float tH = tile_size / 2;
+            float tR = (float)(Math.Sqrt(3.0f) * tile_size / 2 * 2.5);
+            float tS = (float)(tile_size * 2.5);
+            float tH = (float)(tile_size / 2 * 2.5);
 
             // "slice" the map as squares - type A and type B
             // and adjust the vector index accordingly

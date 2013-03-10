@@ -189,7 +189,7 @@ namespace WWxna.Code.Game_Objects
 
 			structure_wheel_pos = Structure_Type_e.HEALING_POOL;
 
-            camera.Perspective(90, 4 / 3, 2f, 3000);
+            camera.Perspective(95, 1280 / 800, 2f, 3000);
             //game_.GraphicsDevice.Viewport.AspectRatio
             //DO THIS BRO
             //aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;

@@ -76,7 +76,7 @@ namespace WWxna.Code.Game_Objects.Structures
 		#endregion Fields
 
 		protected Structure(Team team, iTile tile_, float radius = 100.0f) :
-			base(tile_.get_structure_base() + new Vector3(0, 400, 0), new Vector3(1, 1, 1) * radius)
+			base(tile_.get_structure_base() + new Vector3(0, 250, 0), new Vector3(1, 1, 1) * radius)
 		{
 			owner = team; 
 			health = get_integrity(); 

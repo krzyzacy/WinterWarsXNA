@@ -257,7 +257,7 @@ namespace WWxna.Code.Environment
             return true;
         }
 
-        /* haven't tested.. should be working.. */
+        /* tobe re-implemented */
         public List<iTile> Get_Family(iTile Central)
         {
             List<iTile> ret = new List<iTile>();
@@ -284,89 +284,106 @@ namespace WWxna.Code.Environment
             }
         }
 
-        /*
-        public iTile player_is_looking_at(Vector3 player_pos, Vector3 look_Dir)	{
+        public iTile player_is_looking_at(Vector3 player_pos, Vector3 look_Dir)
+        {
             //&&& Basic for now, to allow for testing
             //If the player is "looking" to far away, like level across the board, then
             //just return the tile next to them in that direction
 
-            //return get_tile(player_pos);
+            //return get_Tile(player_pos);
 
-	
-            if(look_Dir.X >= Math.Math.Sqrt(3.0f) / 2){ // right
-                if(get_tile(player_pos).Col != radius - 1)
-                    return map[get_tile(player_pos)->get_row()][get_tile(player_pos)->get_col() + 1];
+
+            if (look_Dir.X >= Math.Sqrt(3.0f) / 2)
+            { // right
+                if (get_Tile(player_pos).get_col() != map_width - 1)
+                    return map[get_Tile(player_pos).get_row()][get_Tile(player_pos).get_col() + 1];
                 else
-                    return NULL;
+                    return new VoidTile();
             }
-            else if(look_Dir.x <= - Math.Sqrt(3.0f) / 2){ // left
-                if(get_tile(player_pos)->get_col() != 0)
-                    return map[get_tile(player_pos)->get_row()][get_tile(player_pos)->get_col() - 1];
+            else if (look_Dir.X <= -Math.Sqrt(3.0f) / 2)
+            { // left
+                if (get_Tile(player_pos).get_col() != 0)
+                    return map[get_Tile(player_pos).get_row()][get_Tile(player_pos).get_col() - 1];
                 else
-                    return NULL;
+                    return new VoidTile();
             }
-            else if((look_Dir.x <= Math.Sqrt(3.0f) / 2 && look_Dir.x >= 0) && look_Dir.y <= 0 ){ // upright
-                if(get_tile(player_pos)->get_row() == 0)
-                    return NULL;
-                else if(get_tile(player_pos)->get_row() % 2 == 1){
-                    if(get_tile(player_pos)->get_col() == radius - 1){
-                        return NULL;
+            else if ((look_Dir.X <= Math.Sqrt(3.0f) / 2 && look_Dir.X >= 0) && look_Dir.Z <= 0)
+            { // upright
+                if (get_Tile(player_pos).get_row() == 0)
+                    return new VoidTile();
+                else if (get_Tile(player_pos).get_row() % 2 == 1)
+                {
+                    if (get_Tile(player_pos).get_col() == map_width - 1)
+                    {
+                        return new VoidTile();
                     }
-                    else{
-                        return map[get_tile(player_pos)->get_row() - 1][get_tile(player_pos)->get_col() + 1];
+                    else
+                    {
+                        return map[get_Tile(player_pos).get_row() - 1][get_Tile(player_pos).get_col() + 1];
                     }
                 }
                 else
-                    return map[get_tile(player_pos)->get_row() - 1][get_tile(player_pos)->get_col()];	
+                    return map[get_Tile(player_pos).get_row() - 1][get_Tile(player_pos).get_col()];
             }
-            else if((look_Dir.x >= - Math.Sqrt(3.0f) / 2 && look_Dir.x <= 0) && look_Dir.y <= 0 ){ // upleft
-                if(get_tile(player_pos)->get_row() == 0)
-                    return NULL;
-                else if(get_tile(player_pos)->get_row() % 2 == 0){
-                    if(get_tile(player_pos)->get_col() == 0){
-                        return NULL;
+            else if ((look_Dir.X >= -Math.Sqrt(3.0f) / 2 && look_Dir.X <= 0) && look_Dir.Z <= 0)
+            { // upleft
+                if (get_Tile(player_pos).get_row() == 0)
+                    return new VoidTile();
+                else if (get_Tile(player_pos).get_row() % 2 == 0)
+                {
+                    if (get_Tile(player_pos).get_col() == 0)
+                    {
+                        return new VoidTile();
                     }
-                    else{
-                        return map[get_tile(player_pos)->get_row() - 1][get_tile(player_pos)->get_col() - 1];
+                    else
+                    {
+                        return map[get_Tile(player_pos).get_row() - 1][get_Tile(player_pos).get_col() - 1];
                     }
                 }
                 else
-                    return map[get_tile(player_pos)->get_row() - 1][get_tile(player_pos)->get_col()];
+                    return map[get_Tile(player_pos).get_row() - 1][get_Tile(player_pos).get_col()];
             }
-            else if((look_Dir.x <= Math.Sqrt(3.0f) / 2 && look_Dir.x >= 0) && look_Dir.y >= 0 ){ // lowerright
-                if(get_tile(player_pos)->get_row() == radius)
-                    return NULL;
-                else if(get_tile(player_pos)->get_row() % 2 == 1){
-                    if(get_tile(player_pos)->get_col() == radius - 1){
-                        return NULL;
+            else if ((look_Dir.X <= Math.Sqrt(3.0f) / 2 && look_Dir.X >= 0) && look_Dir.Z >= 0)
+            { // lowerright
+                if (get_Tile(player_pos).get_row() == map_height)
+                    return new VoidTile();
+                else if (get_Tile(player_pos).get_row() % 2 == 1)
+                {
+                    if (get_Tile(player_pos).get_col() == map_width - 1)
+                    {
+                        return new VoidTile();
                     }
-                    else{
-                        return map[get_tile(player_pos)->get_row() + 1][get_tile(player_pos)->get_col() + 1];
+                    else
+                    {
+                        return map[get_Tile(player_pos).get_row() + 1][get_Tile(player_pos).get_col() + 1];
                     }
                 }
                 else
-                    return map[get_tile(player_pos)->get_row() + 1][get_tile(player_pos)->get_col()];
-			
+                    return map[get_Tile(player_pos).get_row() + 1][get_Tile(player_pos).get_col()];
+
             }
-            else if((look_Dir.x >= - Math.Sqrt(3.0f) / 2 && look_Dir.x <= 0) && look_Dir.y >= 0 ){ // lowerleft
-                if(get_tile(player_pos)->get_row() == radius)
-                    return NULL;
-                else if(get_tile(player_pos)->get_row() % 2 == 0){
-                    if(get_tile(player_pos)->get_col() == 0){
-                        return NULL;
+            else if ((look_Dir.X >= -Math.Sqrt(3.0f) / 2 && look_Dir.X <= 0) && look_Dir.Z >= 0)
+            { // lowerleft
+                if (get_Tile(player_pos).get_row() == map_height)
+                    return new VoidTile();
+                else if (get_Tile(player_pos).get_row() % 2 == 0)
+                {
+                    if (get_Tile(player_pos).get_col() == 0)
+                    {
+                        return new VoidTile();
                     }
-                    else{
-                        return map[get_tile(player_pos)->get_row() + 1][get_tile(player_pos)->get_col() - 1];
+                    else
+                    {
+                        return map[get_Tile(player_pos).get_row() + 1][get_Tile(player_pos).get_col() - 1];
                     }
                 }
                 else
-                    return map[get_tile(player_pos)->get_row() + 1][get_tile(player_pos)->get_col()];
+                    return map[get_Tile(player_pos).get_row() + 1][get_Tile(player_pos).get_col()];
             }
             else
-                return NULL;
-	
+                return new VoidTile();
+
         }
-        */
 
         /*
         void World::raise_tile(Point3f location)	{

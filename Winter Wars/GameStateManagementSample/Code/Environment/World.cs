@@ -45,6 +45,8 @@ namespace WWxna.Code.Environment
             tS *= 2.5f;
             tH *= 2.5f;
 
+            Random rand = new Random();
+
             for (int h = 0; h < map_height; h++)
             {
                 map.Add(new List<iTile>());
@@ -73,7 +75,15 @@ namespace WWxna.Code.Environment
                     if (h == 0 || h == map_height - 1 || w == 0 || w == map_width - 1)
                         tmp = new BoundaryTile(tile_size, center, new Vector3(scale_size, scale_size, scale_size), w, h);
                     else
-                        tmp = new IceTile(tile_size, center, new Vector3(scale_size, scale_size, scale_size), w, h);
+                    {
+                        int randint = rand.Next(3);
+                        if(randint == 0)
+                            tmp = new IceTile(tile_size, center, new Vector3(scale_size, scale_size, scale_size), w, h);
+                        else if(randint == 1)
+                            tmp = new SoftsnowTile(tile_size, center, new Vector3(scale_size, scale_size, scale_size), w, h);
+                        else
+                            tmp = new HardsnowTile(tile_size, center, new Vector3(scale_size, scale_size, scale_size), w, h);
+                    }
 			
 			        map[h].Add(tmp);
 
@@ -97,7 +107,7 @@ namespace WWxna.Code.Environment
 	        float yr = position.Z;
 
 	        if(xr < 0 || yr < 0){
-		        return null;
+		        return new VoidTile();
 	        }
 
 	        float tR = (float)(Math.Sqrt(3.0f) * tile_size / 2 * 2.5);
@@ -111,7 +121,7 @@ namespace WWxna.Code.Environment
 	        int sec_y = (int)(yr / (tS + tH));
 
 	        if((sec_y % 2 == 0 && sec_x >= map_width) || sec_x > map_width || sec_y >= map_height)
-		        return null;
+		        return new VoidTile();
 
 	        xr -= sec_x * 2 * tR;
 	        yr -= sec_y * (tS + tH);
@@ -125,7 +135,7 @@ namespace WWxna.Code.Environment
 				        if(sec_y != 0)
 					        return map[sec_y - 1][sec_x];
 				        else
-					        return null;
+					        return new VoidTile();
 			        }
 			        else{
 					        return map[sec_y][sec_x];
@@ -136,7 +146,7 @@ namespace WWxna.Code.Environment
 				        if(sec_y != 0 && sec_x != 0)
 					        return map[sec_y - 1][sec_x - 1];
 				        else
-					        return null;
+					        return new VoidTile();
 			        }
 			        else{
 					        return map[sec_y][sec_x];
@@ -150,20 +160,20 @@ namespace WWxna.Code.Environment
 						        return map[sec_y][sec_x];
 					        }
 					        else
-						        return null;
+						        return new VoidTile();
 			        }
 			        else{
 				        if(yr <= (-(Math.Sqrt(3.0f) * (xr - tR))/3 + tH)){
 					        if(sec_y != 0 && sec_x != map_width)
 						        return map[sec_y - 1][sec_x];
 					        else
-						        return null;
+						        return new VoidTile();
 				        }
 				        else{
 					        //if(sec_x != map_width)
 						        return map[sec_y][sec_x];
 					        //else
-						        //return NULL;
+						        //return new VoidTile();
 				        }
 			        }
 		        }
@@ -172,20 +182,20 @@ namespace WWxna.Code.Environment
 				        if(sec_x != 0)
 					        return map[sec_y][sec_x - 1];
 				        else
-					        return null;
+					        return new VoidTile();
 			        }
 			        else{
 				        if(yr <= (Math.Sqrt(3.0f) / 3 ) * xr ){
 					        if(sec_y != 0 && sec_x != map_width)
 						        return map[sec_y - 1][sec_x];
 					        else
-						        return null;
+						        return new VoidTile();
 				        }
 				        else{
 					        if(sec_x != 0)
 						        return map[sec_y][sec_x - 1];
 					        else
-						        return null;
+						        return new VoidTile();
 				        }
 			        }
 		        }
@@ -300,123 +310,122 @@ namespace WWxna.Code.Environment
 	        case 4:
 		        return map[1][map_width - 2];
 	        default:
-		        return null;
+		        return new VoidTile();
 	        }
 	
         }
 
-        /*
+       
         public iTile player_is_looking_at(Vector3 player_pos, Vector3 look_Dir)	{
 	        //&&& Basic for now, to allow for testing
 	        //If the player is "looking" to far away, like level across the board, then
 	        //just return the tile next to them in that direction
 
-	        //return get_tile(player_pos);
+	        //return get_Tile(player_pos);
 
 	
-	        if(look_Dir.X >= Math.Math.Sqrt(3.0f) / 2){ // right
-		        if(get_tile(player_pos).Col != map_width - 1)
-			        return map[get_tile(player_pos)->get_row()][get_tile(player_pos)->get_col() + 1];
+	        if(look_Dir.X >= Math.Sqrt(3.0f) / 2){ // right
+		        if(get_Tile(player_pos).get_col() != map_width - 1)
+			        return map[get_Tile(player_pos).get_row()][get_Tile(player_pos).get_col() + 1];
 		        else
-			        return NULL;
+			        return new VoidTile();
 	        }
-	        else if(look_Dir.x <= - Math.Sqrt(3.0f) / 2){ // left
-		        if(get_tile(player_pos)->get_col() != 0)
-			        return map[get_tile(player_pos)->get_row()][get_tile(player_pos)->get_col() - 1];
+	        else if(look_Dir.X <= - Math.Sqrt(3.0f) / 2){ // left
+		        if(get_Tile(player_pos).get_col() != 0)
+			        return map[get_Tile(player_pos).get_row()][get_Tile(player_pos).get_col() - 1];
 		        else
-			        return NULL;
+			        return new VoidTile();
 	        }
-	        else if((look_Dir.x <= Math.Sqrt(3.0f) / 2 && look_Dir.x >= 0) && look_Dir.y <= 0 ){ // upright
-		        if(get_tile(player_pos)->get_row() == 0)
-			        return NULL;
-		        else if(get_tile(player_pos)->get_row() % 2 == 1){
-			        if(get_tile(player_pos)->get_col() == map_width - 1){
-				        return NULL;
+	        else if((look_Dir.X <= Math.Sqrt(3.0f) / 2 && look_Dir.X >= 0) && look_Dir.Z <= 0 ){ // upright
+		        if(get_Tile(player_pos).get_row() == 0)
+			        return new VoidTile();
+		        else if(get_Tile(player_pos).get_row() % 2 == 1){
+			        if(get_Tile(player_pos).get_col() == map_width - 1){
+				        return new VoidTile();
 			        }
 			        else{
-				        return map[get_tile(player_pos)->get_row() - 1][get_tile(player_pos)->get_col() + 1];
+				        return map[get_Tile(player_pos).get_row() - 1][get_Tile(player_pos).get_col() + 1];
 			        }
 		        }
 		        else
-			        return map[get_tile(player_pos)->get_row() - 1][get_tile(player_pos)->get_col()];	
+			        return map[get_Tile(player_pos).get_row() - 1][get_Tile(player_pos).get_col()];	
 	        }
-	        else if((look_Dir.x >= - Math.Sqrt(3.0f) / 2 && look_Dir.x <= 0) && look_Dir.y <= 0 ){ // upleft
-		        if(get_tile(player_pos)->get_row() == 0)
-			        return NULL;
-		        else if(get_tile(player_pos)->get_row() % 2 == 0){
-			        if(get_tile(player_pos)->get_col() == 0){
-				        return NULL;
+	        else if((look_Dir.X >= - Math.Sqrt(3.0f) / 2 && look_Dir.X <= 0) && look_Dir.Z <= 0 ){ // upleft
+		        if(get_Tile(player_pos).get_row() == 0)
+			        return new VoidTile();
+		        else if(get_Tile(player_pos).get_row() % 2 == 0){
+			        if(get_Tile(player_pos).get_col() == 0){
+				        return new VoidTile();
 			        }
 			        else{
-				        return map[get_tile(player_pos)->get_row() - 1][get_tile(player_pos)->get_col() - 1];
+				        return map[get_Tile(player_pos).get_row() - 1][get_Tile(player_pos).get_col() - 1];
 			        }
 		        }
 		        else
-			        return map[get_tile(player_pos)->get_row() - 1][get_tile(player_pos)->get_col()];
+			        return map[get_Tile(player_pos).get_row() - 1][get_Tile(player_pos).get_col()];
 	        }
-	        else if((look_Dir.x <= Math.Sqrt(3.0f) / 2 && look_Dir.x >= 0) && look_Dir.y >= 0 ){ // lowerright
-		        if(get_tile(player_pos)->get_row() == map_height)
-			        return NULL;
-		        else if(get_tile(player_pos)->get_row() % 2 == 1){
-			        if(get_tile(player_pos)->get_col() == map_width - 1){
-				        return NULL;
+	        else if((look_Dir.X <= Math.Sqrt(3.0f) / 2 && look_Dir.X >= 0) && look_Dir.Z >= 0 ){ // lowerright
+		        if(get_Tile(player_pos).get_row() == map_height)
+			        return new VoidTile();
+		        else if(get_Tile(player_pos).get_row() % 2 == 1){
+			        if(get_Tile(player_pos).get_col() == map_width - 1){
+				        return new VoidTile();
 			        }
 			        else{
-				        return map[get_tile(player_pos)->get_row() + 1][get_tile(player_pos)->get_col() + 1];
+				        return map[get_Tile(player_pos).get_row() + 1][get_Tile(player_pos).get_col() + 1];
 			        }
 		        }
 		        else
-			        return map[get_tile(player_pos)->get_row() + 1][get_tile(player_pos)->get_col()];
+			        return map[get_Tile(player_pos).get_row() + 1][get_Tile(player_pos).get_col()];
 			
 	        }
-	        else if((look_Dir.x >= - Math.Sqrt(3.0f) / 2 && look_Dir.x <= 0) && look_Dir.y >= 0 ){ // lowerleft
-		        if(get_tile(player_pos)->get_row() == map_height)
-			        return NULL;
-		        else if(get_tile(player_pos)->get_row() % 2 == 0){
-			        if(get_tile(player_pos)->get_col() == 0){
-				        return NULL;
+	        else if((look_Dir.X >= - Math.Sqrt(3.0f) / 2 && look_Dir.X <= 0) && look_Dir.Z >= 0 ){ // lowerleft
+		        if(get_Tile(player_pos).get_row() == map_height)
+			        return new VoidTile();
+		        else if(get_Tile(player_pos).get_row() % 2 == 0){
+			        if(get_Tile(player_pos).get_col() == 0){
+				        return new VoidTile();
 			        }
 			        else{
-				        return map[get_tile(player_pos)->get_row() + 1][get_tile(player_pos)->get_col() - 1];
+				        return map[get_Tile(player_pos).get_row() + 1][get_Tile(player_pos).get_col() - 1];
 			        }
 		        }
 		        else
-			        return map[get_tile(player_pos)->get_row() + 1][get_tile(player_pos)->get_col()];
+			        return map[get_Tile(player_pos).get_row() + 1][get_Tile(player_pos).get_col()];
 	        }
 	        else
-		        return NULL;
+		        return new VoidTile();
 	
         }
-        */
         
         /*
         void World::raise_tile(Point3f location)	{
 	        //Add ownership restrictions to this later
-	        Tile* ti = get_tile(location);
+	        Tile* ti = get_Tile(location);
 	        float delta = Game_Model::get().get_time_step() * Tile_Move_Speed;
-	        if(ti->set_height(delta))	{
+	        if(ti.set_height(delta))	{
 		        for(int i = 0; i < 4; i++)	{
-			        if(get_tile(Game_Model::get().get_player(i)->get_posistion()) == ti)
-				        Game_Model::get().get_player(i)->change_z(delta);
+			        if(get_Tile(Game_Model::get().get_player(i).get_posistion()) == ti)
+				        Game_Model::get().get_player(i).change_z(delta);
 		        }
 	        }
         }
 
         void World::lower_tile(Point3f location)	{
-	        Tile* ti = get_tile(location);
+	        Tile* ti = get_Tile(location);
 	        float delta = Game_Model::get().get_time_step() * Tile_Move_Speed;
-	        if(ti->set_height(-delta))	{
+	        if(ti.set_height(-delta))	{
 		        for(int i = 0; i < 4; i++)	{
-			        if(get_tile(Game_Model::get().get_player(i)->get_posistion()) == ti)
-				        Game_Model::get().get_player(i)->change_z(-delta);
+			        if(get_Tile(Game_Model::get().get_player(i).get_posistion()) == ti)
+				        Game_Model::get().get_player(i).change_z(-delta);
 		        }
 	        }
         }
         
 
         float World::get_friction_coeff(Point3f &spot)	{
-	        Tile *t = get_tile(spot);
-	        switch(t->get_covering())	{
+	        Tile *t = get_Tile(spot);
+	        switch(t.get_covering())	{
 	        case SOFT_SNOW:
 	        case HARD_SNOW:
 		        return Norml_friction;
@@ -428,8 +437,8 @@ namespace WWxna.Code.Environment
         }
 
         bool World::allowed_to_scoop(Point3f &pos_)	{
-	        Tile *t = get_tile(pos_);
-	        switch(t->get_covering())	{
+	        Tile *t = get_Tile(pos_);
+	        switch(t.get_covering())	{
 	        case SOFT_SNOW:
 		        return true;
 	        case HARD_SNOW:
@@ -444,7 +453,7 @@ namespace WWxna.Code.Environment
         /* returns height of ground at that location
         public float get_ground_height(Vector3 location)
         {
-	        return get_tile(location).get_height();
+	        return get_Tile(location).get_height();
 
         }
 

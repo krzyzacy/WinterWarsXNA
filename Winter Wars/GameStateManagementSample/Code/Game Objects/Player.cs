@@ -68,7 +68,11 @@ namespace WWxna.Code.Game_Objects
         public override void Update()
         {
             //Debug.Print("CenterZ: " + center.Z);
-            base.Update();
+
+            // em.... ramdonly put sth to restrict the player... -Sen
+            if(GM_Proxy.Instance.get_World().get_Tile(center + Velocity * GM_Proxy.Instance.Time_Step.Milliseconds).get_tile_name() != "Boundary")
+                base.Update();
+
         }
 
 		public void build_structure(Structure_Type_e type)
@@ -79,6 +83,7 @@ namespace WWxna.Code.Game_Objects
 		 	try
 			{
 				iTile build_on = GM_Proxy.Instance.get_World().get_Tile(center);
+
 				// team.tile_is_ready
 				
 				Structure.create(type, my_team, build_on);

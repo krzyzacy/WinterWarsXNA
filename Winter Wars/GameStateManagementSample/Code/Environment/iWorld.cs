@@ -21,7 +21,7 @@ namespace WWxna.Code.Environment
         int get_width();
         int get_height();
 
-	    //iTile player_is_looking_at(Vector3 player_pos, Vector3 look_dir);
+	    iTile player_is_looking_at(Vector3 player_pos, Vector3 look_dir);
 
 	    //change input type if you want, or make multiple types
 	    //bool is_adjacent(iTile A, iTile B);
@@ -38,7 +38,7 @@ namespace WWxna.Code.Environment
 	    //void Start_Sin_Wave();
 	
 	    /*Returns the six adjacent tiles to Central*/
-	    //List<iTile> Get_Family(iTile Central);
+	    List<iTile> Get_Family(iTile Central);
 
 	    //Called during set up, gives next Tile that represents the base
 	    iTile get_next_Base_Tile();

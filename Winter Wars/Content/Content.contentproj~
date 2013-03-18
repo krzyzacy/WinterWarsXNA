@@ -286,6 +286,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Textures\BuildingSprite\Arrow.png">
       <Name>Arrow</Name>
       <Importer>TextureImporter</Importer>
@@ -320,7 +321,7 @@
       <Name>SnowmanBuild</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+=======
     <Compile Include="Models\bluegirl.FBX">
       <Name>bluegirl</Name>
       <Importer>FbxImporter</Importer>
@@ -340,18 +341,7 @@
       <Name>redgirl</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\hardsnow_tile.FBX">
-      <Name>hardsnow_tile</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\softsnow_tile.FBX">
-      <Name>softsnow_tile</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+>>>>>>> d943dbfc1b4ce55dce7fe7db6a800f7bff51857d
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

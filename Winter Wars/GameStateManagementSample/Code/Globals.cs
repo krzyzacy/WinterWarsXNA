@@ -22,7 +22,7 @@ namespace WWxna.Code
     public static class Globals
     {
         //Represents standard game object size
-        private static Vector3 GO_size = new Vector3(1, 1, 1);
+        private static Vector3 GO_size = new Vector3(10, 10, 10);
         private static Vector3 GO_origin = Vector3.Zero;
         private static Quaternion GO_quat = new Quaternion(0,0,1,0);
 

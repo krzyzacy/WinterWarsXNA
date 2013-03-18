@@ -118,6 +118,11 @@ namespace WWxna.Code.Environment
 
 		} stats;
 */
-		
-    }
+
+
+		public string get_name()
+		{
+			return "Green";
+		}
+	}
 }

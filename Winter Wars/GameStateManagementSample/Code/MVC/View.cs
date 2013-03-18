@@ -50,7 +50,10 @@ namespace WWxna.Code.MVC
 
             // Init model map
             model_map.Add("IceTile", Content.Load<Model>("Models\\ice_tile"));
-			model_map.Add("Ship", Content.Load<Model>("Models\\blue_player"));
+			model_map.Add("BlueGirl", Content.Load<Model>("Models\\bluegirl"));
+			model_map.Add("RedGirl", Content.Load<Model>("Models\\redgirl"));
+			model_map.Add("GreenGirl", Content.Load<Model>("Models\\greengirl"));
+			model_map.Add("OrangeGirl", Content.Load<Model>("Models\\orangegirl"));
 			model_map.Add("Fort", Content.Load<Model>("Models\\rect_test"));
 			model_map.Add("Healing_Pool", Content.Load<Model>("Models\\fort"));
 			model_map.Add("Snowman", Content.Load<Model>("Models\\fort"));

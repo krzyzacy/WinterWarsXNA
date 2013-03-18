@@ -51,3 +51,10 @@ Content\BWRAP_0.xnb
 Content\FORTICE_0.xnb
 Content\Textures\rect_test.xnb
 Content\Models\rect_test.xnb
+Content\Textures\BuildingSprite\Arrow.xnb
+Content\Textures\BuildingSprite\BuildDemo.xnb
+Content\Textures\BuildingSprite\BuildView.xnb
+Content\Textures\BuildingSprite\FactoryBuild.xnb
+Content\Textures\BuildingSprite\FortressBuild.xnb
+Content\Textures\BuildingSprite\HealingPoolBuild.xnb
+Content\Textures\BuildingSprite\SnowmanBuild.xnb

@@ -111,6 +111,15 @@ namespace WWxna.Code
 						{Structure_Type_e.SNOWMAN, 3200},					
 					};
 
+                public static Dictionary<Structure_Type_e, string> structure_icon
+                            = new Dictionary<Structure_Type_e, string> 
+					{
+						{Structure_Type_e.FORT, "Textures\\BuildingSprite\\FortressBuild"},
+						{Structure_Type_e.HEALING_POOL, "Textures\\BuildingSprite\\HealingPoolBuild"},
+						{Structure_Type_e.SNOW_FACTORY, "Textures\\BuildingSprite\\FactoryBuild"},
+						{Structure_Type_e.SNOWMAN, "Textures\\BuildingSprite\\SnowmanBuild"},					
+					};
+
 				public static float healing_rate = 30;
 		
 				public static Vector3 snowman_snowball_size = new Vector3(8,8,8);

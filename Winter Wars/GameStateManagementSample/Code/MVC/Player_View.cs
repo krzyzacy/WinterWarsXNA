@@ -38,41 +38,50 @@ namespace WWxna.Code.MVC
             float unit_width = (bottomRight.X - topLeft.X) / 1280.0f;
             float unit_height = (bottomRight.Y - topLeft.Y) / 800.0f;
 
-            Texture2D avartar_Texture = content.Load<Texture2D>("Textures\\HUDTextures\\AvartarFrame");
-            Rectangle avartar_rec = new Rectangle(0, 0, (int)(300 * unit_width), (int)(300 * unit_height));
+            List<Texture2D> Texturelist = new List<Texture2D>();
+            List<Rectangle> Reclist = new List<Rectangle>();
 
-            Texture2D building_Texture = content.Load<Texture2D>("Textures\\HUDTextures\\BuildingFrame");
-            Rectangle building_rec = new Rectangle((int)(980 * unit_width), 0, (int)(300 * unit_width), (int)(300 * unit_height));
+            // avartar
+            Texturelist.Add(content.Load<Texture2D>("Textures\\HUDTextures\\AvartarFrame"));
+            Reclist.Add(new Rectangle(0, 0, (int)(300 * unit_width), (int)(300 * unit_height)));
 
-            Texture2D message_Texture = content.Load<Texture2D>("Textures\\HUDTextures\\MessageBar");
-            Rectangle message_rec = new Rectangle(0, (int)(500 * unit_height), (int)(1280 * unit_width), (int)(300 * unit_height));
+            // building
+            Texturelist.Add(content.Load<Texture2D>("Textures\\HUDTextures\\BuildingFrame"));
+            Reclist.Add(new Rectangle((int)(980 * unit_width), 0, (int)(300 * unit_width), (int)(300 * unit_height)));
 
-            Texture2D flake_Texture = content.Load<Texture2D>("Textures\\HUDTextures\\FLAKE");
-            Rectangle flake_rec = new Rectangle((int)(600 * unit_width), (int)(360 * unit_height), (int)(80 * unit_width), (int)(80 * unit_height));
+            // message bar
+            Texturelist.Add(content.Load<Texture2D>("Textures\\HUDTextures\\MessageBar"));
+            Reclist.Add(new Rectangle(0, (int)(500 * unit_height), (int)(1280 * unit_width), (int)(300 * unit_height)));
+
+            // flake
+            Texturelist.Add(content.Load<Texture2D>("Textures\\HUDTextures\\Flake"));
+            Reclist.Add(new Rectangle((int)(600 * unit_width), (int)(360 * unit_height), (int)(80 * unit_width), (int)(80 * unit_height)));
+
+            // building sprite
+            Texturelist.Add(content.Load<Texture2D>(Globals.structure_icon[player.structure_wheel_pos]));
+            Reclist.Add(new Rectangle((int)(1100 * unit_width), (int)(40 * unit_height), (int)(150 * unit_width), (int)(150 * unit_height)));
 
             graphics.GraphicsDevice.BlendState = BlendState.NonPremultiplied;
             graphics.GraphicsDevice.DepthStencilState = DepthStencilState.None;
 
-			Vector2 textpos = new Vector2(300 * unit_width, 100 * unit_height);
+			Vector2 textpos = new Vector2(1130f * unit_width, 5f * unit_height);
             SpriteFont gameFont = content.Load<SpriteFont>("gamefont");
             //String output = "Test String";
-          //  Vector2 FontOrigin = gameFont.m(output) / 2;
+            //  Vector2 FontOrigin = gameFont.m(output) / 2;
             spriteBatch.Begin();
-           // spriteBatch.DrawString(gameFont, output, textpos, Color.LightGreen,
+            // spriteBatch.DrawString(gameFont, output, textpos, Color.LightGreen,
 			//					0, FontOrigin, unit_px, SpriteEffects.None, 0.5f);
 			int price = Globals.structure_cost[player.structure_wheel_pos];
 
-			spriteBatch.DrawString(gameFont, price.ToString(), textpos, Color.LightGreen,
-								0, new Vector2(0,0), 1, SpriteEffects.None, 0.5f);
+			spriteBatch.DrawString(gameFont, price.ToString(), textpos, Color.Red,
+								0, new Vector2(0,0), unit_width / 1.25f, SpriteEffects.None, 0.5f);
 
-            spriteBatch.Draw(avartar_Texture, avartar_rec, Color.White);
-            spriteBatch.Draw(building_Texture, building_rec, Color.White);
-            spriteBatch.Draw(message_Texture, message_rec, Color.White);
-            spriteBatch.Draw(flake_Texture, flake_rec, Color.White);
+            for (int i = 0; i < Texturelist.Count; i++)
+                spriteBatch.Draw(Texturelist[i], Reclist[i], Color.White);
 
             if (player.Mini_Map)
             {
-                render_minimap(topLeft,bottomRight, spriteBatch);
+                render_minimap(topLeft, bottomRight, spriteBatch);
             }
 
             spriteBatch.End();
@@ -85,14 +94,15 @@ namespace WWxna.Code.MVC
 
             float scale_size = 0.11f;
 
+
             Texture2D tile_Texture;
 
             for (int row = 0; row < GM_Proxy.Instance.get_World().get_height(); row++)
             {
                 for (int col = 0; col < GM_Proxy.Instance.get_World().get_width(); col++)
                 {
-                    if (GM_Proxy.Instance.get_World().get_Tile(row, col).get_tile_name() == "Void") continue;
-                    
+                    if (GM_Proxy.Instance.get_World().get_Tile(row, col).get_tile_name() == "Void") 
+                        continue;
                     if (GM_Proxy.Instance.get_World().get_Tile(row, col).get_tile_name() == "Boundary")
                         tile_Texture = content.Load<Texture2D>("Textures\\minimap\\Cliff_hexagon");
                     else
@@ -104,7 +114,6 @@ namespace WWxna.Code.MVC
                 }
             }
         }
-//	    void render_build(Vector2 topLeft, Vector2 bottomRight);
 
 //	    void render_death(Vector2 topLeft, Vector2 bottomRight);
 

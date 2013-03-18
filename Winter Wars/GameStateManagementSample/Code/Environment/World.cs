@@ -66,14 +66,8 @@ namespace WWxna.Code.Environment
 				        center.Z += 0.2 * tile_size;
 			        }
                     */
-
-                    
-                    //center.X = 500.0f;
-                    //center.Y = 0.0f;
-                    //center.Z = -50.0f;
 			        
 			        float scale_size = (float)2.0 * tile_size;
-
 
 			        iTile tmp;
                     if (h == 0 || h == map_height - 1 || w == 0 || w == map_width - 1)
@@ -454,14 +448,6 @@ namespace WWxna.Code.Environment
 
         }
 
-        bool World::is_boundary_tile(Tile* t)	{
-	        if(t->get_col() == 0 || t->get_col() == map_width - 1	
-		        || t->get_row() == 0 || t->get_row() == map_height - 1)
-		        return true;
-	        return false;
-        }
-
-        void World::Run_Sin_Wave()	{}
         */
 
     }

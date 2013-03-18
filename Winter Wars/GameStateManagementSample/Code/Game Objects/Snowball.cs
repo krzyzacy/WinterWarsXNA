@@ -55,5 +55,10 @@ namespace WWxna.Code.Game_Objects
             return base.deal_damage();
         }
 
+        public override string get_model_name()
+        {
+            return "Snowball";
+        }
+
     }
 }

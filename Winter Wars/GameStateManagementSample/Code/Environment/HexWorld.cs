@@ -295,7 +295,7 @@ namespace WWxna.Code.Environment
 
             if (look_Dir.X >= Math.Sqrt(3.0f) / 2)
             { // right
-                if (get_Tile(player_pos).get_col() != map_width - 1)
+                if (get_Tile(player_pos).get_col() != radius - 1)
                     return map[get_Tile(player_pos).get_row()][get_Tile(player_pos).get_col() + 1];
                 else
                     return new VoidTile();
@@ -313,7 +313,7 @@ namespace WWxna.Code.Environment
                     return new VoidTile();
                 else if (get_Tile(player_pos).get_row() % 2 == 1)
                 {
-                    if (get_Tile(player_pos).get_col() == map_width - 1)
+                    if (get_Tile(player_pos).get_col() == radius - 1)
                     {
                         return new VoidTile();
                     }
@@ -345,11 +345,11 @@ namespace WWxna.Code.Environment
             }
             else if ((look_Dir.X <= Math.Sqrt(3.0f) / 2 && look_Dir.X >= 0) && look_Dir.Z >= 0)
             { // lowerright
-                if (get_Tile(player_pos).get_row() == map_height)
+                if (get_Tile(player_pos).get_row() == radius)
                     return new VoidTile();
                 else if (get_Tile(player_pos).get_row() % 2 == 1)
                 {
-                    if (get_Tile(player_pos).get_col() == map_width - 1)
+                    if (get_Tile(player_pos).get_col() == radius - 1)
                     {
                         return new VoidTile();
                     }
@@ -364,7 +364,7 @@ namespace WWxna.Code.Environment
             }
             else if ((look_Dir.X >= -Math.Sqrt(3.0f) / 2 && look_Dir.X <= 0) && look_Dir.Z >= 0)
             { // lowerleft
-                if (get_Tile(player_pos).get_row() == map_height)
+                if (get_Tile(player_pos).get_row() == radius)
                     return new VoidTile();
                 else if (get_Tile(player_pos).get_row() % 2 == 0)
                 {

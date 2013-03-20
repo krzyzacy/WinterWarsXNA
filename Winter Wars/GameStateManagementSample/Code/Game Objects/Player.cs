@@ -69,9 +69,7 @@ namespace WWxna.Code.Game_Objects
         {
             //Debug.Print("CenterZ: " + center.Z);
 
-            // em.... ramdonly put sth to restrict the player... -Sen
-            if(GM_Proxy.Instance.get_World().get_Tile(center + Velocity * GM_Proxy.Instance.Time_Step.Milliseconds).get_tile_name() != "Boundary")
-                base.Update();
+            base.Update();
 
         }
 

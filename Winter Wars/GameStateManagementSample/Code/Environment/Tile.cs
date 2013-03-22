@@ -79,7 +79,8 @@ namespace WWxna.Code.Environment
 
 		public float get_height()
 		{
-			return center.Y + tile_size;
+            //%%% Hard Code ish. Not sure why tile size doesnt put me on top of tile
+			return center.Y + tile_size*3;
 		}
 
 		public Vector3 get_top_center()

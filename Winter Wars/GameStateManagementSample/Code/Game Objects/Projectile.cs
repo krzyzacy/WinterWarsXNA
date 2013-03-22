@@ -33,7 +33,7 @@ namespace WWxna.Code.Game_Objects
             }
         }
 
-        private const float size_decrease_rate = 0.90f;
+        private const float size_decrease_rate = 0.99f;
         private static TimeSpan LifeSpan = new TimeSpan(0,0,15);
 
         //Backing Store and non-property data
@@ -46,6 +46,9 @@ namespace WWxna.Code.Game_Objects
 
         #region Properties
 
+        /// <summary>
+        /// True if the projectiles has already hit something and dealt damage.
+        /// </summary>
         public Boolean Dealt_Damage
         {
             get
@@ -145,10 +148,10 @@ namespace WWxna.Code.Game_Objects
             deal_damage();
         }
 
-        public override void  on_ground()
-        {
- 	        //base.on_ground();
-        }
+        //public override void  on_ground()
+        //{
+        //    base.on_ground();
+        //}
 
         public virtual void perform_contact_effects()
         {}

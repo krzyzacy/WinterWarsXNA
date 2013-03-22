@@ -67,14 +67,11 @@ namespace WWxna.Code.Game_Objects
                
 
             
-            
-
-            
             //** Need to add stuff to check if off map and such
             
         }
 
-        public void gravity()
+        public virtual void gravity()
         {
 			if (!is_on_ground())
 				velocity += Globals.grav_accel * GM_Proxy.Instance.Time_Step.Milliseconds;
@@ -87,14 +84,15 @@ namespace WWxna.Code.Game_Objects
             velocity += accel * GM_Proxy.Instance.Time_Step.Milliseconds;
         }
 
+        /// <summary>
+        /// sets the object on the ground and ends velocity
+        /// </summary>
 		public virtual void on_ground()
 		{
 			if(velocity.Y < 0)
 				velocity.Y = 0;
 
-			// %%%% must add the world calculations to this later as well
-            /* hard coded */
-			center.Y = 400.0f;
+            center.Y = GM_Proxy.Instance.get_World().get_Tile(Position).get_height();
 		}
 
     }

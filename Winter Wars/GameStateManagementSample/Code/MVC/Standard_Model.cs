@@ -37,7 +37,7 @@ namespace WWxna.Code.MVC
             for (int i = 0; i < 4; i++)
             {
                 //Player p = new H_Player(controllers_[i], new Vector3(100, 100, 100 + 50*i), new Vector3(50, 50, 50));
-				Player p = new H_Player(game_, controllers_[i], get_World().get_next_Base_Tile().get_top_center());
+                Player p = new H_Player(game_, controllers_[i], get_World().get_next_Base_Tile().get_top_center(), 50 * Vector3.One);
 				add_player(p);
 				p.Team = teams[i % 2];
             }

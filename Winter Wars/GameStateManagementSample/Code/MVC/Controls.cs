@@ -99,8 +99,8 @@ namespace WWxna.Code.MVC
             input.Build = keyState.IsKeyDown(Keys.B);
             input.tip = keyState.IsKeyDown(Keys.T);
 
-            input.Tile_up = keyState.IsKeyDown(Keys.Up);
-            input.Tile_down = keyState.IsKeyDown(Keys.Down);
+            input.Tile_up = keyState.IsKeyDown(Keys.PageUp);
+            input.Tile_down = keyState.IsKeyDown(Keys.PageDown);
             input.R_roll = keyState.IsKeyDown(Keys.N);
             input.L_roll = keyState.IsKeyDown(Keys.V);
 

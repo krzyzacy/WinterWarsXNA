@@ -72,7 +72,7 @@ namespace WWxna.Code
             #region Snowball Stuff
                 
             public const float Max_projectile_size = 50;
-            public const float snowball_making_rate = 25;
+            public const float snowball_making_rate = 50;
             public const float snow_scooping_rate = 25;
             public const float Launch_Speed = 3;
             public const float min_snowball_damage = 15;
@@ -87,7 +87,7 @@ namespace WWxna.Code
 
             public const float Max_Snow_in_pack = 1000;
             public const float snow_depletion_rate = 0;
-            public const float Max_Player_health = 100;
+            public const float Max_Player_health = 0.01f;
             public static TimeSpan Build_Recharge_Time = new TimeSpan(0, 0, 1);
             public static TimeSpan Respawn_Time = new TimeSpan(0, 0, 6);
 

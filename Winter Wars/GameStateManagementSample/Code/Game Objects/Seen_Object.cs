@@ -111,22 +111,25 @@ namespace WWxna.Code.Game_Objects
 
         virtual public String get_model_name() { return "Ship"; }
 
-        public bool is_on_ground()
+        /// <summary>
+        /// true if the object is on the gorund
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool is_on_ground()
         {
-            //return true if Object is on the ground
 
 			Vector3 bottom_center = center - new Vector3(0, size.Y / 2, 0);
-			//I'm not exactly sure how to make this work
-            //if(bottom_center.Y <= GM_Proxy.Instance.get_World().get_Tile(center).get_height())
-            //    return true;
 
-            if (bottom_center.Y < 400.0f)
+            if (bottom_center.Y < GM_Proxy.Instance.get_World().get_Tile(Position).get_height())
                 return true;
 
             return false;
         }
 
-        /*returns true if this object is not supposed to be deleted*/
+        /// <summary>
+        /// returns true if this object is not supposed to be deleted*/
+        /// </summary>
+        /// <returns></returns>
         virtual public bool is_alive() { return !marked_for_deletion; }
         public void mark_for_deletion()
         {

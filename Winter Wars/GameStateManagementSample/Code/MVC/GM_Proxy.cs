@@ -105,7 +105,7 @@ namespace WWxna.Code.MVC
 
         public void Clean_dead()
         {
-            throw new NotImplementedException();
+            GM.Clean_dead();
         }
 
         public void Load_Content()

@@ -24,6 +24,7 @@ namespace WWxna.Code.Game_Objects
             player_KO = false;
             my_team = null;
             snow_in_pack = Globals.Max_Snow_in_pack;
+            Health = Globals.Max_Player_health;
             //we need to set the team somewhere
         }
 
@@ -48,6 +49,7 @@ namespace WWxna.Code.Game_Objects
 		}
 
         //protected BoundingSphere body;
+        protected float Health;
         protected float snowball_radius;
         protected float snow_in_pack;
 
@@ -68,7 +70,10 @@ namespace WWxna.Code.Game_Objects
         public override void Update()
         {
             //Debug.Print("CenterZ: " + center.Z);
-
+            if(Player_KO)   {
+                center = center + new Vector3(0, 800, 0);
+                Player_KO = false;
+            }
             base.Update();
 
         }
@@ -153,7 +158,12 @@ namespace WWxna.Code.Game_Objects
             GM_Proxy.Instance.add_moveable(sb); 
         }
 
-
+        public virtual void receive_damage(float hit)
+        {
+            Health -= hit;
+            if(Health < 0)
+                Player_KO = true;
+        }
     }
 
     public class H_Player : Player

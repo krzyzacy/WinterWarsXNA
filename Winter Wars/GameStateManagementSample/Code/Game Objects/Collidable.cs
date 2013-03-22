@@ -10,16 +10,12 @@ namespace WWxna.Code.Game_Objects
 {
     public class Collidable : Seen_Object
     {
-        protected BoundingSphere body;
+        /// <summary>
+        /// Represents the collision body for the object. Currently simple 
+        /// bounding box for now. Use with caution
+        /// </summary>
+        public BoundingBox Body { get; set; }
 
-        //Hold Up. So the whole point here is to allow a basic set of inputs, without magic numbers
-        //but also allow minimal inputs
-        //So make some constants in Seen Object
-        // Plug them in to dans contructor,
-        // THen remake the constructur set for moveable and other stuff
-
-
-           
         public Collidable() : this(Globals.Game_Obj_Origin , Globals.Game_Obj_Size, Globals.Game_Obj_Quat) { }
         public Collidable(Vector3 center_) : this(center_, Globals.Game_Obj_Size, Globals.Game_Obj_Quat) { }
         public Collidable(Vector3 center_, Vector3 size_) : this(center_, size_, Globals.Game_Obj_Quat) { }
@@ -27,8 +23,17 @@ namespace WWxna.Code.Game_Objects
             : base(center_, size_, theta_)
         {
             //Set Collision body stuff up here
-            body = new BoundingSphere(center, size.Length());
-            //Temporary for now
+            //Eh? if size is ever working properly than this should work
+            //Vector3 top_right_corner = new Vector3(center.X - size.X/2, center.Y - size.Y/2, center.Z - size.Z/2);
+            //Vector3 bot_left_corner = new Vector3(center.X + size.X / 2, center.Y + size.Y / 2, center.Z + size.Z / 2);
+            //Body = new BoundingBox(bot_left_corner, top_right_corner);
+
+            //Very Simple, but too big.
+            Body = BoundingBox.CreateFromSphere(new BoundingSphere(center_, size.Length()));
+
+            //Old, just a sphere
+            //Body = new BoundingSphere(center, size.Length());
+            
         }
 
         public virtual void Update()
